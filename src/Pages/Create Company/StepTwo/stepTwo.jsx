@@ -11,13 +11,19 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
   const [citiesByCountry, setCitiesByCountry] = useState({});
 
   useEffect(() => {
-    fetch("./data.json")
-      .then((response) => response.json())
-      .then((data) => {
+    // Simulated data fetch for countries and cities (replace with actual fetch)
+    const fetchData = async () => {
+      try {
+        const response = await fetch("./data.json");
+        const data = await response.json();
         setCountries(data.countries);
         setCitiesByCountry(data.citiesByCountry);
-      })
-      .catch((error) => console.error("Error loading data:", error));
+      } catch (error) {
+        console.error("Error loading data:", error);
+      }
+    };
+
+    fetchData();
   }, []);
 
   const onDrop = useCallback(
@@ -117,10 +123,10 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
             type="text"
             id="companyName"
             {...register("companyName", {
-              required: "First Name is required",
+              required: "Company Name is required",
             })}
-            placeholder="John"
-            className="w-full border rounded-lg data-[hover]:shadow data-[focus]:bg-blue-100"
+            placeholder="Enter company name"
+            className="w-full border rounded-lg p-2"
           />
           {errors.companyName && (
             <span className="text-red-500 text-sm">
@@ -131,7 +137,7 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
         <div className="w-1/2">
           <label
             className="font-medium text-sm text-left block mb-2"
-            htmlFor="role"
+            htmlFor="companyType"
           >
             Primary Company Type
           </label>
@@ -140,14 +146,16 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
             {...register("companyType", {
               required: "Please select your company type",
             })}
-            className="w-full border rounded-lg p-2 data-[hover]:shadow data-[focus]:bg-blue-100"
+            className="w-full border rounded-lg p-2"
           >
-            <option value="">company type</option>
+            <option value="">Select company type</option>
             <option value="architect">Architect</option>
             <option value="interior_designer">Interior Designer</option>
           </select>
-          {errors.role && (
-            <span className="text-red-500 text-sm">{errors.role.message}</span>
+          {errors.companyType && (
+            <span className="text-red-500 text-sm">
+              {errors.companyType.message}
+            </span>
           )}
         </div>
       </div>
@@ -164,10 +172,10 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
             type="text"
             id="companyPhoneNumber"
             {...register("companyPhoneNumber", {
-              required: "Company contact Number is required",
+              required: "Company phone number is required",
             })}
-            placeholder="XXXXXXXXXX"
-            className="w-full border rounded-lg data-[hover]:shadow data-[focus]:bg-blue-100"
+            placeholder="Enter company phone number"
+            className="w-full border rounded-lg p-2"
           />
           {errors.companyPhoneNumber && (
             <span className="text-red-500 text-sm">
@@ -186,10 +194,10 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
             type="email"
             id="companyEmail"
             {...register("companyEmail", {
-              required: "Company Email Address is required",
+              required: "Company email is required",
             })}
-            placeholder="John"
-            className="w-full border rounded-lg data-[hover]:shadow data-[focus]:bg-blue-100"
+            placeholder="Enter company email"
+            className="w-full border rounded-lg p-2"
           />
           {errors.companyEmail && (
             <span className="text-red-500 text-sm">
@@ -212,10 +220,10 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
             {...register("country", {
               required: "Please select your country",
             })}
-            className="w-full border rounded-lg p-2 data-[hover]:shadow data-[focus]:bg-blue-100"
+            className="w-full border rounded-lg p-2"
             onChange={handleCountryChange}
           >
-            <option value="">Select Country</option>
+            <option value="">Select country</option>
             {countries.map((country, index) => (
               <option key={index} value={country}>
                 {country}
@@ -245,7 +253,7 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
               value={cityInput}
               onChange={handleCityInputChange}
               placeholder="Enter city name"
-              className="w-full border rounded-lg data-[hover]:shadow data-[focus]:bg-blue-100"
+              className="w-full border rounded-lg p-2"
             />
             {citySuggestions.length > 0 && (
               <ul className="absolute z-10 w-full bg-white border border-gray-300 mt-1 rounded-lg shadow-lg">
@@ -292,15 +300,15 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
           </span>
         )}
       </div>
-      {/* Location */}
+
       <div className="mt-8">
-        <p className="text-lg font-bold text-left"> Company Location </p>
+        <p className="text-lg font-bold text-left">Company Location</p>
         <div className="mt-4">
           <label
             className="font-medium text-sm text-left block mb-2"
             htmlFor="companyLocation"
           >
-            Company Email
+            Company Location
           </label>
           <Input
             type="text"
@@ -309,7 +317,7 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
               required: "Company location is required",
             })}
             placeholder="Enter company location"
-            className="w-full border rounded-lg data-[hover]:shadow data-[focus]:bg-blue-100"
+            className="w-full border rounded-lg p-2"
           />
           {errors.companyLocation && (
             <span className="text-red-500 text-sm">
@@ -318,8 +326,17 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
           )}
         </div>
       </div>
+
       <div className="mt-4">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3680.6177455759703!2d75.80922237600166!3d22.705269628093465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fdd7acfafc65%3A0x2844ae94d8305a5d!2sNoorani%20Nagar%2C%20Indore%2C%20Madhya%20Pradesh%20452006!5e0!3m2!1sen!2sin!4v1719028405777!5m2!1sen!2sin" width='100%' height="250" style={{border: '0', borderRadius: '10px'}} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3680.6177455759703!2d75.80922237600166!3d22.705269628093465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fdd7acfafc65%3A0x2844ae94d8305a5d!2sNoorani%20Nagar%2C%20Indore%2C%20Madhya%20Pradesh%20452006!5e0!3m2!1sen!2sin!4v1719028405777!5m2!1sen!2sin"
+          width="100%"
+          height="250"
+          style={{ border: "0", borderRadius: "10px" }}
+          allowFullScreen=""
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        ></iframe>
       </div>
     </div>
   );

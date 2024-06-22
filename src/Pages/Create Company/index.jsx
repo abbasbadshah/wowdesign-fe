@@ -1,11 +1,9 @@
-// CreateCompany.jsx
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { StepOne } from "./StepOne/stepOne";
 import { StepTwo } from "./StepTwo/stepTwo";
-import { StepThree } from "./StepThree/stepThree";
 import { SiteLogo, FadingBackground } from "../../components/shared/index";
 
 import bgImage1 from "../../assets/images/Loginsignup/Background/img1.jpg";
@@ -54,12 +52,6 @@ export const CreateCompany = () => {
         return await trigger(["options"]);
       case 2:
         return await trigger(["companyName", "description"]);
-      case 3:
-        return await trigger([
-          "businessType",
-          "employeeCount",
-          "annualRevenue",
-        ]);
       default:
         return false;
     }
@@ -68,9 +60,11 @@ export const CreateCompany = () => {
   const nextStep = async (event) => {
     event.preventDefault();
     const isValid = await validateStep(step);
-    if (isValid && step < 3) {
+    if (isValid && step < 2) {
       setDirection("next");
       setStep(step + 1);
+    } else if (isValid && step === 2) {
+      handleSubmit(onSubmit)();
     } else {
       console.log("Either not valid or last step reached.");
     }
@@ -159,19 +153,6 @@ export const CreateCompany = () => {
                         />
                       </motion.div>
                     )}
-                    {step === 3 && (
-                      <motion.div
-                        key="step3"
-                        custom={direction}
-                        initial="initial"
-                        animate="animate"
-                        exit="exit"
-                        variants={slideVariants}
-                        transition={{ duration: 0.5 }}
-                      >
-                        <StepThree register={register} errors={errors} />
-                      </motion.div>
-                    )}
                   </AnimatePresence>
 
                   <div className="flex justify-between mt-8">
@@ -186,26 +167,15 @@ export const CreateCompany = () => {
                         Back
                       </motion.button>
                     )}
-                    {step < 3 ? (
-                      <motion.button
-                        type="button"
-                        onClick={(e) => nextStep(e)}
-                        className="bg-theme-color text-white font-bold text-sm rounded-lg px-4 py-2"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        Next
-                      </motion.button>
-                    ) : (
-                      <motion.button
-                        type="submit"
-                        className="bg-theme-color text-white font-bold text-sm rounded-lg px-4 py-2"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        Finish
-                      </motion.button>
-                    )}
+                    <motion.button
+                      type="button"
+                      onClick={(e) => nextStep(e)}
+                      className="bg-theme-color text-white font-bold text-sm rounded-lg px-4 py-2"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      {step < 2 ? "Next" : "Finish"}
+                    </motion.button>
                   </div>
                 </form>
               ) : (

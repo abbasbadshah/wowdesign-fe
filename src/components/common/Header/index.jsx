@@ -6,16 +6,47 @@ export const Header = () => {
   const [open, setOpen] = React.useState(false);
   const [flyer, setFlyer] = React.useState(false);
   const [flyerTwo, setFlyerTwo] = React.useState(false);
+  const [isSticky, setIsSticky] = React.useState(false);
+  const [scrollPosition, setScrollPosition] = React.useState(0);
+
   const naviagte = useNavigate();
+
+  const handleScroll = () => {
+    const currentScrollPos = window.pageYOffset;
+    const isScrollingUp = currentScrollPos < scrollPosition;
+
+    setIsSticky(isScrollingUp && currentScrollPos > 100);
+    setScrollPosition(currentScrollPos);
+  };
+
+  React.useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [scrollPosition]);
   return (
-    <header>
+    <header
+      className={`z-[999] transition-all duration-300 ease-in-out ${
+        isSticky
+          ? "fixed top-0 left-0 right-0 bg-white shadow-md transform translate-y-0"
+          : scrollPosition > 100
+          ? "transform -translate-y-full"
+          : "relative bg-transparent"
+      }`}
+    >
       <div className="relative z-[99]">
         <div className="px-16">
           <div className="flex justify-between items-center py-6 md:justify-start md:space-x-10">
             <div className="flex justify-start lg:w-0 lg:flex-1">
               <span>
                 <span className="sr-only">Workflow</span>
-                <SiteLogo className={"my-logo w-52"} />
+                <SiteLogo
+                  white={!isSticky}
+                  className={`my-logo w-52 ${
+                    isSticky ? "text-black" : "text-white"
+                  }`}
+                />
               </span>
             </div>
             <div className="-mr-2 -my-2 md:hidden">
@@ -48,8 +79,9 @@ export const Header = () => {
                 {/* Item active: "text-gray-900", Item inactive: "text-gray-500" */}
                 <button
                   type="button"
-                  className="
-                 group rounded-md text-white inline-flex items-center text-base font-medium hover:text-theme-color"
+                  className={`group rounded-md inline-flex items-center text-base font-medium ${
+                    isSticky ? "text-black" : "text-white"
+                  } hover:text-theme-color`}
                   onClick={() => {
                     setFlyer(!flyer);
                     setFlyerTwo(false);
@@ -62,11 +94,11 @@ export const Header = () => {
             Item active: "text-gray-600", Item inactive: "text-gray-400"
           */}
                   <svg
-                    className={
-                      flyer === true
-                        ? "transform rotate-180 ml-2 h-5 w-5 text-white group-hover:text-theme-color transition ease-out duration-200"
-                        : "transform rotate-0 transition ease-out duration-200 ml-2 h-5 w-5 text-white group-hover:text-theme-color"
-                    }
+                    className={`${
+                      flyer ? "transform rotate-180" : ""
+                    } ml-2 h-5 w-5 ${
+                      isSticky ? "text-black" : "text-white"
+                    } group-hover:text-theme-color transition ease-out duration-200`}
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
@@ -290,18 +322,26 @@ export const Header = () => {
               </div>
               <Link
                 to="/projects"
-                className="text-base font-medium text-white hover:text-theme-color"
+                className={`text-base font-medium ${
+                  isSticky ? "text-black" : "text-white"
+                } hover:text-theme-color`}
               >
                 Projects
               </Link>
-              <button className="text-base font-medium text-white hover:text-theme-color">
+              <button
+                className={`text-base font-medium ${
+                  isSticky ? "text-black" : "text-white"
+                } hover:text-theme-color`}
+              >
                 Docs
               </button>
               <div className="relative">
                 {/* Item active: "text-gray-900", Item inactive: "text-gray-500" */}
                 <button
                   type="button"
-                  className="group text-white inline-flex items-center text-base font-medium hover:text-theme-color"
+                  className={`group inline-flex items-center text-base font-medium ${
+                    isSticky ? "text-black" : "text-white"
+                  } hover:text-theme-color`}
                   onClick={() => {
                     setFlyerTwo(!flyerTwo);
                     setFlyer(false);
@@ -314,11 +354,11 @@ export const Header = () => {
             Item active: "text-gray-600", Item inactive: "text-gray-400"
           */}
                   <svg
-                    className={
-                      flyerTwo === true
-                        ? "transform rotate-180 ml-2 h-5 w-5 text-white group-hover:text-theme-color transition ease-out duration-200"
-                        : "ml-2 h-5 w-5 text-white group-hover:text-theme-color"
-                    }
+                    className={`${
+                      flyerTwo ? "transform rotate-180" : ""
+                    } ml-2 h-5 w-5 ${
+                      isSticky ? "text-black" : "text-white"
+                    } group-hover:text-theme-color transition ease-out duration-200`}
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
@@ -506,7 +546,9 @@ export const Header = () => {
             <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
               <Link
                 to="/sign-in"
-                className="whitespace-nowrap text-base font-medium text-white hover:px-4 hover:py-2 hover:bg-theme-color hover:whitespace-nowrap hover:rounded-md"
+                className={`whitespace-nowrap text-base font-medium ${
+                  isSticky ? "text-black" : "text-white"
+                } hover:px-4 hover:py-2 hover:bg-theme-color hover:text-white hover:rounded-md`}
               >
                 Sign in
               </Link>
@@ -514,7 +556,7 @@ export const Header = () => {
                 to="/create-company"
                 className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border-2 border-theme-color rounded-md shadow-sm text-base font-medium text-white bg-theme-color hover:bg-transparent"
               >
-                Create Compant
+                Create Company
               </Link>
             </div>
           </div>
@@ -716,14 +758,17 @@ export const Header = () => {
                 </span>
               </div>
               <div>
-                <Link to='/sign-up' className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-theme-color hover:bg-indigo-700">
+                <Link
+                  to="/sign-up"
+                  className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-theme-color hover:bg-indigo-700"
+                >
                   Sign up
                 </Link>
                 <p className="mt-6 text-center text-base font-medium text-gray-500">
                   Existing customer?
                   <Link
-                    to='/sign-in'
-                    className="text-theme-color hover:text-indigo-500"
+                    to="/sign-in"
+                    className="text-theme-color hover:text-black"
                   >
                     Sign in
                   </Link>
