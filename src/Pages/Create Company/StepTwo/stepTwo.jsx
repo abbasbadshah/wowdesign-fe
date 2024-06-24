@@ -1,6 +1,7 @@
 import { Input, Textarea } from "@headlessui/react";
 import React, { useState, useCallback, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
+import data from "./data.json";
 
 export const StepTwo = ({ register, errors, setValue, watch }) => {
   const [preview, setPreview] = useState(null);
@@ -11,19 +12,8 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
   const [citiesByCountry, setCitiesByCountry] = useState({});
 
   useEffect(() => {
-    // Simulated data fetch for countries and cities (replace with actual fetch)
-    const fetchData = async () => {
-      try {
-        const response = await fetch("./data.json");
-        const data = await response.json();
-        setCountries(data.countries);
-        setCitiesByCountry(data.citiesByCountry);
-      } catch (error) {
-        console.error("Error loading data:", error);
-      }
-    };
-
-    fetchData();
+    setCountries(data.countries || []);
+    setCitiesByCountry(data.citiesByCountry || []);
   }, []);
 
   const onDrop = useCallback(
@@ -56,12 +46,10 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
     setCityInput(input);
     setValue("city", input);
 
-    if (input && selectedCountry) {
-      const suggestions = citiesByCountry[selectedCountry]
-        ? citiesByCountry[selectedCountry].filter((city) =>
-            city.toLowerCase().startsWith(input.toLowerCase())
-          )
-        : [];
+    if (input && selectedCountry && citiesByCountry[selectedCountry]) {
+      const suggestions = citiesByCountry[selectedCountry].filter((city) =>
+        city.toLowerCase().startsWith(input.toLowerCase())
+      );
       setCitySuggestions(suggestions);
     } else {
       setCitySuggestions([]);
@@ -222,6 +210,7 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
             })}
             className="w-full border rounded-lg p-2"
             onChange={handleCountryChange}
+            value={selectedCountry}
           >
             <option value="">Select country</option>
             {countries.map((country, index) => (

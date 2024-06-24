@@ -113,7 +113,7 @@ export const CreateCompany = () => {
               </div>
             </div>
 
-            <div className="xl:col-span-3 lg:col-span-2 lg:m-10 overflow-y-auto max-h-[80vh] custom-scrollbar">
+            <div className="xl:col-span-3 lg:col-span-2 lg:m-10 overflow-y-auto overflow-x-hidden max-h-[80vh] custom-scrollbar">
               {!isSubmitted ? (
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
                   <AnimatePresence custom={direction} mode="wait">
@@ -168,14 +168,14 @@ export const CreateCompany = () => {
                       </motion.button>
                     )}
                     <motion.button
-                      type="button"
-                      onClick={(e) => nextStep(e)}
-                      className="bg-theme-color text-white font-bold text-sm rounded-lg px-4 py-2"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      {step < 2 ? "Next" : "Finish"}
-                    </motion.button>
+  type="button"
+  onClick={(e) => nextStep(e)}
+  className="bg-theme-color text-white font-bold text-sm rounded-lg px-4 py-2 origin-center"
+  whileHover={{ scale: 1.03 }}
+  whileTap={{ scale: 0.95 }}
+>
+  {step < 2 ? "Next" : "Finish"}
+</motion.button>
                   </div>
                 </form>
               ) : (

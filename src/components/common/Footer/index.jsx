@@ -1,6 +1,6 @@
 import footerimage from "../../../assets/images/Footer/footerimage.png";
 import { Link } from "react-router-dom";
-import {SiteLogo} from '../../shared/index'
+import { SiteLogo } from "../../shared/index";
 export const Footer = () => {
   return (
     <footer class="flex items-end justify-center">
@@ -11,15 +11,16 @@ export const Footer = () => {
               <div class="grid md:grid-cols-2 grid-cols-1 gap-6">
                 <div>
                   <h1 class="text-white text-4xl">
-                    Boost your business growth with Floti - your ultimate
-                    productivity tool
+                    Boost your business growth with <strong>Wow</strong>
                   </h1>
                 </div>
 
                 <div class="relative flex items-center justify-end">
-                  <div class="py-4 px-4 bg-black rounded-lg">
-                    <p class="text-white">Try 14 Days Free Trial</p>
-                  </div>
+                  <Link to="/create-company">
+                    <div class="py-4 px-4 bg-black rounded-lg cursor-pointer">
+                      <p class="text-white">Create Your Company Now</p>
+                    </div>
+                  </Link>
                 </div>
               </div>
             </div>

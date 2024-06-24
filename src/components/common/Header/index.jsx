@@ -36,7 +36,7 @@ export const Header = () => {
       }`}
     >
       <div className="relative z-[99]">
-        <div className="px-16">
+        <div className="px-6 lg:px-24">
           <div className="flex justify-between items-center py-6 md:justify-start md:space-x-10">
             <div className="flex justify-start lg:w-0 lg:flex-1">
               <span>
