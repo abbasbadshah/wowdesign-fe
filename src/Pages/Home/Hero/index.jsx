@@ -29,7 +29,7 @@ const HeroSlider = () => {
 
   return (
     <div
-      className="relative h-screen flex items-center justify-center transition-opacity duration-500 -mt-[6.4rem]"
+      className="relative h-screen flex items-center justify-center transition-opacity duration-500 -mt-[6.3rem]"
       style={{
         backgroundImage: `url(${images[currentImageIndex]})`,
         backgroundSize: "cover",

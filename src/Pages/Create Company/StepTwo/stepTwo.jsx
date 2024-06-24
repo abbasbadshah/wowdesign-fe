@@ -31,7 +31,7 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
     multiple: false,
   });
 
-  const profilePhoto = watch("profilePhoto");
+  // const profilePhoto = watch("profilePhoto");
 
   const handleCountryChange = (e) => {
     const country = e.target.value;
@@ -325,7 +325,8 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
           allowFullScreen=""
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
-        ></iframe>
+          title="Google Maps - Noorani Nagar, Indore"
+        />
       </div>
     </div>
   );
