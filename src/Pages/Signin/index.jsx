@@ -7,6 +7,7 @@ import bgImage5 from "../../assets/images/Loginsignup/Background/img5.jpg";
 import { SiteLogo, FadingBackground } from '../../components/shared/index'
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { GlobeAltIcon } from "@heroicons/react/24/outline";
 
 const backgroundImages = [bgImage1, bgImage2, bgImage3, bgImage4, bgImage5];
 export const Signin = () => {
@@ -54,6 +55,7 @@ export const Signin = () => {
                     </div>
                   </div>
                 </div>
+                <div><Link to={'/'}><p className="text-white text-sm font-bold flex gap-2 items-center justify-center">Back to Website <GlobeAltIcon className="w-4 text-sm font-bold"/></p></Link></div>
               </div>
             </div>
 

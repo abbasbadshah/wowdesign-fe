@@ -7,6 +7,7 @@ import bgImage2 from "../../assets/images/Loginsignup/Background/img2.jpg";
 import bgImage3 from "../../assets/images/Loginsignup/Background/img3.jpg";
 import bgImage4 from "../../assets/images/Loginsignup/Background/img4.jpg";
 import bgImage5 from "../../assets/images/Loginsignup/Background/img5.jpg";
+import { GlobeAltIcon } from "@heroicons/react/24/outline";
 
 const backgroundImages = [bgImage1, bgImage2, bgImage3, bgImage4, bgImage5];
 export const Signup = () => {
@@ -55,6 +56,7 @@ export const Signup = () => {
                     </div>
                   </div>
                 </div>
+                <div><Link to={'/'}><p className="text-white text-sm font-bold flex gap-2 items-center justify-center">Back to Website <GlobeAltIcon className="w-3 text-sm font-bold"/></p></Link></div>
               </div>
             </div>
 
