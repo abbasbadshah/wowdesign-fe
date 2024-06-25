@@ -72,16 +72,15 @@ export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
   const [scrollDirection, setScrollDirection] = useState(null);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
-    let lastScrollY = window.scrollY;
-
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
       if (currentScrollY > lastScrollY) {
         setScrollDirection("down");
-      } else if (currentScrollY < lastScrollY) {
+      } else {
         setScrollDirection("up");
       }
 
@@ -91,21 +90,23 @@ export const Header = () => {
         setIsSticky(false);
       }
 
-      lastScrollY = currentScrollY;
+      setLastScrollY(currentScrollY);
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
 
   return (
     <header
       className={classNames(
-        "z-[99] transition-transform duration-300",
-        isSticky ? "fixed top-0 left-0 w-full bg-white shadow-lg" : "",
-        scrollDirection === "down" ? "-translate-y-full" : "translate-y-0"
+        "z-[99] transition-all duration-300 ease-in-out",
+        isSticky ? "fixed top-0 left-0 w-full bg-white shadow-lg" : "relative",
+        isSticky && scrollDirection === "down"
+          ? "-translate-y-full"
+          : "translate-y-0",
+        !isSticky && "bg-transparent"
       )}
     >
       <nav
@@ -187,16 +188,10 @@ export const Header = () => {
             </PopoverPanel>
           </Popover>
 
-          <Link
-            to="/projects"
-            className="text-sm font-semibold leading-6"
-          >
+          <Link to="/projects" className="text-sm font-semibold leading-6">
             Projects
           </Link>
-          <Link
-            to="/portfolios"
-            className="text-sm font-semibold leading-6"
-          >
+          <Link to="/portfolios" className="text-sm font-semibold leading-6">
             Portfolio
           </Link>
           <Link to="#" className="text-sm font-semibold leading-6">
@@ -204,10 +199,7 @@ export const Header = () => {
           </Link>
         </PopoverGroup>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-5 items-center">
-          <Link
-            to="/sign-in"
-            className="text-sm font-semibold leading-6"
-          >
+          <Link to="/sign-in" className="text-sm font-semibold leading-6">
             Sign in <span aria-hidden="true">&rarr;</span>
           </Link>
           <Link

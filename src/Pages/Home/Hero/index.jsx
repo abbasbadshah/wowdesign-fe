@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { ScrollDownArrow } from "../../../components/shared";
 
 import img1 from "../../../assets/images/Home/Hero/hero1.jpg";
 import img2 from "../../../assets/images/Home/Hero/hero2.jpg";
@@ -58,6 +59,7 @@ const HeroSlider = () => {
           Imaginative, beautiful, impeccable architecture
         </h1>
       </div>
+      <ScrollDownArrow targetId="next-section" />
     </div>
   );
 };
