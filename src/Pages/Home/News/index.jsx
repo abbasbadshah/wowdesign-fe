@@ -10,8 +10,8 @@ export const News = () => {
       </h2>
       <div className="mt-3 lg:pb-24 grid grid-row lg:grid-cols-2 gap-3">
         {/* Card One */}
-        <div className="lg:h-[320px] flex flex-col lg:flex-row">
-          <div className="bg-[#EEEFF0] lg:w-1/2 p-8 text-left flex flex-col justify-between">
+        <div className="lg:h-[320px] flex flex-col lg:flex-row rounded">
+          <div className="bg-[#EEEFF0] lg:w-1/2 p-8 text-left flex flex-col justify-between rounded">
             <div>
               <h3 className="text-lg font-medium">News</h3>
               <p className="mt-2">
@@ -32,13 +32,13 @@ export const News = () => {
           </div>
           <img
             src={newsImage1}
-            className="w-full h-full object-cover lg:w-1/2"
+            className="w-full h-full object-cover lg:w-1/2 rounded-r"
             alt="newsimage"
           />
         </div>
         {/* Card Two */}
         <div className="lg:h-[320px] flex flex-col lg:flex-row">
-          <div className="bg-[#EEEFF0] lg:lg:w-1/2 p-8 text-left flex flex-col justify-between">
+          <div className="bg-[#EEEFF0] lg:lg:w-1/2 p-8 text-left flex flex-col justify-between rounded">
             <div>
               <h3 className="text-lg font-medium">News</h3>
               <p className="mt-2">
@@ -59,7 +59,7 @@ export const News = () => {
           </div>
           <img
             src={newsImage2}
-            className="w-full h-full object-cover lg:w-1/2"
+            className="w-full h-full object-cover lg:w-1/2 rounded-r"
             alt="newsimage"
           />
         </div>

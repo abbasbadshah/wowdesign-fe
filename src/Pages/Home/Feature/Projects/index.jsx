@@ -54,11 +54,11 @@ export const FeatureProjects = () => {
 
         <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-8">
           {projectData.map((project) => (
-            <div key={project.id} className="relative overflow-hidden group">
+            <div key={project.id} className="relative overflow-hidden group rounded">
               <div className="overflow-hidden">
                 <img
                   src={project.image}
-                  className="scale-100 group-hover:scale-105 transition-all duration-500"
+                  className="scale-100 group-hover:scale-105 transition-all duration-500 rounded"
                   alt=""
                 />
               </div>

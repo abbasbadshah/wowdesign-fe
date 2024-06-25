@@ -313,11 +313,11 @@ export const Projects = () => {
 
             <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
               {/* Filters */}
-              <form className="hidden lg:block sticky top-0">
+              <form className="hidden lg:block sticky top-24 max-h-[calc(100vh-6rem)] overflow-y-auto">
                 <h3 className="sr-only">Categories</h3>
                 <ul
                   role="list"
-                  className="space-y-4 border p-6 border-gray-200 pb-6 text-sm font-medium text-gray-900"
+                  className="space-y-4 border p-6 border-gray-200 pb-6 text-sm font-medium text-gray-900 rounded"
                 >
                   {subCategories.map((category) => (
                     <li key={category.value}>
@@ -406,7 +406,7 @@ export const Projects = () => {
                   {filteredProjects.map((project) => (
                     <div
                       key={project.id}
-                      className="border border-gray-200 overflow-hidden"
+                      className="border border-gray-200 overflow-hidden rounded"
                     >
                       <div className="bg-gray-100 relative">
                         <img src={ProjectImages} alt="" />
@@ -425,7 +425,7 @@ export const Projects = () => {
                           <div>
                             <button
                               onClick={() => handleViewDetails(project.path)}
-                              className="py-2.5 px-6 rounded-lg border-2 border-theme-color hover:border-theme-color text-white bg-theme-color hover:bg-transparent hover:text-theme-color transition-all duration-500"
+                              className="py-2.5 px-6 rounded border-2 border-theme-color hover:border-theme-color text-white bg-theme-color hover:bg-transparent hover:text-theme-color transition-all duration-500"
                             >
                               View Details
                             </button>

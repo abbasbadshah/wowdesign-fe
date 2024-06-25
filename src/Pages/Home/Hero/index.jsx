@@ -55,7 +55,7 @@ const HeroSlider = () => {
       />
       <div className="absolute inset-0 bg-black opacity-30"></div>
       <div className="relative z-10 text-center text-white p-4">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+        <h1 className="text-4xl md:text-5xl lg:text-2xl font-semibold mb-4">
           Imaginative, beautiful, impeccable architecture
         </h1>
       </div>
