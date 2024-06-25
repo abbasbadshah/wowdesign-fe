@@ -1,7 +1,7 @@
 import { Layout } from "../../components/layout/layout";
 import { BreadcrumbComponent } from "../../components/shared/Breadcrumb/breadcrumb";
 import ProjectImages from "../../assets/images/Projects/Project Details/projectimage6.webp";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useState } from "react";
 import {
@@ -80,14 +80,14 @@ const filters = [
   },
 ];
 
-const projectData = [
+const portfolioData = [
   {
     id: 1,
     title: "First Sentier Investors, Sydney",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et .",
     category: "contemporary",
-    path: "/projects/project-details",
+    path: "/portfolios/portfolio-details",
   },
   {
     id: 2,
@@ -95,7 +95,7 @@ const projectData = [
     description:
       "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     category: "traditional",
-    path: "/projects/project-details",
+    path: "/portfolios/portfolio-details",
   },
   {
     id: 3,
@@ -103,7 +103,7 @@ const projectData = [
     description:
       "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
     category: "refurbishments",
-    path: "/projects/project-details",
+    path: "/portfolios/portfolio-details",
   },
   {
     id: 4,
@@ -111,7 +111,7 @@ const projectData = [
     description:
       "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
     category: "refurbishments",
-    path: "/projects/project-details",
+    path: "/portfolios/portfolio-details",
   },
   {
     id: 5,
@@ -119,7 +119,7 @@ const projectData = [
     description:
       "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
     category: "refurbishments",
-    path: "/projects/project-details",
+    path: "/portfolios/portfolio-details",
   },
   {
     id: 6,
@@ -127,7 +127,7 @@ const projectData = [
     description:
       "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
     category: "refurbishments",
-    path: "/projects/project-details",
+    path: "/portfolios/portfolio-details",
   },
   {
     id: 7,
@@ -135,7 +135,7 @@ const projectData = [
     description:
       "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
     category: "refurbishments",
-    path: "/projects/project-details",
+    path: "/portfolios/portfolio-details",
   },
   {
     id: 8,
@@ -143,7 +143,7 @@ const projectData = [
     description:
       "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
     category: "refurbishments",
-    path: "/projects/project-details",
+    path: "/portfolios/portfolio-details",
   },
   {
     id: 9,
@@ -151,7 +151,7 @@ const projectData = [
     description:
       "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
     category: "refurbishments",
-    path: "/projects/project-details",
+    path: "/portfolios/portfolio-details",
   },
 ];
 
@@ -159,14 +159,14 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export const Projects = () => {
+export const Portfolios = () => {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("");
   const navigate = useNavigate();
 
-  const filteredProjects = selectedCategory
-    ? projectData.filter((project) => project.category === selectedCategory)
-    : projectData;
+  const filteredPortfolios = selectedCategory
+    ? portfolioData.filter((project) => project.category === selectedCategory)
+    : portfolioData;
 
   const handleCategorySelect = (category) => {
     setSelectedCategory(category);
@@ -179,9 +179,9 @@ export const Projects = () => {
   return (
     <Layout>
       <BreadcrumbComponent
-        title="Wow Projects"
+        title="Wow Portfolios"
         bgImage={ProjectImages}
-        breadcrumb={["Product"]}
+        breadcrumb={["Portfolios"]}
       />
       <div className="px-6 lg:px-24 my-24">
         {/* Mobile filter dialog */}
@@ -306,14 +306,14 @@ export const Projects = () => {
         </Transition>
 
         <main className="px-4 sm:px-6 lg:px-8">
-          <section aria-labelledby="products-heading" className="pb-24 pt-6">
-            <h2 id="products-heading" className="sr-only">
-              Products
+          <section aria-labelledby="Portfolio-heading" className="pb-24 pt-6">
+            <h2 id="Portfolio-heading" className="sr-only">
+              Portfolios
             </h2>
 
             <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
               {/* Filters */}
-              <form className="hidden lg:block sticky top-0">
+              <form className="hidden lg:block sticky top-24 max-h-[calc(100vh-6rem)] overflow-y-auto">
                 <h3 className="sr-only">Categories</h3>
                 <ul
                   role="list"
@@ -400,41 +400,44 @@ export const Projects = () => {
                   */}
               </form>
               <div className="lg:col-span-3">
-                {/* Products Grid*/}
                 <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
-                  {/*Project Card Start*/}
-                  {filteredProjects.map((project) => (
+                  {/*Portfolio Card Start*/}
+                  {filteredPortfolios.map((project) => (
                     <div
                       key={project.id}
-                      className="border border-gray-200 overflow-hidden"
+                      className="bg-white shadow-md rounded overflow-hidden group"
                     >
-                      <div className="bg-gray-100 relative">
-                        <img src={ProjectImages} alt="" />
+                      <div className="relative">
+                        <img
+                          src={ProjectImages}
+                          className=""
+                          alt={project.title}
+                        />
                       </div>
-                      <div className="p-5">
-                        <h2 className="text-xl font-semibold">
+
+                      <div className="p-4 relative">
+                        <h2 className="text-xl font-bold text-gray-900 mb-1">
                           {project.title}
                         </h2>
-                        <p className="text-sm font-medium text-gray-500 py-1">
-                          {project.description}
-                        </p>
-                        <div className="flex items-center justify-between mt-5">
-                          <h3 className="bg-gray-300 p-1 rounded text-sm font-semibold catergory">
-                            {project.category}
-                          </h3>
-                          <div>
-                            <button
-                              onClick={() => handleViewDetails(project.path)}
-                              className="py-2.5 px-6 rounded-lg border-2 border-theme-color hover:border-theme-color text-white bg-theme-color hover:bg-transparent hover:text-theme-color transition-all duration-500"
+                        <p className="text-sm mb-3">{project.description}</p>
+                        <div className="w-fit p-2 rounded text-sm font-medium bg-[#D1D5DB] text-black">
+                          {project.category}
+                        </div>
+
+                        <div className="absolute start-0 end-0 -bottom-20 group-hover:bottom-1 duration-500 m-2">
+                          <div className="p-2">
+                            <Link
+                              to={project.path}
+                              className="py-2.5 w-full flex items-center justify-center rounded text-white bg-theme-color hover:bg-white hover:text-theme-color border border-theme-color transition-all duration-500"
                             >
-                              View Details
-                            </button>
+                              View Portfolio
+                            </Link>
                           </div>
                         </div>
                       </div>
                     </div>
                   ))}
-                  {/* Project Card End */}
+                  {/* Portfolio Card End */}
                 </div>
               </div>
             </div>

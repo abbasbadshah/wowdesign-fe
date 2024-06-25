@@ -7,7 +7,7 @@ export const Footer = () => {
       <div class="w-full flex-col justify-center bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gray-700 via-gray-900 to-black">
         <div className="flex justify-center">
           <div class="container pt-14">
-            <div class="bg-[conic-gradient(at_right,_var(--tw-gradient-stops))] from-red-900 via-violet-200 to-orange-500 py-14 px-10 rounded-2xl">
+            <div class="bg-theme-color py-14 px-10 rounded">
               <div class="grid md:grid-cols-2 grid-cols-1 gap-6">
                 <div>
                   <h1 class="text-white text-4xl">
@@ -54,8 +54,8 @@ export const Footer = () => {
                       </Link>
                     </p>
                     <p>
-                      <Link class="inline-flex gap-x-2 text-white hover:text-gray-200">
-                        About Us
+                      <Link to={'/portfolios'} class="inline-flex gap-x-2 text-white hover:text-gray-200">
+                        Portfolios
                       </Link>
                     </p>
                     <p>
