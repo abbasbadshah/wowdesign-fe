@@ -7,7 +7,7 @@ import Image4 from "../../../assets/images/Projects/Project Details/projectimage
 import { PlayIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
 
-export const PortfolioDetails = () => {
+export const ProductsDetails = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const imageSources = [Image1, Image2, Image3, Image4];
 

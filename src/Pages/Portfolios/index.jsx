@@ -2,6 +2,12 @@ import { Layout } from "../../components/layout/layout";
 import { BreadcrumbComponent } from "../../components/shared/Breadcrumb/breadcrumb";
 import ProjectImages from "../../assets/images/Projects/Project Details/projectimage6.webp";
 import { Link, useNavigate } from "react-router-dom";
+import AcousticImage from '../../assets/images/Portfolios/SoundScape Panels.jpg'
+import FlooringImage from '../../assets/images/Portfolios/DuraStone Tiles.jpg'
+import WallsImage from '../../assets/images/Portfolios/TexTure Wallcoverings.jpg'
+import CeilingsImage from '../../assets/images/Portfolios/SkyLite Panels.jpg'
+import LandscapeImage from '../../assets/images/Portfolios/EcoTurf Synthetic Grass.webp'
+import ElectricalImage from '../../assets/images/Portfolios/SmartWire Conduit System.jpg'
 
 import { useState } from "react";
 import {
@@ -10,37 +16,38 @@ import {
   Disclosure,
   DisclosureButton,
   DisclosurePanel,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuItems,
+  // Menu,
+  // MenuButton,
+  // MenuItem,
+  // MenuItems,
   Transition,
   TransitionChild,
 } from "@headlessui/react";
 import {
   PhoneXMarkIcon,
-  ChevronDownIcon,
-  XMarkIcon,
-  FunnelIcon,
+  // ChevronDownIcon,
+  // XMarkIcon,
+  // FunnelIcon,
   MinusIcon,
   PlusIcon,
-  Squares2X2Icon,
+  // Squares2X2Icon,
 } from "@heroicons/react/24/outline";
 
-const sortOptions = [
-  { name: "Most Popular", href: "#", current: true },
-  { name: "Best Rating", href: "#", current: false },
-  { name: "Newest", href: "#", current: false },
-  { name: "Price: Low to High", href: "#", current: false },
-  { name: "Price: High to Low", href: "#", current: false },
-];
+// const sortOptions = [
+//   { name: "Most Popular", href: "#", current: true },
+//   { name: "Best Rating", href: "#", current: false },
+//   { name: "Newest", href: "#", current: false },
+//   { name: "Price: Low to High", href: "#", current: false },
+//   { name: "Price: High to Low", href: "#", current: false },
+// ];
 const subCategories = [
   { name: "All", value: "" },
-  { name: "CONTEMPORARY HOMES", value: "contemporary" },
-  { name: "TRADITIONAL HOMES", value: "traditional" },
-  { name: "REFURBISHMENTS & EXTENSIONS", value: "refurbishments" },
-  { name: "COMMERCIAL PROPERTY", value: "commercial" },
-  { name: "EDUCATION", value: "education" },
+  { name: "Acoustic", value: "acoustic" },
+  { name: "Flooring", value: "flooring" },
+  { name: "Walls", value: "walls" },
+  { name: "Ceilings", value: "ceilings" },
+  { name: "Landscape", value: "landscape" },
+  { name: "Electrical", value: "electrical" },
 ];
 const filters = [
   {
@@ -83,75 +90,57 @@ const filters = [
 const portfolioData = [
   {
     id: 1,
-    title: "First Sentier Investors, Sydney",
+    title: "SoundScape Panels",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et .",
-    category: "contemporary",
-    path: "/portfolios/portfolio-details",
+    category: "acoustic",
+    path: "/products/product-details",
+    image: AcousticImage
   },
   {
     id: 2,
-    title: "Traditional House, Melbourne",
+    title: "DuraStone Tiles",
     description:
       "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    category: "traditional",
-    path: "/portfolios/portfolio-details",
+    category: "flooring",
+    path: "/products/product-details",
+    image: FlooringImage
   },
   {
     id: 3,
-    title: "Commercial Building Renovation",
+    title: "TexTure Wallcoverings",
     description:
       "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    category: "refurbishments",
-    path: "/portfolios/portfolio-details",
+    category: "walls",
+    path: "/products/product-details",
+    image: WallsImage
   },
   {
     id: 4,
-    title: "Commercial Building Renovation",
+    title: "SkyLite Panels",
     description:
       "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    category: "refurbishments",
-    path: "/portfolios/portfolio-details",
+    category: "ceilings",
+    path: "/products/product-details",
+    image: CeilingsImage
   },
   {
     id: 5,
-    title: "Commercial Building Renovation",
+    title: "EcoTurf Synthetic Grass",
     description:
       "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    category: "refurbishments",
-    path: "/portfolios/portfolio-details",
+    category: "landscape",
+    path: "/products/product-details",
+    image: LandscapeImage
   },
   {
     id: 6,
-    title: "Commercial Building Renovation",
+    title: "SmartWire Conduit System",
     description:
       "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    category: "refurbishments",
-    path: "/portfolios/portfolio-details",
-  },
-  {
-    id: 7,
-    title: "Commercial Building Renovation",
-    description:
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    category: "refurbishments",
-    path: "/portfolios/portfolio-details",
-  },
-  {
-    id: 8,
-    title: "Commercial Building Renovation",
-    description:
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    category: "refurbishments",
-    path: "/portfolios/portfolio-details",
-  },
-  {
-    id: 9,
-    title: "Commercial Building Renovation",
-    description:
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    category: "refurbishments",
-    path: "/portfolios/portfolio-details",
+    category: "electrical",
+    path: "/products/product-details",
+    image: ElectricalImage
   },
 ];
 
@@ -159,7 +148,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export const Portfolios = () => {
+export const Products = () => {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("");
   const navigate = useNavigate();
@@ -179,9 +168,9 @@ export const Portfolios = () => {
   return (
     <Layout>
       <BreadcrumbComponent
-        title="Wow Portfolios"
+        title="Wow Products"
         bgImage={ProjectImages}
-        breadcrumb={["Portfolios"]}
+        breadcrumb={["Product"]}
       />
       <div className="px-6 lg:px-24 my-24">
         {/* Mobile filter dialog */}
@@ -313,11 +302,11 @@ export const Portfolios = () => {
 
             <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
               {/* Filters */}
-              <form className="hidden lg:block sticky top-24 max-h-[calc(100vh-6rem)] overflow-y-auto">
+              <form className="hidden lg:block sticky top-24 max-h-[calc(100vh-6rem)] h-fit overflow-y-auto">
                 <h3 className="sr-only">Categories</h3>
                 <ul
                   role="list"
-                  className="space-y-4 border p-6 border-gray-200 pb-6 text-sm font-medium text-gray-900"
+                  className="space-y-4 border p-6 border-gray-200 pb-6 text-base font-medium text-gray-900"
                 >
                   {subCategories.map((category) => (
                     <li key={category.value}>
@@ -409,12 +398,12 @@ export const Portfolios = () => {
                     >
                       <div className="relative">
                         <img
-                          src={ProjectImages}
-                          className=""
+                          src={project.image}
+                          className="w-full h-72 object-cover"
                           alt={project.title}
                         />
                       </div>
-
+                  
                       <div className="p-4 relative">
                         <h2 className="text-xl font-bold text-gray-900 mb-1">
                           {project.title}
@@ -423,14 +412,14 @@ export const Portfolios = () => {
                         <div className="w-fit p-2 rounded text-sm font-medium bg-[#D1D5DB] text-black">
                           {project.category}
                         </div>
-
+                  
                         <div className="absolute start-0 end-0 -bottom-20 group-hover:bottom-1 duration-500 m-2">
                           <div className="p-2">
                             <Link
                               to={project.path}
                               className="py-2.5 w-full flex items-center justify-center rounded text-white bg-theme-color hover:bg-white hover:text-theme-color border border-theme-color transition-all duration-500"
                             >
-                              View Portfolio
+                              Know more about product
                             </Link>
                           </div>
                         </div>

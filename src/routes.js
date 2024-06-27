@@ -1,7 +1,7 @@
 import { CreateCompany } from "./Pages/Create Company";
 import { Home } from "./Pages/Home";
-import { Portfolios } from "./Pages/Portfolios";
-import { PortfolioDetails } from "./Pages/Portfolios/Portfolio Details";
+import { Products } from "./Pages/Portfolios";
+import { ProductsDetails } from "./Pages/Portfolios/Portfolio Details";
 import { Projects } from "./Pages/Projects";
 import { ProjectDetails } from "./Pages/Projects/Project Details";
 import { Signin } from "./Pages/Signin";
@@ -39,13 +39,13 @@ export const routes = [
     exact: true,
   },
   {
-    path: "/portfolios",
-    component: Portfolios,
+    path: "/products",
+    component: Products,
     exact: true,
   },
   {
-    path: "/portfolios/portfolio-details",
-    component: PortfolioDetails,
+    path: "/products/product-details",
+    component: ProductsDetails,
     exact: true,
   },
 ];

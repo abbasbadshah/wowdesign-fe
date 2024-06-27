@@ -1,6 +1,12 @@
 import { Layout } from "../../components/layout/layout";
 import { BreadcrumbComponent } from "../../components/shared/Breadcrumb/breadcrumb";
 import ProjectImages from "../../assets/images/Projects/Project Details/projectimage6.webp";
+import CommercialImage from '../../assets/images/Projects/commercials.jpg'
+import HealthcareImage from '../../assets/images/Projects/healthcare.jpg'
+import RestaurantImage from '../../assets/images/Projects/restaurant.jpg'
+import HospitalityImage from '../../assets/images/Projects/hospitality.jpeg'
+import ResidentialsImage from '../../assets/images/Projects/resdentials.jpg'
+import UrbanDevelopmentImage from '../../assets/images/Projects/ud.jpeg'
 import { useNavigate } from "react-router-dom";
 
 import { useState } from "react";
@@ -36,11 +42,12 @@ const sortOptions = [
 ];
 const subCategories = [
   { name: "All", value: "" },
-  { name: "CONTEMPORARY HOMES", value: "contemporary" },
-  { name: "TRADITIONAL HOMES", value: "traditional" },
-  { name: "REFURBISHMENTS & EXTENSIONS", value: "refurbishments" },
-  { name: "COMMERCIAL PROPERTY", value: "commercial" },
-  { name: "EDUCATION", value: "education" },
+  { name: "Commercials", value: "commercials" },
+  { name: "Residentials", value: "residentials" },
+  { name: "Hospitality", value: "hospitality" },
+  { name: "Urban Development", value: "urban-development" },
+  { name: "Restaurants", value: "restaurants" },
+  { name: "Healthcare", value: "healthcare" },
 ];
 const filters = [
   {
@@ -83,75 +90,57 @@ const filters = [
 const projectData = [
   {
     id: 1,
-    title: "First Sentier Investors, Sydney",
+    title: "Skyline Plaza",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    category: "contemporary",
+    category: "commercials",
     path: "/projects/project-details",
+    image: CommercialImage,
   },
   {
     id: 2,
-    title: "Traditional House, Melbourne",
+    title: "Harmony Heights",
     description:
       "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    category: "traditional",
+    category: "residentials",
     path: "/projects/project-details",
+    image: ResidentialsImage,
   },
   {
     id: 3,
-    title: "Commercial Building Renovation",
+    title: "Serenity Resort & Spa",
     description:
       "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    category: "refurbishments",
+    category: "hospitality",
     path: "/projects/project-details",
+    image: HospitalityImage,
   },
   {
     id: 4,
-    title: "Commercial Building Renovation",
+    title: "Greenville Revitalization Project",
     description:
       "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    category: "refurbishments",
+    category: "urban-development",
     path: "/projects/project-details",
+    image: UrbanDevelopmentImage,
   },
   {
     id: 5,
-    title: "Commercial Building Renovation",
+    title: "Garden Bistro",
     description:
       "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    category: "refurbishments",
+    category: "restaurants",
     path: "/projects/project-details",
+    image: RestaurantImage,
   },
   {
     id: 6,
-    title: "Commercial Building Renovation",
+    title: "Horizon Medical Complex",
     description:
       "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    category: "refurbishments",
+    category: "healthcare",
     path: "/projects/project-details",
-  },
-  {
-    id: 7,
-    title: "Commercial Building Renovation",
-    description:
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    category: "refurbishments",
-    path: "/projects/project-details",
-  },
-  {
-    id: 8,
-    title: "Commercial Building Renovation",
-    description:
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    category: "refurbishments",
-    path: "/projects/project-details",
-  },
-  {
-    id: 9,
-    title: "Commercial Building Renovation",
-    description:
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    category: "refurbishments",
-    path: "/projects/project-details",
+    image: HealthcareImage,
   },
 ];
 
@@ -180,8 +169,8 @@ export const Projects = () => {
     <Layout>
       <BreadcrumbComponent
         title="Wow Projects"
-        bgImage={ProjectImages}
-        breadcrumb={["Product"]}
+        bgImage={ResidentialsImage}
+        breadcrumb={["Projects"]}
       />
       <div className="px-6 lg:px-24 my-24">
         {/* Mobile filter dialog */}
@@ -313,11 +302,11 @@ export const Projects = () => {
 
             <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
               {/* Filters */}
-              <form className="hidden lg:block sticky top-24 max-h-[calc(100vh-6rem)] overflow-y-auto">
+              <form className="hidden lg:block sticky top-24 max-h-[calc(100vh-6rem)] h-fit overflow-y-auto">
                 <h3 className="sr-only">Categories</h3>
                 <ul
                   role="list"
-                  className="space-y-4 border p-6 border-gray-200 pb-6 text-sm font-medium text-gray-900 rounded"
+                  className="space-y-4 border p-6 border-gray-200 pb-6 text-base font-medium text-gray-900 rounded"
                 >
                   {subCategories.map((category) => (
                     <li key={category.value}>
@@ -409,7 +398,7 @@ export const Projects = () => {
                       className="border border-gray-200 overflow-hidden rounded"
                     >
                       <div className="bg-gray-100 relative">
-                        <img src={ProjectImages} alt="" />
+                        <img src={project.image} alt={project.title} className="w-full h-72 object-cover" />
                       </div>
                       <div className="p-5">
                         <h2 className="text-xl font-semibold">

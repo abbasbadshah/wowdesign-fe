@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowRightIcon, HomeModernIcon } from "@heroicons/react/24/outline";
+import { ArrowRightIcon, HomeIcon } from "@heroicons/react/24/outline";
 
 export const BreadcrumbComponent = ({ title, bgImage, breadcrumb }) => {
   return (
@@ -23,7 +23,7 @@ export const BreadcrumbComponent = ({ title, bgImage, breadcrumb }) => {
                 href="#"
                 className="text-white hover:text-black flex gap-2 items-center cursor-pointer"
               >
-                <HomeModernIcon className="h-5 w-5" aria-hidden="true" />
+                <HomeIcon className="h-5 w-5" aria-hidden="true" />
                 <span className=""> Home</span>
               </span>
             </li>
