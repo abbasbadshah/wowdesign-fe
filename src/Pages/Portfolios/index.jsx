@@ -1,5 +1,5 @@
 import { Layout } from "../../components/layout/layout";
-import { BreadcrumbComponent } from "../../components/shared/Breadcrumb/breadcrumb";
+import { BreadcrumbComponent } from "../../components/shared";
 import ProjectImages from "../../assets/images/Projects/Project Details/projectimage6.webp";
 import { Link, useNavigate } from "react-router-dom";
 import AcousticImage from '../../assets/images/Portfolios/SoundScape Panels.jpg'
@@ -8,6 +8,7 @@ import WallsImage from '../../assets/images/Portfolios/TexTure Wallcoverings.jpg
 import CeilingsImage from '../../assets/images/Portfolios/SkyLite Panels.jpg'
 import LandscapeImage from '../../assets/images/Portfolios/EcoTurf Synthetic Grass.webp'
 import ElectricalImage from '../../assets/images/Portfolios/SmartWire Conduit System.jpg'
+import ProjectImageTwo from '../../assets/images/Projects/ud.jpeg'
 
 import { useState } from "react";
 import {
@@ -169,7 +170,7 @@ export const Products = () => {
     <Layout>
       <BreadcrumbComponent
         title="Wow Products"
-        bgImage={ProjectImages}
+        bgImage={ProjectImageTwo}
         breadcrumb={["Product"]}
       />
       <div className="px-6 lg:px-24 my-24">

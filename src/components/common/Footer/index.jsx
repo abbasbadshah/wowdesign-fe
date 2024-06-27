@@ -54,8 +54,8 @@ export const Footer = () => {
                       </Link>
                     </p>
                     <p>
-                      <Link to={'/portfolios'} class="inline-flex gap-x-2 text-white hover:text-gray-200">
-                        Portfolios
+                      <Link to={'/products'} class="inline-flex gap-x-2 text-white hover:text-gray-200">
+                        Products
                       </Link>
                     </p>
                     <p>
