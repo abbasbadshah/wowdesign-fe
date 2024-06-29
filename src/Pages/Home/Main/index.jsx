@@ -6,9 +6,12 @@ import { ArrowRightIcon } from "@radix-ui/react-icons";
 
 export const HomeMainSectionOne = () => {
   return (
-    <div className="px-4 sm:px-8 md:px-12 lg:px-16 xl:px-24 pt-16 md:pt-24 grid grid-cols-1 md:grid-cols-12 gap-4" id="next-section">
+    <div
+      className="px-4 sm:px-8 md:px-12 lg:px-16 xl:px-24 pt-16 md:pt-24 grid grid-cols-1 md:grid-col-6 lg:grid-cols-12 gap-4"
+      id="next-section"
+    >
       {/* First Image */}
-      <div className="md:col-span-6 relative h-[320px] md:h-[448px] rounded">
+      <div className="lg:col-span-6 md:col-span-6 relative h-[320px] md:h-[448px] rounded">
         <img
           src={mainImage1}
           alt="Image1"
@@ -29,7 +32,7 @@ export const HomeMainSectionOne = () => {
         </div>
       </div>
       {/* Second Image */}
-      <div className="md:col-span-3 h-[320px] md:h-[448px] relative rounded">
+      <div className="lg:col-span-3 md:col-span-3 h-[320px] md:h-[448px] relative rounded">
         <img
           src={mainImage2}
           alt="Image2"
@@ -52,7 +55,7 @@ export const HomeMainSectionOne = () => {
         </div>
       </div>
       {/* Third Image */}
-      <div className="md:col-span-3 h-[320px] md:h-[448px] relative rounded">
+      <div className="lg:col-span-3 md:col-span-3 h-[320px] md:h-[448px] relative rounded">
         <img
           src={mainImage3}
           alt="Image3"

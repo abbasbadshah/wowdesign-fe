@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { SignupStep } from "./SignupStep/signup";
 import { StepOne } from "./StepOne/stepOne";
 import { StepTwo } from "./StepTwo/stepTwo";
 import { SiteLogo, FadingBackground } from "../../components/shared/index";
@@ -27,7 +28,7 @@ const slideVariants = {
 };
 
 export const CreateCompany = () => {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(0);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [direction, setDirection] = useState("next");
   const {
@@ -48,6 +49,8 @@ export const CreateCompany = () => {
   const validateStep = async (stepNumber) => {
     console.log(`Validating step ${stepNumber}`);
     switch (stepNumber) {
+      case 0:
+        return await trigger(["firstName", "lastName", "email", "phone", "role"]);
       case 1:
         return await trigger(["options"]);
       case 2:
@@ -117,6 +120,19 @@ export const CreateCompany = () => {
               {!isSubmitted ? (
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
                   <AnimatePresence custom={direction} mode="wait">
+                    {step === 0 && (
+                      <motion.div
+                        key="step0"
+                        custom={direction}
+                        initial="initial"
+                        animate="animate"
+                        exit="exit"
+                        variants={slideVariants}
+                        transition={{ duration: 0.5 }}
+                      >
+                        <SignupStep register={register} errors={errors} />
+                      </motion.div>
+                    )}
                     {step === 1 && (
                       <motion.div
                         key="step1"
@@ -156,7 +172,7 @@ export const CreateCompany = () => {
                   </AnimatePresence>
 
                   <div className="flex justify-between mt-8">
-                    {step > 1 && (
+                    {step > 0 && (
                       <motion.button
                         type="button"
                         onClick={prevStep}
@@ -168,14 +184,14 @@ export const CreateCompany = () => {
                       </motion.button>
                     )}
                     <motion.button
-  type="button"
-  onClick={(e) => nextStep(e)}
-  className="bg-theme-color text-white font-bold text-sm rounded-lg px-4 py-2 origin-center"
-  whileHover={{ scale: 1.03 }}
-  whileTap={{ scale: 0.95 }}
->
-  {step < 2 ? "Next" : "Finish"}
-</motion.button>
+                      type="button"
+                      onClick={(e) => nextStep(e)}
+                      className="bg-theme-color text-white font-bold text-sm rounded-lg px-4 py-2 origin-center"
+                      whileHover={{ scale: 1.03 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      {step < 2 ? "Next" : "Finish"}
+                    </motion.button>
                   </div>
                 </form>
               ) : (
