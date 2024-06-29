@@ -1,38 +1,45 @@
 import React from "react";
-import featureImage1 from "../../../../assets/images/Projects/Project Details/image.webp";
+import CommercialImage from "../../../../assets/images/Projects/commercials.jpg";
+import HealthcareImage from "../../../../assets/images/Projects/healthcare.jpg";
+import RestaurantImage from "../../../../assets/images/Projects/restaurant.jpg";
+import HospitalityImage from "../../../../assets/images/Projects/hospitality.jpeg";
 import { Link } from "react-router-dom";
 const projectData = [
   {
     id: 1,
-    image: featureImage1,
-    title: "First Sentier Investors, Sydney",
+    image: CommercialImage,
+    title: "Skyline Plaza",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    category: "contemporary",
+    category: "Commercials",
+    path: "/projects/project-details",
   },
   {
     id: 2,
-    image: featureImage1,
-    title: "First Sentier Investors, Sydney",
+    image: HealthcareImage,
+    title: "Horizon Medical Complex",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    category: "traditional",
+    category: "Healthcare",
+    path: "/projects/project-details",
   },
   {
     id: 3,
-    image: featureImage1,
-    title: "First Sentier Investors, Sydney",
+    image: RestaurantImage,
+    title: "Garden Bistro",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    category: "refurbishments",
+    category: "Restaurant",
+    path: "/projects/project-details",
   },
   {
     id: 4,
-    image: featureImage1,
-    title: "First Sentier Investors, Sydney",
+    image: HospitalityImage,
+    title: "Serenity Resort & Spa",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    category: "traditional",
+    category: "Hospitality",
+    path: "/projects/project-details",
   },
 ];
 
@@ -54,11 +61,14 @@ export const FeatureProjects = () => {
 
         <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-8">
           {projectData.map((project) => (
-            <div key={project.id} className="relative overflow-hidden group rounded">
+            <div
+              key={project.id}
+              className="relative overflow-hidden group rounded"
+            >
               <div className="overflow-hidden">
                 <img
                   src={project.image}
-                  className="scale-100 group-hover:scale-105 transition-all duration-500 rounded"
+                  className="scale-100 group-hover:scale-105 transition-all duration-500 rounded w-full h-72"
                   alt=""
                 />
               </div>
@@ -66,7 +76,11 @@ export const FeatureProjects = () => {
               <div className="mt-5 bg-white">
                 <div className="flex items-center justify-between">
                   <div className="w-3/4">
-                    <h2 className="text-xl font-bold mb-1">{project.title}</h2>
+                    <Link to={project.path}>
+                      <h2 className="text-xl font-bold mb-1">
+                        {project.title}
+                      </h2>
+                    </Link>
                     <p className="text-sm font-medium text-gray-500">
                       {project.description}
                     </p>

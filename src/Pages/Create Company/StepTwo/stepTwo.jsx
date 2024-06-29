@@ -31,8 +31,6 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
     multiple: false,
   });
 
-  // const profilePhoto = watch("profilePhoto");
-
   const handleCountryChange = (e) => {
     const country = e.target.value;
     setSelectedCountry(country);
@@ -65,7 +63,6 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
   return (
     <div className="mr-2">
       <h2 className="text-2xl font-bold mb-4">Company Profile</h2>
-      {/* Profile Image Part */}
       <div className="mb-4 flex justify-start">
         <div className="flex flex-row-reverse items-center justify-start gap-5">
           <div className="flex flex-col gap-5">
@@ -99,8 +96,8 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
           </div>
         </div>
       </div>
-      <div className="flex gap-5">
-        <div className="w-1/2">
+      <div className="flex flex-col md:flex-row gap-5">
+        <div className="w-full md:w-1/2">
           <label
             className="font-medium text-sm text-left block mb-2"
             htmlFor="companyName"
@@ -122,7 +119,7 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
             </span>
           )}
         </div>
-        <div className="w-1/2">
+        <div className="w-full md:w-1/2">
           <label
             className="font-medium text-sm text-left block mb-2"
             htmlFor="companyType"
@@ -148,8 +145,8 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
         </div>
       </div>
 
-      <div className="flex gap-5 mt-4">
-        <div className="w-1/2">
+      <div className="flex flex-col md:flex-row gap-5 mt-4">
+        <div className="w-full md:w-1/2">
           <label
             className="font-medium text-sm text-left block mb-2"
             htmlFor="companyPhoneNumber"
@@ -171,7 +168,7 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
             </span>
           )}
         </div>
-        <div className="w-1/2">
+        <div className="w-full md:w-1/2">
           <label
             className="font-medium text-sm text-left block mb-2"
             htmlFor="companyEmail"
@@ -195,8 +192,8 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
         </div>
       </div>
 
-      <div className="flex gap-5 mt-4">
-        <div className="w-1/2">
+      <div className="flex flex-col md:flex-row gap-5 mt-4">
+        <div className="w-full md:w-1/2">
           <label
             className="font-medium text-sm text-left block mb-2"
             htmlFor="country"
@@ -225,7 +222,7 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
             </span>
           )}
         </div>
-        <div className="w-1/2">
+        <div className="w-full md:w-1/2">
           <label
             className="font-medium text-sm text-left block mb-2"
             htmlFor="city"
