@@ -8,6 +8,7 @@ import bgImage3 from "../../assets/images/Loginsignup/Background/img3.jpg";
 import bgImage4 from "../../assets/images/Loginsignup/Background/img4.jpg";
 import bgImage5 from "../../assets/images/Loginsignup/Background/img5.jpg";
 import { GlobeAltIcon } from "@heroicons/react/24/outline";
+import { Helmet } from "react-helmet";
 
 const backgroundImages = [bgImage1, bgImage2, bgImage3, bgImage4, bgImage5];
 export const Signup = () => {
@@ -23,6 +24,9 @@ export const Signup = () => {
 
   return (
     <section className="px-6 lg:px-0 h-screen flex items-center justify-center bg-no-repeat inset-0 bg-cover">
+      <Helmet>
+        <title>Sign Up</title>
+      </Helmet>
       <FadingBackground images={backgroundImages} />
       <div className="container 2xl:px-80 xl:px-52 z-[99]">
         <div className="bg-white rounded-lg p-5 shadow-2xl">
@@ -56,7 +60,14 @@ export const Signup = () => {
                     </div>
                   </div>
                 </div>
-                <div><Link to={'/'}><p className="text-white text-sm font-bold flex gap-2 items-center justify-center">Back to Website <GlobeAltIcon className="w-3 text-sm font-bold"/></p></Link></div>
+                <div>
+                  <Link to={"/"}>
+                    <p className="text-white text-sm font-bold flex gap-2 items-center justify-center">
+                      Back to Website{" "}
+                      <GlobeAltIcon className="w-3 text-sm font-bold" />
+                    </p>
+                  </Link>
+                </div>
               </div>
             </div>
 

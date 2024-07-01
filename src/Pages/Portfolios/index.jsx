@@ -2,15 +2,15 @@ import { Layout } from "../../components/layout/layout";
 import { BreadcrumbComponent } from "../../components/shared";
 import ProjectImages from "../../assets/images/Projects/Project Details/projectimage6.webp";
 import { Link, useNavigate } from "react-router-dom";
-import AcousticImage from '../../assets/images/Portfolios/SoundScape Panels.jpg'
-import FlooringImage from '../../assets/images/Portfolios/DuraStone Tiles.jpg'
-import WallsImage from '../../assets/images/Portfolios/TexTure Wallcoverings.jpg'
-import CeilingsImage from '../../assets/images/Portfolios/SkyLite Panels.jpg'
-import LandscapeImage from '../../assets/images/Portfolios/EcoTurf Synthetic Grass.webp'
-import ElectricalImage from '../../assets/images/Portfolios/SmartWire Conduit System.jpg'
-import ProjectImageTwo from '../../assets/images/Projects/ud.jpeg'
-
+import AcousticImage from "../../assets/images/Portfolios/SoundScape Panels.jpg";
+import FlooringImage from "../../assets/images/Portfolios/DuraStone Tiles.jpg";
+import WallsImage from "../../assets/images/Portfolios/TexTure Wallcoverings.jpg";
+import CeilingsImage from "../../assets/images/Portfolios/SkyLite Panels.jpg";
+import LandscapeImage from "../../assets/images/Portfolios/EcoTurf Synthetic Grass.webp";
+import ElectricalImage from "../../assets/images/Portfolios/SmartWire Conduit System.jpg";
+import ProjectImageTwo from "../../assets/images/Projects/ud.jpeg";
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 import {
   Dialog,
   DialogPanel,
@@ -96,7 +96,7 @@ const portfolioData = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et .",
     category: "acoustic",
     path: "/products/product-details",
-    image: AcousticImage
+    image: AcousticImage,
   },
   {
     id: 2,
@@ -105,7 +105,7 @@ const portfolioData = [
       "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     category: "flooring",
     path: "/products/product-details",
-    image: FlooringImage
+    image: FlooringImage,
   },
   {
     id: 3,
@@ -114,7 +114,7 @@ const portfolioData = [
       "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
     category: "walls",
     path: "/products/product-details",
-    image: WallsImage
+    image: WallsImage,
   },
   {
     id: 4,
@@ -123,7 +123,7 @@ const portfolioData = [
       "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
     category: "ceilings",
     path: "/products/product-details",
-    image: CeilingsImage
+    image: CeilingsImage,
   },
   {
     id: 5,
@@ -132,7 +132,7 @@ const portfolioData = [
       "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
     category: "landscape",
     path: "/products/product-details",
-    image: LandscapeImage
+    image: LandscapeImage,
   },
   {
     id: 6,
@@ -141,7 +141,7 @@ const portfolioData = [
       "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
     category: "electrical",
     path: "/products/product-details",
-    image: ElectricalImage
+    image: ElectricalImage,
   },
 ];
 
@@ -168,6 +168,9 @@ export const Products = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>Products | Wow Designs and Products </title>
+      </Helmet>
       <BreadcrumbComponent
         title="Wow Products"
         bgImage={ProjectImageTwo}
@@ -404,7 +407,7 @@ export const Products = () => {
                           alt={project.title}
                         />
                       </div>
-                  
+
                       <div className="p-4 relative">
                         <h2 className="text-xl font-bold text-gray-900 mb-1">
                           {project.title}
@@ -413,7 +416,7 @@ export const Products = () => {
                         <div className="w-fit p-2 rounded text-sm font-medium bg-[#D1D5DB] text-black">
                           {project.category}
                         </div>
-                  
+
                         <div className="absolute start-0 end-0 -bottom-20 group-hover:bottom-1 duration-500 m-2">
                           <div className="p-2">
                             <Link

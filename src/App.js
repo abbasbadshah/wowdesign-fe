@@ -2,6 +2,7 @@ import "./App.css";
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { routes } from "./routes";
+import { Helmet } from "react-helmet";
 
 function App() {
   const getComponent = (component) => {
@@ -9,6 +10,9 @@ function App() {
   };
   return (
     <div className="App">
+      <Helmet>
+        <title>Wow Designs and Products</title>
+      </Helmet>
       <BrowserRouter>
         <Routes>
           {routes.map((route, index) => (

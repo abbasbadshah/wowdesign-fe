@@ -1,12 +1,12 @@
 import { Layout } from "../../components/layout/layout";
 import { BreadcrumbComponent } from "../../components/shared/Breadcrumb/breadcrumb";
 import ProjectImages from "../../assets/images/Projects/Project Details/projectimage6.webp";
-import CommercialImage from '../../assets/images/Projects/commercials.jpg'
-import HealthcareImage from '../../assets/images/Projects/healthcare.jpg'
-import RestaurantImage from '../../assets/images/Projects/restaurant.jpg'
-import HospitalityImage from '../../assets/images/Projects/hospitality.jpeg'
-import ResidentialsImage from '../../assets/images/Projects/resdentials.jpg'
-import UrbanDevelopmentImage from '../../assets/images/Projects/ud.jpeg'
+import CommercialImage from "../../assets/images/Projects/commercials.jpg";
+import HealthcareImage from "../../assets/images/Projects/healthcare.jpg";
+import RestaurantImage from "../../assets/images/Projects/restaurant.jpg";
+import HospitalityImage from "../../assets/images/Projects/hospitality.jpeg";
+import ResidentialsImage from "../../assets/images/Projects/resdentials.jpg";
+import UrbanDevelopmentImage from "../../assets/images/Projects/ud.jpeg";
 import { useNavigate } from "react-router-dom";
 
 import { useState } from "react";
@@ -32,6 +32,7 @@ import {
   PlusIcon,
   Squares2X2Icon,
 } from "@heroicons/react/24/outline";
+import { Helmet } from "react-helmet";
 
 const sortOptions = [
   { name: "Most Popular", href: "#", current: true },
@@ -167,6 +168,9 @@ export const Projects = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>Projects | Wow Designs and Products </title>
+      </Helmet>
       <BreadcrumbComponent
         title="Wow Projects"
         bgImage={ResidentialsImage}
@@ -398,7 +402,11 @@ export const Projects = () => {
                       className="border border-gray-200 overflow-hidden rounded"
                     >
                       <div className="bg-gray-100 relative">
-                        <img src={project.image} alt={project.title} className="w-full h-72 object-cover" />
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="w-full h-72 object-cover"
+                        />
                       </div>
                       <div className="p-5">
                         <h2 className="text-xl font-semibold">

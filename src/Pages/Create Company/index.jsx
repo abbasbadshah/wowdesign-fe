@@ -12,6 +12,7 @@ import bgImage2 from "../../assets/images/Loginsignup/Background/img2.jpg";
 import bgImage3 from "../../assets/images/Loginsignup/Background/img3.jpg";
 import bgImage4 from "../../assets/images/Loginsignup/Background/img4.jpg";
 import bgImage5 from "../../assets/images/Loginsignup/Background/img5.jpg";
+import { Helmet } from "react-helmet";
 
 const backgroundImages = [bgImage1, bgImage2, bgImage3, bgImage4, bgImage5];
 
@@ -50,7 +51,13 @@ export const CreateCompany = () => {
     console.log(`Validating step ${stepNumber}`);
     switch (stepNumber) {
       case 0:
-        return await trigger(["firstName", "lastName", "email", "phone", "role"]);
+        return await trigger([
+          "firstName",
+          "lastName",
+          "email",
+          "phone",
+          "role",
+        ]);
       case 1:
         return await trigger(["options"]);
       case 2:
@@ -80,6 +87,9 @@ export const CreateCompany = () => {
 
   return (
     <section className="px-6 lg:px-0 min-h-screen max-h-full flex items-center justify-center bg-no-repeat inset-0 bg-cover">
+      <Helmet>
+        <title>Create Company</title>
+      </Helmet>
       <FadingBackground images={backgroundImages} />
       <div className="container 2xl:px-80 xl:px-52 z-[99]">
         <div className="bg-white rounded-lg p-5 shadow-2xl overflow-hidden">

@@ -4,10 +4,11 @@ import bgImage2 from "../../assets/images/Loginsignup/Background/img2.jpg";
 import bgImage3 from "../../assets/images/Loginsignup/Background/img3.jpg";
 import bgImage4 from "../../assets/images/Loginsignup/Background/img4.jpg";
 import bgImage5 from "../../assets/images/Loginsignup/Background/img5.jpg";
-import { SiteLogo, FadingBackground } from '../../components/shared/index'
+import { SiteLogo, FadingBackground } from "../../components/shared/index";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { GlobeAltIcon } from "@heroicons/react/24/outline";
+import { Helmet } from "react-helmet";
 
 const backgroundImages = [bgImage1, bgImage2, bgImage3, bgImage4, bgImage5];
 export const Signin = () => {
@@ -22,6 +23,9 @@ export const Signin = () => {
   };
   return (
     <section className="px-6 lg:px-0 h-screen flex items-center justify-center bg-no-repeat inset-0 bg-cover">
+      <Helmet>
+        <title>Sign In</title>
+      </Helmet>
       <FadingBackground images={backgroundImages} />
       <div className="container 2xl:px-80 xl:px-52 z-[99]">
         <div className="bg-white rounded-lg p-5 shadow-2xl">
@@ -55,7 +59,14 @@ export const Signin = () => {
                     </div>
                   </div>
                 </div>
-                <div><Link to={'/'}><p className="text-white text-sm font-bold flex gap-2 items-center justify-center">Back to Website <GlobeAltIcon className="w-4 text-sm font-bold"/></p></Link></div>
+                <div>
+                  <Link to={"/"}>
+                    <p className="text-white text-sm font-bold flex gap-2 items-center justify-center">
+                      Back to Website{" "}
+                      <GlobeAltIcon className="w-4 text-sm font-bold" />
+                    </p>
+                  </Link>
+                </div>
               </div>
             </div>
 
@@ -68,77 +79,80 @@ export const Signin = () => {
               </div>
 
               <form
-              onSubmit={handleSubmit(onSubmit)}
-              className="space-y-5 mt-10"
-            >
-              <div>
-                <label
-                  className="font-medium text-sm text-left block mb-2"
-                  htmlFor="email"
-                >
-                  Email
-                </label>
-                <Input
-                  type="text"
-                  id="email"
-                  {...register("email", {
-                    required: "Email is required",
-                    pattern: {
-                      value: /\S+@\S+\.\S+/,
-                      message: "Entered value does not match email format",
-                    },
-                  })}
-                  placeholder="johnsmith@gmail.com"
-                  className="w-full border rounded-lg data-[hover]:shadow data-[focus]:bg-blue-100"
-                />
-                {errors.email && (
-                  <span className="text-red-500 text-sm">
-                    {errors.email.message}
-                  </span>
-                )}
-              </div>
-
-              <div>
-                <label
-                  className="font-medium text-sm text-left block mb-2"
-                  htmlFor="password"
-                >
-                  Password
-                </label>
-                <Input
-                  type="password"
-                  id="password"
-                  {...register("password", {
-                    required: "Password is required",
-                    minLength: {
-                      value: 8,
-                      message: "Password must have at least 8 characters",
-                    },
-                  })}
-                  placeholder="xxxxxxxxx"
-                  className="w-full border rounded-lg data-[hover]:shadow data-[focus]:bg-blue-100"
-                />
-                {errors.password && (
-                  <span className="text-red-500 text-sm">
-                    {errors.password.message}
-                  </span>
-                )}
-              </div>
-              <div className="flex flex-wrap items-center justify-between gap-6 mt-8">
-                <button type="submit" className="bg-theme-color text-white font-bold text-sm rounded-lg px-4 py-2">
-                  Sign In
-                </button>
-                <p className="text-sm font-medium text-gray-500">
-                Don't have an account?{" "}
-                  <Link
-                    to="/sign-up"
-                    className="ms-2 underline font-bols text-black"
+                onSubmit={handleSubmit(onSubmit)}
+                className="space-y-5 mt-10"
+              >
+                <div>
+                  <label
+                    className="font-medium text-sm text-left block mb-2"
+                    htmlFor="email"
                   >
-                    Sign Up
-                  </Link>
-                </p>
-              </div>
-            </form>
+                    Email
+                  </label>
+                  <Input
+                    type="text"
+                    id="email"
+                    {...register("email", {
+                      required: "Email is required",
+                      pattern: {
+                        value: /\S+@\S+\.\S+/,
+                        message: "Entered value does not match email format",
+                      },
+                    })}
+                    placeholder="johnsmith@gmail.com"
+                    className="w-full border rounded-lg data-[hover]:shadow data-[focus]:bg-blue-100"
+                  />
+                  {errors.email && (
+                    <span className="text-red-500 text-sm">
+                      {errors.email.message}
+                    </span>
+                  )}
+                </div>
+
+                <div>
+                  <label
+                    className="font-medium text-sm text-left block mb-2"
+                    htmlFor="password"
+                  >
+                    Password
+                  </label>
+                  <Input
+                    type="password"
+                    id="password"
+                    {...register("password", {
+                      required: "Password is required",
+                      minLength: {
+                        value: 8,
+                        message: "Password must have at least 8 characters",
+                      },
+                    })}
+                    placeholder="xxxxxxxxx"
+                    className="w-full border rounded-lg data-[hover]:shadow data-[focus]:bg-blue-100"
+                  />
+                  {errors.password && (
+                    <span className="text-red-500 text-sm">
+                      {errors.password.message}
+                    </span>
+                  )}
+                </div>
+                <div className="flex flex-wrap items-center justify-between gap-6 mt-8">
+                  <button
+                    type="submit"
+                    className="bg-theme-color text-white font-bold text-sm rounded-lg px-4 py-2"
+                  >
+                    Sign In
+                  </button>
+                  <p className="text-sm font-medium text-gray-500">
+                    Don't have an account?{" "}
+                    <Link
+                      to="/sign-up"
+                      className="ms-2 underline font-bols text-black"
+                    >
+                      Sign Up
+                    </Link>
+                  </p>
+                </div>
+              </form>
             </div>
           </div>
         </div>
