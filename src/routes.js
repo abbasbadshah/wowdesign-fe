@@ -6,6 +6,7 @@ import { Projects } from "./Pages/Projects";
 import { ProjectDetails } from "./Pages/Projects/Project Details";
 import { Signin } from "./Pages/Signin";
 import { Signup } from "./Pages/Signup";
+import { UserProfile } from "./Pages/User Profile";
 
 export const routes = [
   {
@@ -48,4 +49,9 @@ export const routes = [
     component: ProductsDetails,
     exact: true,
   },
+  {
+    path: '/user-profile',
+    component: UserProfile,
+    exact: true,
+  }
 ];
