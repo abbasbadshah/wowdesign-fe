@@ -209,11 +209,9 @@ export const HeaderStyleOne = () => {
             </Link>
           </PopoverGroup>
           <div className="items-center hidden gap-5 lg:flex lg:flex-1 lg:justify-end">
-            {/*
               <Link to="/sign-in" className="text-sm font-semibold leading-6">
               Sign in <span aria-hidden="true">&rarr;</span>
             </Link>
-            */}
             <Link
               to="/create-company"
               className="p-2 text-sm font-semibold leading-6 text-white border-2 rounded bg-theme-color hover:bg-transparent border-theme-color"

@@ -211,11 +211,9 @@ export const HeaderStyleTwo = () => {
             </Link>
           </PopoverGroup>
           <div className="items-center hidden gap-5 lg:flex lg:flex-1 lg:justify-end">
-            {/*
               <Link to="/sign-in" className="text-sm font-semibold leading-6">
               Sign in <span aria-hidden="true">&rarr;</span>
             </Link>
-            */}
             <Link to={"/user-profile"}>
               <div className="flex items-center text-sm font-semibold leading-6 gap-x-1">
                 <div className="w-[50px] h-[50px] overflow-hidden rounded-full">
