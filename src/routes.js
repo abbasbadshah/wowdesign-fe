@@ -1,3 +1,4 @@
+import { CompanyBrowsing } from "./Pages/Company Browsing";
 import { CreateCompany } from "./Pages/Create Company";
 import { Home } from "./Pages/Home";
 import { Products } from "./Pages/Portfolios";
@@ -52,6 +53,11 @@ export const routes = [
   {
     path: '/user-profile',
     component: UserProfile,
+    exact: true,
+  },
+  {
+    path: "/company-browsing",
+    component: CompanyBrowsing,
     exact: true,
   }
 ];

@@ -206,8 +206,8 @@ export const HeaderStyleTwo = () => {
             <Link to="/Products" className="text-sm font-semibold leading-6">
               Products
             </Link>
-            <Link to="#" className="text-sm font-semibold leading-6">
-              Company
+            <Link to="/company-browsing" className="text-sm font-semibold leading-6">
+              Company Browsing
             </Link>
           </PopoverGroup>
           <div className="items-center hidden gap-5 lg:flex lg:flex-1 lg:justify-end">
