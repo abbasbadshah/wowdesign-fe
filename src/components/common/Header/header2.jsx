@@ -218,13 +218,13 @@ export const HeaderStyleTwo = () => {
             */}
             <Link to={"/user-profile"}>
               <div className="flex items-center text-sm font-semibold leading-6 gap-x-1">
-                <img
-                  src={UserAvatar}
-                  height={"50px"}
-                  width={"50px"}
-                  className="rounded-full"
-                />
-                Cristina Murfy
+                <div className="w-[50px] h-[50px] overflow-hidden rounded-full">
+                  <img
+                    src={UserAvatar}
+                    alt="User Avatar"
+                    className="object-cover w-full h-full"
+                  />
+                </div>
                 <ChevronDownIcon
                   className="flex-none w-5 h-5"
                   aria-hidden="true"

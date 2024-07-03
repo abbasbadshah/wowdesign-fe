@@ -176,7 +176,7 @@ export const Projects = () => {
         bgImage={ResidentialsImage}
         breadcrumb={["Projects"]}
       />
-      <div className="px-6 my-24 lg:px-24">
+      <div className="px-4 my-12 sm:px-6 lg:px-8 xl:px-16">
         {/* Mobile filter dialog */}
         <Transition show={mobileFiltersOpen}>
           <Dialog
@@ -394,7 +394,7 @@ export const Projects = () => {
               </form>
               <div className="lg:col-span-3">
                 {/* Products Grid*/}
-                <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
+                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
                   {/*Project Card Start*/}
                   {filteredProjects.map((project) => (
                     <div
@@ -405,24 +405,24 @@ export const Projects = () => {
                         <img
                           src={project.image}
                           alt={project.title}
-                          className="object-cover w-full h-72"
+                          className="object-cover w-full h-48 sm:h-56 lg:h-64"
                         />
                       </div>
-                      <div className="p-5">
-                        <h2 className="text-xl font-semibold">
+                      <div className="p-4">
+                        <h2 className="text-lg font-semibold sm:text-xl">
                           {project.title}
                         </h2>
                         <p className="py-1 text-sm font-medium text-gray-500">
                           {project.description}
                         </p>
-                        <div className="flex items-center justify-between mt-5">
-                          <h3 className="p-1 text-sm font-semibold bg-gray-300 rounded catergory">
+                        <div className="flex flex-col mt-4 sm:flex-row sm:items-center sm:justify-between">
+                          <h3 className="p-1 mb-2 text-sm font-semibold bg-gray-300 rounded sm:mb-0 catergory w-[75px] overflow-clip">
                             {project.category}
                           </h3>
                           <div>
                             <button
                               onClick={() => handleViewDetails(project.path)}
-                              className="py-2.5 px-6 rounded border-2 border-theme-color hover:border-theme-color text-white bg-theme-color hover:bg-transparent hover:text-theme-color transition-all duration-500"
+                              className="w-full px-4 py-2 text-white transition-all duration-500 border-2 rounded sm:w-auto border-theme-color hover:border-theme-color bg-theme-color hover:bg-transparent hover:text-theme-color"
                             >
                               View Details
                             </button>

@@ -46,34 +46,36 @@ export const UserProfile = () => {
           <div className="grid grid-cols-1 md:grid-cols-12">
             <div className="mx-6 xl:col-span-3 lg:col-span-4 md:col-span-4">
               <div className="relative p-6 -mt-48 bg-white rounded-md shadow">
-                <div className="mb-5 text-center profile-pic">
-                  <input
-                    id="pro-img"
-                    name="profile-image"
-                    type="file"
-                    className="hidden"
-                    onchange="loadFile(event)"
-                  />
-                  <div>
-                    <div className="relative mx-auto size-48">
-                      <img
-                        src={UserProfileImage}
-                        className="rounded-full shadow"
-                        id="profile-image"
-                        alt=""
-                      />
-                      <label
-                        className="absolute inset-0 cursor-pointer"
-                        htmlFor="pro-img"
-                      ></label>
-                    </div>
-
-                    <div className="mt-4">
-                      <h5 className="text-lg font-semibold">Cristina Murfy</h5>
-                      <p className="text-slate-400">cristina@hotmail.com</p>
-                    </div>
+              <div className="mb-5 text-center profile-pic">
+              <input
+                id="pro-img"
+                name="profile-image"
+                type="file"
+                className="hidden"
+                onChange="loadFile(event)"
+              />
+              <div className="flex flex-col items-center">
+                <div className="relative">
+                  <div className="w-[200px] h-[200px] overflow-hidden rounded-full">
+                    <img
+                      src={UserProfileImage}
+                      className="object-cover w-full h-full shadow"
+                      id="profile-image"
+                      alt="User Profile"
+                    />
                   </div>
+                  <label
+                    className="absolute inset-0 cursor-pointer"
+                    htmlFor="pro-img"
+                  ></label>
                 </div>
+            
+                <div className="mt-4">
+                  <h5 className="text-lg font-semibold">Cristina Murfy</h5>
+                  <p className="text-slate-400">cristina@hotmail.com</p>
+                </div>
+              </div>
+            </div>
 
                 <div className="border-t border-gray-100">
                   <ul
@@ -142,11 +144,19 @@ export const UserProfile = () => {
                     <h5 className="text-xl font-semibold">Cristina Murfy</h5>
 
                     <p className="mt-3 text-black">
-                      I have started my career as a trainee and proved myself
-                      and achieved all the milestones with good guidance and
-                      reached up to the project manager. In this journey, I
-                      understood all the procedures which made me a good
-                      developer, team leader, and project manager.
+                      i am a visionary architect renowned for her innovative
+                      approach to interior design and sustainable architecture.
+                      With a career spanning over two decades, she has
+                      established herself as a leading figure in the industry,
+                      blending creativity with functionality to create spaces
+                      that inspire and endure. Her work is characterized by a
+                      commitment to ecological responsibility, cutting-edge
+                      technology, and a deep understanding of the human
+                      experience in built environments. Cristina's portfolio
+                      includes a diverse array of projects, from luxurious
+                      residential interiors to groundbreaking commercial
+                      developments, all reflecting her unique design philosophy
+                      and meticulous attention to detail..
                     </p>
                   </div>
                 )}

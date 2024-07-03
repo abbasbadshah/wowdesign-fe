@@ -8,7 +8,7 @@ import { FeaturePorfolios } from "./Feature/Portfolio";
 
 export const Home = () => {
   return (
-    <Layout>
+    <Layout headerType="2">
       <HeroSlider />
       <Section>
         <HomeMainSectionOne />

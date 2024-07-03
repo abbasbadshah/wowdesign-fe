@@ -176,7 +176,7 @@ export const Products = () => {
         bgImage={ProjectImageTwo}
         breadcrumb={["Product"]}
       />
-      <div className="px-6 lg:px-24 my-24">
+      <div className="px-4 my-12 sm:px-6 lg:px-8 xl:px-16">
         {/* Mobile filter dialog */}
         <Transition show={mobileFiltersOpen}>
           <Dialog
@@ -203,18 +203,18 @@ export const Products = () => {
                 leaveFrom="translate-x-0"
                 leaveTo="translate-x-full"
               >
-                <DialogPanel className="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-12 shadow-xl">
+                <DialogPanel className="relative flex flex-col w-full h-full max-w-xs py-4 pb-12 ml-auto overflow-y-auto bg-white shadow-xl">
                   <div className="flex items-center justify-between px-4">
                     <h2 className="text-lg font-medium text-gray-900">
                       Filters
                     </h2>
                     <button
                       type="button"
-                      className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white p-2 text-gray-400"
+                      className="flex items-center justify-center w-10 h-10 p-2 -mr-2 text-gray-400 bg-white rounded-md"
                       onClick={() => setMobileFiltersOpen(false)}
                     >
                       <span className="sr-only">Close menu</span>
-                      <PhoneXMarkIcon className="h-6 w-6" aria-hidden="true" />
+                      <PhoneXMarkIcon className="w-6 h-6" aria-hidden="true" />
                     </button>
                   </div>
 
@@ -238,24 +238,24 @@ export const Products = () => {
                       <Disclosure
                         as="div"
                         key={section.id}
-                        className="border-t border-gray-200 px-4 py-6"
+                        className="px-4 py-6 border-t border-gray-200"
                       >
                         {({ open }) => (
                           <>
-                            <h3 className="-mx-2 -my-3 flow-root">
-                              <DisclosureButton className="flex w-full items-center justify-between bg-white px-2 py-3 text-gray-400 hover:text-gray-500">
+                            <h3 className="flow-root -mx-2 -my-3">
+                              <DisclosureButton className="flex items-center justify-between w-full px-2 py-3 text-gray-400 bg-white hover:text-gray-500">
                                 <span className="font-medium text-gray-900">
                                   {section.name}
                                 </span>
-                                <span className="ml-6 flex items-center">
+                                <span className="flex items-center ml-6">
                                   {open ? (
                                     <MinusIcon
-                                      className="h-5 w-5"
+                                      className="w-5 h-5"
                                       aria-hidden="true"
                                     />
                                   ) : (
                                     <PlusIcon
-                                      className="h-5 w-5"
+                                      className="w-5 h-5"
                                       aria-hidden="true"
                                     />
                                   )}
@@ -275,11 +275,11 @@ export const Products = () => {
                                       defaultValue={option.value}
                                       type="checkbox"
                                       defaultChecked={option.checked}
-                                      className="h-4 w-4 rounded border-gray-300 text-theme-color focus:ring-indigo-500"
+                                      className="w-4 h-4 border-gray-300 rounded text-theme-color focus:ring-indigo-500"
                                     />
                                     <label
                                       htmlFor={`filter-mobile-${section.id}-${optionIdx}`}
-                                      className="ml-3 min-w-0 flex-1 text-gray-500"
+                                      className="flex-1 min-w-0 ml-3 text-gray-500"
                                     >
                                       {option.label}
                                     </label>
@@ -299,7 +299,7 @@ export const Products = () => {
         </Transition>
 
         <main className="px-4 sm:px-6 lg:px-8">
-          <section aria-labelledby="Portfolio-heading" className="pb-24 pt-6">
+          <section aria-labelledby="Portfolio-heading" className="pt-6 pb-24">
             <h2 id="Portfolio-heading" className="sr-only">
               Portfolios
             </h2>
@@ -310,7 +310,7 @@ export const Products = () => {
                 <h3 className="sr-only">Categories</h3>
                 <ul
                   role="list"
-                  className="space-y-4 border p-6 border-gray-200 pb-6 text-base font-medium text-gray-900"
+                  className="p-6 pb-6 space-y-4 text-base font-medium text-gray-900 border border-gray-200"
                 >
                   {subCategories.map((category) => (
                     <li key={category.value}>
@@ -337,24 +337,24 @@ export const Products = () => {
                     <Disclosure
                       as="div"
                       key={section.id}
-                      className="border-b border-gray-200 py-6"
+                      className="py-6 border-b border-gray-200"
                     >
                       {({ open }) => (
                         <>
-                          <h3 className="-my-3 flow-root">
-                            <DisclosureButton className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500">
+                          <h3 className="flow-root -my-3">
+                            <DisclosureButton className="flex items-center justify-between w-full py-3 text-sm text-gray-400 bg-white hover:text-gray-500">
                               <span className="font-medium text-gray-900">
                                 {section.name}
                               </span>
-                              <span className="ml-6 flex items-center">
+                              <span className="flex items-center ml-6">
                                 {open ? (
                                   <MinusIcon
-                                    className="h-5 w-5"
+                                    className="w-5 h-5"
                                     aria-hidden="true"
                                   />
                                 ) : (
                                   <PlusIcon
-                                    className="h-5 w-5"
+                                    className="w-5 h-5"
                                     aria-hidden="true"
                                   />
                                 )}
@@ -374,7 +374,7 @@ export const Products = () => {
                                     defaultValue={option.value}
                                     type="checkbox"
                                     defaultChecked={option.checked}
-                                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                                    className="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
                                   />
                                   <label
                                     htmlFor={`filter-${section.id}-${optionIdx}`}
@@ -393,31 +393,31 @@ export const Products = () => {
                   */}
               </form>
               <div className="lg:col-span-3">
-                <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
+                <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
                   {/*Portfolio Card Start*/}
                   {filteredPortfolios.map((project) => (
                     <div
                       key={project.id}
-                      className="bg-white shadow-md rounded overflow-hidden group"
+                      className="overflow-hidden bg-white rounded shadow-md group"
                     >
                       <div className="relative">
                         <img
                           src={project.image}
-                          className="w-full h-72 object-cover"
+                          className="object-cover w-full h-72"
                           alt={project.title}
                         />
                       </div>
 
-                      <div className="p-4 relative">
-                        <h2 className="text-xl font-bold text-gray-900 mb-1">
+                      <div className="relative p-4">
+                        <h2 className="mb-1 text-xl font-bold text-gray-900">
                           {project.title}
                         </h2>
-                        <p className="text-sm mb-3">{project.description}</p>
+                        <p className="mb-3 text-sm">{project.description}</p>
                         <div className="w-fit p-2 rounded text-sm font-medium bg-[#D1D5DB] text-black">
                           {project.category}
                         </div>
 
-                        <div className="absolute start-0 end-0 -bottom-20 group-hover:bottom-1 duration-500 m-2">
+                        <div className="absolute m-2 duration-500 start-0 end-0 -bottom-20 group-hover:bottom-1">
                           <div className="p-2">
                             <Link
                               to={project.path}
