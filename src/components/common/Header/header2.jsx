@@ -1,4 +1,5 @@
 import { SiteLogo } from "../../shared/index";
+import UserAvatar from "../../../assets/images/User Profile/man.jpg";
 import { useState, useEffect } from "react";
 import Sidebar from "../Sidebar";
 import {
@@ -7,68 +8,69 @@ import {
   // Disclosure,
   // DisclosureButton,
   // DisclosurePanel,
-  // Popover,
-  // PopoverButton,
+  Popover,
+  PopoverButton,
   PopoverGroup,
-  // PopoverPanel,
+  PopoverPanel,
 } from "@headlessui/react";
 import {
-  // ArrowPathIcon,
+  ArrowPathIcon,
   Bars3Icon,
-  // ChartPieIcon,
-  // CursorArrowRaysIcon,
-  // FingerPrintIcon,
-  // SquaresPlusIcon,
+  ChartPieIcon,
+  CursorArrowRaysIcon,
+  FingerPrintIcon,
+  SquaresPlusIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
-import // ChevronDownIcon,
-// PhoneIcon,
-// PlayCircleIcon,
-"@heroicons/react/20/solid";
+import {
+  ChevronDownIcon,
+  PhoneIcon,
+  PlayCircleIcon,
+} from "@heroicons/react/20/solid";
 import { Link } from "react-router-dom";
 
-// const products = [
-//   {
-//     name: "Analytics",
-//     description: "Get a better understanding of your traffic",
-//     href: "#",
-//     icon: ChartPieIcon,
-//   },
-//   {
-//     name: "Engagement",
-//     description: "Speak directly to your customers",
-//     href: "#",
-//     icon: CursorArrowRaysIcon,
-//   },
-//   {
-//     name: "Security",
-//     description: "Your customers’ data will be safe and secure",
-//     href: "#",
-//     icon: FingerPrintIcon,
-//   },
-//   {
-//     name: "Integrations",
-//     description: "Connect with third-party tools",
-//     href: "#",
-//     icon: SquaresPlusIcon,
-//   },
-//   {
-//     name: "Automations",
-//     description: "Build strategic funnels that will convert",
-//     href: "#",
-//     icon: ArrowPathIcon,
-//   },
-// ];
-// const callsToAction = [
-//   { name: "Watch demo", href: "#", icon: PlayCircleIcon },
-//   { name: "Contact sales", href: "#", icon: PhoneIcon },
-// ];
+const products = [
+  {
+    name: "Analytics",
+    description: "Get a better understanding of your traffic",
+    href: "#",
+    icon: ChartPieIcon,
+  },
+  {
+    name: "Engagement",
+    description: "Speak directly to your customers",
+    href: "#",
+    icon: CursorArrowRaysIcon,
+  },
+  {
+    name: "Security",
+    description: "Your customers’ data will be safe and secure",
+    href: "#",
+    icon: FingerPrintIcon,
+  },
+  {
+    name: "Integrations",
+    description: "Connect with third-party tools",
+    href: "#",
+    icon: SquaresPlusIcon,
+  },
+  {
+    name: "Automations",
+    description: "Build strategic funnels that will convert",
+    href: "#",
+    icon: ArrowPathIcon,
+  },
+];
+const callsToAction = [
+  { name: "Watch demo", href: "#", icon: PlayCircleIcon },
+  { name: "Contact sales", href: "#", icon: PhoneIcon },
+];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export const Header = () => {
+export const HeaderStyleTwo = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
   const [scrollDirection, setScrollDirection] = useState(null);
@@ -214,11 +216,20 @@ export const Header = () => {
               Sign in <span aria-hidden="true">&rarr;</span>
             </Link>
             */}
-            <Link
-              to="/create-company"
-              className="p-2 text-sm font-semibold leading-6 text-white border-2 rounded bg-theme-color hover:bg-transparent border-theme-color"
-            >
-              Create Company
+            <Link to={"/user-profile"}>
+              <div className="flex items-center text-sm font-semibold leading-6 gap-x-1">
+                <img
+                  src={UserAvatar}
+                  height={"50px"}
+                  width={"50px"}
+                  className="rounded-full"
+                />
+                Cristina Murfy
+                <ChevronDownIcon
+                  className="flex-none w-5 h-5"
+                  aria-hidden="true"
+                />
+              </div>
             </Link>
             <div>
               <Bars3Icon

@@ -13,11 +13,10 @@ export const UserCompanies = () => {
           alt=""
         />
         <div className="flex-1 content ms-4">
-          <h4 className="text-lg text-medium">Senior Web Developer</h4>
-          <p className="mb-0 text-slate-400">3 Years Experience</p>
+          <h4 className="text-lg text-medium">Foster + Partners</h4>
           <p className="mb-0 text-slate-400">
             <a href="" className="text-theme-color">
-              CircleCi
+              Architecture and Interior Design
             </a>{" "}
             @London, UK
           </p>
@@ -31,13 +30,12 @@ export const UserCompanies = () => {
           alt=""
         />
         <div className="flex-1 content ms-4">
-          <h4 className="text-lg text-medium">Web Designer</h4>
-          <p className="mb-0 text-slate-400">2 Years Experience</p>
+          <h4 className="text-lg text-medium">Zaha Hadid Architects</h4>
           <p className="mb-0 text-slate-400">
             <a href="" className="text-theme-color">
-              Facebook
+              Architecture and Interior Design
             </a>{" "}
-            @Washington D.C, USA
+            @Dubai United Arab Emirates
           </p>
         </div>
       </div>
@@ -49,11 +47,10 @@ export const UserCompanies = () => {
           alt=""
         />
         <div className="flex-1 content ms-4">
-          <h4 className="text-lg text-medium">UI Designer</h4>
-          <p className="mb-0 text-slate-400">2 Years Experience</p>
+          <h4 className="text-lg text-medium">Herman Miller</h4>
           <p className="mb-0 text-slate-400">
             <a href="" className="text-theme-color">
-              Spotify
+              Manufacturing (Furniture and Interior Products)
             </a>{" "}
             @Perth, Australia
           </p>

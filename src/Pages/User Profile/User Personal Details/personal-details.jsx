@@ -1,4 +1,11 @@
-import { BookmarkIcon, EnvelopeIcon } from "@heroicons/react/20/solid";
+import {
+  BookmarkIcon,
+  EnvelopeIcon,
+  GlobeAltIcon,
+  LanguageIcon,
+  MapPinIcon,
+  PhoneIcon,
+} from "@heroicons/react/20/solid";
 import { UserCompanies } from "../User Companies/companies";
 
 export const UserPersonalDetails = () => {
@@ -19,29 +26,18 @@ export const UserPersonalDetails = () => {
           <div className="flex items-center mt-3">
             <BookmarkIcon className="w-6 text-theme-color me-2" />
             <div className="flex-1">
-              <h6 className="mb-0 font-medium text-theme-color">Skills :</h6>
+              <h6 className="mb-0 font-medium text-theme-color">Category :</h6>
               <a href="" className="text-slate-400">
-                html
+                Architecture
               </a>
               ,{" "}
               <a href="" className="text-slate-400">
-                css
-              </a>
-              ,{" "}
-              <a href="" className="text-slate-400">
-                js
-              </a>
-              ,{" "}
-              <a href="" className="text-slate-400">
-                mysql
+                Supplier
               </a>
             </div>
           </div>
           <div className="flex items-center mt-3">
-            <i
-              data-feather="italic"
-              className="fea icon-ex-md text-slate-400 me-3"
-            ></i>
+           <LanguageIcon className="w-6 text-theme-color me-2"/>
             <div className="flex-1">
               <h6 className="mb-0 font-medium text-theme-color">Language :</h6>
               <a href="" className="text-slate-400">
@@ -49,19 +45,12 @@ export const UserPersonalDetails = () => {
               </a>
               ,{" "}
               <a href="" className="text-slate-400">
-                Japanese
-              </a>
-              ,{" "}
-              <a href="" className="text-slate-400">
-                Chinese
+                Arabic
               </a>
             </div>
           </div>
           <div className="flex items-center mt-3">
-            <i
-              data-feather="globe"
-              className="fea icon-ex-md text-slate-400 me-3"
-            ></i>
+            <GlobeAltIcon className="w-6 text-theme-color me-2" />
             <div className="flex-1">
               <h6 className="mb-0 font-medium text-theme-color">Website :</h6>
               <a href="" className="text-slate-400">
@@ -70,36 +59,22 @@ export const UserPersonalDetails = () => {
             </div>
           </div>
           <div className="flex items-center mt-3">
-            <i
-              data-feather="gift"
-              className="fea icon-ex-md text-slate-400 me-3"
-            ></i>
-            <div className="flex-1">
-              <h6 className="mb-0 font-medium text-theme-color">Birthday :</h6>
-              <p className="mb-0 text-slate-400">2nd March, 1996</p>
-            </div>
-          </div>
-          <div className="flex items-center mt-3">
-            <i
-              data-feather="map-pin"
-              className="fea icon-ex-md text-slate-400 me-3"
-            ></i>
+            <MapPinIcon className="w-6 text-theme-color me-2" />
             <div className="flex-1">
               <h6 className="mb-0 font-medium text-theme-color">Location :</h6>
               <a href="" className="text-slate-400">
-                Beijing, China
+                30, Cluster S, Dubai, United Arab Emirates
               </a>
             </div>
           </div>
           <div className="flex items-center mt-3">
-            <i
-              data-feather="phone"
-              className="fea icon-ex-md text-slate-400 me-3"
-            ></i>
+            <PhoneIcon className="w-6 text-theme-color me-2" />
             <div className="flex-1">
-              <h6 className="mb-0 font-medium text-theme-color">Cell No :</h6>
+              <h6 className="mb-0 font-medium text-theme-color">
+                Contact No :
+              </h6>
               <a href="" className="text-slate-400">
-                (+12) 1254-56-4896
+                +9714-2674696
               </a>
             </div>
           </div>
