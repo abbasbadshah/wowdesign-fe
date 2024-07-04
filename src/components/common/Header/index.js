@@ -1,6 +1,4 @@
 import { HeaderStyleOne } from "./Header1";
 import { HeaderStyleTwo } from "./header2";
-export {
-    HeaderStyleOne,
-    HeaderStyleTwo
-}
+import { HeaderStyleThree } from "./header3";
+export { HeaderStyleOne, HeaderStyleTwo, HeaderStyleThree };

@@ -1,9 +1,15 @@
-import { HeaderStyleOne, HeaderStyleTwo } from "../common/Header";
+import {
+  HeaderStyleOne,
+  HeaderStyleTwo,
+  HeaderStyleThree,
+} from "../common/Header";
 import { Footer } from "../common/Footer";
 
 export const Layout = ({ children, Classes, headerType = "1" }) => {
   const renderHeader = () => {
     switch (headerType) {
+      case "3":
+        return <HeaderStyleThree />;
       case "2":
         return <HeaderStyleTwo />;
       case "1":
