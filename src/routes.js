@@ -1,3 +1,4 @@
+import { AboutCompany } from "./Pages/About";
 import { CompanyBrowsing } from "./Pages/Company Browsing";
 import { CreateCompany } from "./Pages/Create Company";
 import { Home } from "./Pages/Home";
@@ -58,6 +59,11 @@ export const routes = [
   {
     path: "/company-browsing",
     component: CompanyBrowsing,
+    exact: true,
+  },
+  {
+    path: "/about-wow-designs-and-products",
+    component: AboutCompany,
     exact: true,
   }
 ];

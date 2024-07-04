@@ -197,19 +197,27 @@ export const HeaderStyleOne = () => {
             </PopoverPanel>
           </Popover>
           */}
-
+            <Link
+              to="/about-wow-designs-and-products"
+              className="text-sm font-semibold leading-6"
+            >
+              About Us
+            </Link>
             <Link to="/projects" className="text-sm font-semibold leading-6">
               Projects
             </Link>
             <Link to="/Products" className="text-sm font-semibold leading-6">
               Products
             </Link>
-            <Link to="/company-browsing" className="text-sm font-semibold leading-6">
+            <Link
+              to="/company-browsing"
+              className="text-sm font-semibold leading-6"
+            >
               Company Browsing
             </Link>
           </PopoverGroup>
           <div className="items-center hidden gap-5 lg:flex lg:flex-1 lg:justify-end">
-              <Link to="/sign-in" className="text-sm font-semibold leading-6">
+            <Link to="/sign-in" className="text-sm font-semibold leading-6">
               Sign in <span aria-hidden="true">&rarr;</span>
             </Link>
             <Link
@@ -283,6 +291,12 @@ export const HeaderStyleOne = () => {
                 </Disclosure>
                 */}
                   <Link
+                    to="/about-wow-designs-and-products"
+                    className="text-sm font-semibold leading-6"
+                  >
+                    About Us
+                  </Link>
+                  <Link
                     to="/projects"
                     className="block px-3 py-2 -mx-3 text-base font-semibold leading-7 text-gray-900 rounded-lg hover:bg-gray-50"
                   >
@@ -295,10 +309,10 @@ export const HeaderStyleOne = () => {
                     Products
                   </Link>
                   <Link
-                    to="#"
+                    to="/company-browsing"
                     className="block px-3 py-2 -mx-3 text-base font-semibold leading-7 text-gray-900 rounded-lg hover:bg-gray-50"
                   >
-                    Company
+                    Company Browsing
                   </Link>
                 </div>
                 <div className="py-6">
