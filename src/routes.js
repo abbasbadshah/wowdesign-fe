@@ -1,6 +1,7 @@
 import { AboutCompany } from "./Pages/About";
 import { CompanyBrowsing } from "./Pages/Company Browsing";
 import { CreateCompany } from "./Pages/Create Company";
+import { DashboardProjects } from "./Pages/Dashboard/Projects";
 import { Home } from "./Pages/Home";
 import { Products } from "./Pages/Portfolios";
 import { ProductsDetails } from "./Pages/Portfolios/Portfolio Details";
@@ -64,6 +65,11 @@ export const routes = [
   {
     path: "/about-wow-designs-and-products",
     component: AboutCompany,
+    exact: true,
+  },  
+  {
+    path: "/admin",
+    component: DashboardProjects,
     exact: true,
   }
 ];
