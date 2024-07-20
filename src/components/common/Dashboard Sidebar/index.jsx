@@ -23,12 +23,11 @@ const DashboardSidebar = ({ isCollapsed, toggleSidebar }) => {
 
   return (
     <div
-      className={`h-screen text-white bg-gray-900 transition-all duration-300 ${
-        isCollapsed ? "w-20" : "w-64"
+      className={`h-screen text-white bg-gray-900 transition-all duration-300 z-[99] ${
+        isCollapsed ? "w-20" : "w-72"
       }`}
     >
       <div className="flex flex-col h-full">
-        {/* Logo */}
         <div className="flex items-center justify-center h-16 px-4 my-10">
           <SiteLogo
             white={true}
@@ -62,4 +61,4 @@ const DashboardSidebar = ({ isCollapsed, toggleSidebar }) => {
   );
 };
 
-export default DashboardSidebar
+export default DashboardSidebar;

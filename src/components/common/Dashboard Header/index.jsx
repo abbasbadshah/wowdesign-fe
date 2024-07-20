@@ -30,7 +30,7 @@ const DashboardHeader = ({ toggleSidebar, isSidebarCollapsed }) => {
   };
 
   return (
-    <header className="sticky top-0 z-50 flex items-center h-16 gap-4 px-5 text-white bg-gray-800">
+    <header className="sticky top-0 z-50 flex items-center h-16 gap-4 px-5 py-4 text-white bg-gray-800">
       {/* Sidebar Toggle Button */}
       <button
         onClick={toggleSidebar}
