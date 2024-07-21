@@ -68,7 +68,7 @@ export const routes = [
     exact: true,
   },  
   {
-    path: "/admin",
+    path: "/admin/add-projects",
     component: DashboardProjects,
     exact: true,
   }

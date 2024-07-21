@@ -12,13 +12,10 @@ import { SiteLogo } from "../../shared";
 
 const DashboardSidebar = ({ isCollapsed, toggleSidebar }) => {
   const sidebarItems = [
-    { name: "Dashboard", icon: HomeIcon, path: "/dashboard" },
-    { name: "Profile", icon: UserIcon, path: "/profile" },
-    { name: "Calendar", icon: CalendarDaysIcon, path: "/calendar" },
-    { name: "Analytics", icon: ChartBarIcon, path: "/analytics" },
-    { name: "Recipes", icon: BookOpenIcon, path: "/recipes" },
-    { name: "Shopping List", icon: ShoppingCartIcon, path: "/shopping-list" },
-    { name: "Settings", icon: CogIcon, path: "/settings" },
+    { name: "Profile", icon: UserIcon, path: "/admin" },
+    { name: "Products", icon: HomeIcon, path: "/dashboard" },
+    { name: "Projects", icon: HomeIcon, path: "/admin/add-projects" },
+    { name: "Company", icon: CogIcon, path: "/settings" },
   ];
 
   return (

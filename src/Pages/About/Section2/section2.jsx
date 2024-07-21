@@ -1,20 +1,10 @@
-import fbIcon from "../../../assets/images/About/icons/icon-facebook-gray.svg";
-import inIcon from "../../../assets/images/About/icons/icon-instagram-gray.svg";
 import IconRight from "../../../assets/images/About/icons/icon-right.svg";
-import IconButton from "../../../assets/images/About/icons/icon-button.svg";
-import aboutTopImage1 from "../../../assets/images/About/abt1.png";
-import aboutTopImage2 from "../../../assets/images/About/abt2.png";
-import circleblur1 from "../../../assets/images/About/circle-blur-1.svg";
-import circleblur2 from "../../../assets/images/About/circle-blur-2.svg";
 import Avatar from "../../../assets/images/User Profile/man.jpg";
 export const AboutSectionTwo = () => {
   return (
     <div className="full-width bg-[#F0D7BC]">
       <div className="px-[12px] md:px-[36px] mt-[70px] xl:px-0 flex flex-col gap-6 mx-auto py-[98px] lg:flex-row max-w-[1320px]">
         <div className="flex-[1.36] mr-[90px]">
-          <span className="font-chivo inline-block bg-bg-3 text-gray-900 py-[14px] px-[28px] rounded-[50px] text-[14px] leading-[14px] mb-[36px]">
-            Built Exclusively For You
-          </span>
           <h1 className="font-extrabold font-chivo text-[35px] leading-[44px] sm:text-[46px] sm:leading-[52px] md:text-heading-1 mb-[25px]">
             Don’t take our word for it. See what our clients say.
           </h1>
@@ -22,25 +12,6 @@ export const AboutSectionTwo = () => {
             Aliquam a augue suscipit, luctus neque purus ipsum neque at dolor
             primis libero tempus, blandit
           </p>
-          <button type="button">
-            {" "}
-            <a
-              className="flex items-center inline-block z-10 relative transition-all duration-200 group px-[22px] py-[15px] lg:px-[32px] lg:py-[22px] rounded-[50px] bg-gray-100 text-gray-900 hover:bg-gray-900 hover:text-white hover:-translate-y-[2px] text-gray-900 bg-white w-fit"
-              href="#"
-            >
-              <span className="block text-inherit w-full h-full rounded-[50px] text-lg font-chivo font-semibold">
-                Learn More
-              </span>
-              <i>
-                {" "}
-                <img
-                  className="ml-[7px] w-[12px] filter-black group-hover:filter-white"
-                  src={IconRight}
-                  alt="arrow right icon"
-                />
-              </i>
-            </a>
-          </button>
         </div>
         <div className="flex flex-col flex-1 gap-8">
           <div className="bg-white transition-all duration-300 px-[35px] pt-[33px] pb-[28px] hover:translate-y-[-3px]">

@@ -7,7 +7,7 @@ import iconMap from "../../../assets/images/About/icons/icon-map.svg";
 import iconPin from "../../../assets/images/About/icons/icon-pine.svg";
 export const AboutSectionFour = () => {
   return (
-    <div class="px-72 mt-[70px] lg:mt-[150px]">
+    <div class="px-4 lg:px-72 mt-[70px] lg:mt-[150px]">
       <div class="text-center">
         <span class=" inline-block bg-bg-6 text-green-900 py-[14px] px-[28px] rounded-[50px] text-[14px] leading-[14px] mb-[19px]">
           What We Do, What You Get

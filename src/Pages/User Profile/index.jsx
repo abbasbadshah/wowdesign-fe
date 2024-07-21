@@ -1,7 +1,9 @@
 import {
   ArrowLeftEndOnRectangleIcon,
+  ClipboardDocumentCheckIcon,
   Cog6ToothIcon,
   DevicePhoneMobileIcon,
+  PlusCircleIcon,
   UserCircleIcon,
 } from "@heroicons/react/20/solid";
 import UserProfileImage from "../../assets/images/User Profile/man.jpg";
@@ -72,7 +74,7 @@ export const UserProfile = () => {
             
                 <div className="mt-4">
                   <h5 className="text-lg font-semibold">Cristina Murfy</h5>
-                  <p className="text-slate-400">cristina@hotmail.com</p>
+                  <p className="text-black">cristina@hotmail.com</p>
                 </div>
               </div>
             </div>
@@ -85,7 +87,7 @@ export const UserProfile = () => {
                     <li className="navbar-item account-menu">
                       <a
                         href="#"
-                        className="flex items-center py-2 rounded navbar-link text-slate-400"
+                        className="flex items-center py-2 text-black rounded navbar-link"
                         onClick={() => setActiveSection("profile")}
                       >
                         <span className="me-2 text-[18px] mb-0">
@@ -98,7 +100,7 @@ export const UserProfile = () => {
                     <li className="navbar-item account-menu">
                       <a
                         href="#"
-                        className="flex items-center py-2 rounded navbar-link text-slate-400"
+                        className="flex items-center py-2 text-black rounded navbar-link"
                         onClick={() => setActiveSection("social")}
                       >
                         <span className="me-2 text-[18px] mb-0">
@@ -111,20 +113,46 @@ export const UserProfile = () => {
                     <li className="navbar-item account-menu">
                       <a
                         href="#"
-                        className="flex items-center py-2 rounded navbar-link text-slate-400"
+                        className="flex items-center py-2 text-black rounded navbar-link"
                         onClick={() => setActiveSection("settings")}
                       >
                         <span className="me-2 text-[18px] mb-0">
                           <Cog6ToothIcon className="w-6 text-theme-color" />
                         </span>
-                        <h6 className="mb-0 font-semibold">Settings</h6>
+                        <h6 className="mb-0 font-semibold">Profile Settings</h6>
+                      </a>
+                    </li>
+
+                    <li className="navbar-item account-menu">
+                      <a
+                        href="#"
+                        className="flex items-center py-2 text-black rounded navbar-link"
+                        onClick={() => setActiveSection("settings")}
+                      >
+                        <span className="me-2 text-[18px] mb-0">
+                          <ClipboardDocumentCheckIcon className="w-6 text-theme-color" />
+                        </span>
+                        <h6 className="mb-0 font-semibold">Add Projects</h6>
+                      </a>
+                    </li>
+
+                    <li className="navbar-item account-menu">
+                      <a
+                        href="#"
+                        className="flex items-center py-2 text-black rounded navbar-link"
+                        onClick={() => setActiveSection("settings")}
+                      >
+                        <span className="me-2 text-[18px] mb-0">
+                          <PlusCircleIcon className="w-6 text-theme-color" />
+                        </span>
+                        <h6 className="mb-0 font-semibold">Add Products</h6>
                       </a>
                     </li>
 
                     <li className="navbar-item account-menu">
                       <a
                         href="auth-lock-screen.html"
-                        className="flex items-center py-2 rounded navbar-link text-slate-400"
+                        className="flex items-center py-2 text-black rounded navbar-link"
                       >
                         <span className="me-2 text-[18px] mb-0">
                           <ArrowLeftEndOnRectangleIcon className="w-6 text-theme-color" />
