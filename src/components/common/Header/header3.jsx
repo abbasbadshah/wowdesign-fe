@@ -107,7 +107,7 @@ export const HeaderStyleThree = () => {
     <div>
       <header
         className={classNames(
-          "z-[99] transition-all duration-300 ease-in-out bg-white",
+          "z-[9999] transition-all duration-300 ease-in-out bg-white",
           isSticky ? "fixed top-0 left-0 w-full shadow-lg" : "relative",
           isSticky && scrollDirection === "down"
             ? "-translate-y-full"

@@ -41,7 +41,7 @@ export const ProjectDetails = () => {
     : descriptionSentences.slice(0, 3);
   return (
     <Layout headerType={"header1"}>
-      <DetailPageBreadCrumb title={pageTitle} />
+      <DetailPageBreadCrumb title={pageTitle} authorName={'John Smith'} />
       <div className="px-4 py-8 lg:px-16 ">
         <div className="flex flex-col gap-10 py-4 lg:pt-24 lg:grid lg:grid-cols-12">
           <div className="flex flex-col gap-10 lg:col-span-6">

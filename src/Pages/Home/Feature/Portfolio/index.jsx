@@ -10,25 +10,25 @@ const portfolios = [
     id: 1,
     image: AcousticImage,
     name: "SoundScape Panels",
-    link: "/products/product-details",
+    category: "Ceilings",
   },
   {
     id: 2,
     image: FlooringImage,
     name: "DuraStone Tiles",
-    link: "/products/product-details",
+    category: "Ceilings",
   },
   {
     id: 3,
     image: WallsImage,
     name: "TexTure Wallcoverings",
-    link: "/products/product-details",
+    category: "Ceilings",
   },
   {
     id: 4,
     image: CeilingsImage,
     name: "SkyLite Panels",
-    link: "/products/product-details",
+    category: "Ceilings",
   },
 ];
 
@@ -53,23 +53,26 @@ export const FeaturePorfolios = () => {
               key={portfolio.id}
               className="relative overflow-hidden group rounded"
             >
-              <img src={portfolio.image} alt="" className="h-96 w-full" />
-              <div className="absolute bottom-0 inset-x-0 m-2">
-                <div className="p-4 bg-white rounded">
-                  <h2 className="text-xl font-medium mb-1 text-center">
+              <Link to={'portfolios/portfolio-details'} className="block">
+                <img
+                  src={portfolio.image}
+                  alt=""
+                  className="h-96 w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute top-2 right-2 bg-theme-color text-white px-2 py-1 rounded text-sm font-medium">
+                  {portfolio.category}
+                </div>
+              </Link>
+              <Link
+                to={'portfolios/portfolio-details'}
+                className="absolute bottom-0 inset-x-0 m-2"
+              >
+                <div className="p-4 bg-white rounded group hover:bg-theme-color">
+                  <h2 className="text-xl font-medium mb-1 text-center group-hover:text-black group-hover:transition-all">
                     {portfolio.name}
                   </h2>
                 </div>
-              </div>
-              <div className="absolute start-0 end-0 -bottom-20 group-hover:bottom-1 duration-500 m-2">
-                <div className="p-3">
-                  <Link to={portfolio.link}>
-                    <div className="py-2 w-full flex items-center justify-center rounded text-white hover:text-theme-color border-theme-color border-2 bg-theme-color hover:bg-white transition-all duration-500">
-                      View Products
-                    </div>
-                  </Link>
-                </div>
-              </div>
+              </Link>
             </div>
           ))}
         </div>

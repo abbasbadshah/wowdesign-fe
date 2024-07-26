@@ -398,36 +398,28 @@ export const Products = () => {
                   {filteredPortfolios.map((project) => (
                     <div
                       key={project.id}
-                      className="overflow-hidden bg-white rounded shadow-md group"
+                      className="relative overflow-hidden group rounded"
                     >
-                      <div className="relative">
+                      <Link to={project.path} className="block">
                         <img
                           src={project.image}
-                          className="object-cover w-full h-72"
                           alt={project.title}
+                          className="h-96 w-full object-cover transition-transform duration-300 group-hover:scale-105"
                         />
-                      </div>
-
-                      <div className="relative p-4">
-                        <h2 className="mb-1 text-xl font-bold text-gray-900">
-                          {project.title}
-                        </h2>
-                        <p className="mb-3 text-sm">{project.description}</p>
-                        <div className="w-fit p-2 rounded text-sm font-medium bg-[#D1D5DB] text-black">
+                        <div className="absolute top-2 right-2 bg-theme-color text-white px-2 py-1 rounded text-sm font-medium">
                           {project.category}
                         </div>
-
-                        <div className="absolute m-2 duration-500 start-0 end-0 -bottom-20 group-hover:bottom-1">
-                          <div className="p-2">
-                            <Link
-                              to={project.path}
-                              className="py-2.5 w-full flex items-center justify-center rounded text-white bg-theme-color hover:bg-white hover:text-theme-color border border-theme-color transition-all duration-500"
-                            >
-                              Know more about product
-                            </Link>
-                          </div>
+                      </Link>
+                      <Link
+                        to={project.path}
+                        className="absolute bottom-0 inset-x-0 m-2"
+                      >
+                        <div className="p-4 bg-white rounded group hover:bg-theme-color">
+                          <h2 className="text-xl font-medium mb-1 text-center group-hover:text-black group-hover:transition-all">
+                            {project.title}
+                          </h2>
                         </div>
-                      </div>
+                      </Link>
                     </div>
                   ))}
                   {/* Portfolio Card End */}

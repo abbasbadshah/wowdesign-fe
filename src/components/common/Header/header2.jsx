@@ -109,7 +109,7 @@ export const HeaderStyleTwo = () => {
     <div>
       <header
         className={classNames(
-          "z-[99] transition-all duration-300 ease-in-out",
+          "z-[9999] transition-all duration-300 ease-in-out",
           isSticky
             ? "fixed top-0 left-0 w-full bg-white shadow-lg"
             : "relative",

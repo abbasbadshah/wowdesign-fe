@@ -7,7 +7,7 @@ import RestaurantImage from "../../assets/images/Projects/restaurant.jpg";
 import HospitalityImage from "../../assets/images/Projects/hospitality.jpeg";
 import ResidentialsImage from "../../assets/images/Projects/resdentials.jpg";
 import UrbanDevelopmentImage from "../../assets/images/Projects/ud.jpeg";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useState } from "react";
 import {
@@ -399,33 +399,40 @@ export const Projects = () => {
                   {filteredProjects.map((project) => (
                     <div
                       key={project.id}
-                      className="overflow-hidden border border-gray-200 rounded"
+                      className="relative overflow-hidden group rounded"
                     >
-                      <div className="relative bg-gray-100">
+                      <Link
+                        to={`/projects/project-details`}
+                        className="block overflow-hidden"
+                      >
                         <img
                           src={project.image}
                           alt={project.title}
-                          className="object-cover w-full h-48 sm:h-56 lg:h-64"
+                          className="scale-100 group-hover:scale-105 transition-all duration-500 rounded w-full h-72 object-cover"
                         />
-                      </div>
-                      <div className="p-4">
-                        <h2 className="text-lg font-semibold sm:text-xl">
-                          {project.title}
-                        </h2>
-                        <p className="py-1 text-sm font-medium text-gray-500">
-                          {project.description}
-                        </p>
-                        <div className="flex flex-col mt-4 sm:flex-row sm:items-center sm:justify-between">
-                          <h3 className="p-1 mb-2 text-sm font-semibold bg-gray-300 rounded sm:mb-0 catergory w-[75px] overflow-clip">
-                            {project.category}
-                          </h3>
-                          <div>
-                            <button
-                              onClick={() => handleViewDetails(project.path)}
-                              className="w-full px-4 py-2 text-white transition-all duration-500 border-2 rounded sm:w-auto border-theme-color hover:border-theme-color bg-theme-color hover:bg-transparent hover:text-theme-color"
+                      </Link>
+
+                      <div className="mt-5 bg-white">
+                        <div className="flex items-center justify-between">
+                          <div className="w-3/4">
+                            <Link
+                              to={`/projects/project-details`}
+                              className="block"
                             >
-                              View Details
-                            </button>
+                              <h2 className="text-xl font-bold mb-1 hover:text-theme-color transition-colors">
+                                {project.title}
+                              </h2>
+                            </Link>
+                            <p className="text-sm font-medium text-gray-500">
+                              {project.description}
+                            </p>
+                          </div>
+
+                          <div className="w-1/4">
+                            <span className="text-sm font-semibold py-1.5 px-2 bg-gray-100 inline-block">
+                              {project.category.charAt(0).toUpperCase() +
+                                project.category.slice(1)}
+                            </span>
                           </div>
                         </div>
                       </div>
