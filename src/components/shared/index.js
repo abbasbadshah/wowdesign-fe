@@ -5,6 +5,7 @@ import { Section } from './Section/section'
 import ScrollDownArrow from './Scroll Down Arrow/scrollDown';
 import { DetailPageBreadCrumb } from './Detail Pages Header/detailpage';  
 import NewsletterCTA from './Newsletter/newsletter';
+import Gallery from './Gallery/gallery';
 
 export {
     BreadcrumbComponent,
@@ -13,5 +14,6 @@ export {
     Section,
     ScrollDownArrow,
     DetailPageBreadCrumb,
-    NewsletterCTA
+    NewsletterCTA,
+    Gallery
 }
