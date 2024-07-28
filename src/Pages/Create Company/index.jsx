@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { SignupStep } from "./SignupStep/signup";
 import { StepOne } from "./StepOne/stepOne";
 import { StepTwo } from "./StepTwo/stepTwo";
-import { SiteLogo, FadingBackground } from "../../components/shared/index";
+import { StepThree } from "./StepThree/stepThree";
+import { FadingBackground, Popup, Loader, SiteLogo } from "../../components/shared/index";
 
 import bgImage1 from "../../assets/images/Loginsignup/Background/img1.jpg";
 import bgImage2 from "../../assets/images/Loginsignup/Background/img2.jpg";
@@ -29,6 +29,7 @@ const slideVariants = {
 };
 
 export const CreateCompany = () => {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [step, setStep] = useState(0);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [direction, setDirection] = useState("next");
@@ -45,23 +46,34 @@ export const CreateCompany = () => {
   const onSubmit = (data) => {
     console.log(data);
     setIsSubmitted(true);
+    setIsPopupOpen(true);
+
   };
+
+  useEffect(() => {
+    let timer;
+    if (isPopupOpen) {
+      timer = setTimeout(() => {
+        setIsPopupOpen(false);
+        navigate("/sign-in");
+      }, 5000);
+    }
+    return () => clearTimeout(timer);
+  }, [isPopupOpen, navigate]);
 
   const validateStep = async (stepNumber) => {
     console.log(`Validating step ${stepNumber}`);
     switch (stepNumber) {
       case 0:
-        return await trigger([
-          "firstName",
-          "lastName",
-          "email",
-          "phone",
-          "role",
-        ]);
-      case 1:
         return await trigger(["options"]);
-      case 2:
+      case 1:
         return await trigger(["companyName", "description"]);
+      case 2:
+        return await trigger([
+          "businessType",
+          "employeeCount",
+          "annualRevenue",
+        ]);
       default:
         return false;
     }
@@ -86,66 +98,24 @@ export const CreateCompany = () => {
   };
 
   return (
-    <section className="px-6 lg:px-0 min-h-screen max-h-full flex items-center justify-center bg-no-repeat inset-0 bg-cover">
+    <section className="min-h-screen flex items-center justify-center bg-no-repeat inset-0 bg-cover relative">
       <Helmet>
         <title>Create Company</title>
       </Helmet>
       <FadingBackground images={backgroundImages} />
-      <div className="container 2xl:px-80 xl:px-52 z-[99]">
-        <div className="bg-white rounded-lg p-5 shadow-2xl overflow-hidden">
-          <div className="grid xl:grid-cols-5 lg:grid-cols-3 gap-6">
-            <div className="xl:col-span-2 lg:col-span-1 hidden lg:block">
-              <div className="bg-theme-color text-white rounded-lg flex flex-col justify-between gap-10 h-full w-full p-7 max-h-[580px]">
-                <SiteLogo white={true} className="w-55" />
-                <div>
-                  <h1 className="text-3xl/tight mb-4">
-                    We're here to help you level up.
-                  </h1>
-                  <p className="text-black font-normal leading-relaxed">
-                    It is a long established fact that a reader will be
-                    distracted by the readable content of a page when looking at
-                    its layout.
-                  </p>
-                </div>
-
-                <div>
-                  <div className="bg-[#DA9B58] rounded-lg p-5">
-                    <p className="text-gray-200 text-sm font-normal leading mb-4">
-                      There are many variations of passages of Lorem Ipsum
-                      available, but the majority in some form
-                    </p>
-                    <div className="flex items-center gap-4">
-                      <img src={bgImage1} alt="" className="h-12 rounded-lg" />
-                      <div>
-                        <p className="font-normal">Timson K</p>
-                        <span className="text-xs font-normal">Freelancer</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="xl:col-span-3 lg:col-span-2 lg:m-10 overflow-y-auto overflow-x-hidden max-h-[80vh] custom-scrollbar">
+      <div className="absolute inset-0 flex items-center justify-center z-10">
+        <div
+          className="bg-white rounded-lg shadow-2xl overflow-hidden"
+          style={{ width: "95vw", height: "95vh" }}
+        >
+          <div className="p-10 h-full">
+            <div className="h-full overflow-y-auto overflow-x-hidden custom-scrollbar">
               {!isSubmitted ? (
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
                   <AnimatePresence custom={direction} mode="wait">
                     {step === 0 && (
                       <motion.div
                         key="step0"
-                        custom={direction}
-                        initial="initial"
-                        animate="animate"
-                        exit="exit"
-                        variants={slideVariants}
-                        transition={{ duration: 0.5 }}
-                      >
-                        <SignupStep register={register} errors={errors} />
-                      </motion.div>
-                    )}
-                    {step === 1 && (
-                      <motion.div
-                        key="step1"
                         custom={direction}
                         initial="initial"
                         animate="animate"
@@ -161,9 +131,9 @@ export const CreateCompany = () => {
                         />
                       </motion.div>
                     )}
-                    {step === 2 && (
+                    {step === 1 && (
                       <motion.div
-                        key="step2"
+                        key="step1"
                         custom={direction}
                         initial="initial"
                         animate="animate"
@@ -177,6 +147,19 @@ export const CreateCompany = () => {
                           watch={watch}
                           setValue={setValue}
                         />
+                      </motion.div>
+                    )}
+                    {step === 2 && (
+                      <motion.div
+                        key="step2"
+                        custom={direction}
+                        initial="initial"
+                        animate="animate"
+                        exit="exit"
+                        variants={slideVariants}
+                        transition={{ duration: 0.5 }}
+                      >
+                        <StepThree register={register} errors={errors} />
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -205,28 +188,24 @@ export const CreateCompany = () => {
                   </div>
                 </form>
               ) : (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="text-center"
+                <Popup
+                  isOpen={isPopupOpen}
+                  onClose={() => setIsPopupOpen(false)}
                 >
-                  <h2 className="text-2xl font-bold mb-4">
-                    Company Created Successfully!
-                  </h2>
-                  <p className="mb-8">
-                    Your company profile has been set up. You can now explore
-                    our platform.
-                  </p>
-                  <motion.button
-                    onClick={() => navigate("/")}
-                    className="bg-theme-color text-white font-bold text-sm rounded-lg px-6 py-3"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    Go to Home Page
-                  </motion.button>
-                </motion.div>
+                  <div className="flex flex-col items-center justify-center min-h-[300px] space-y-6">
+                    <SiteLogo className="w-32 md:w-40 lg:w-48" />
+                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center">
+                      Success!
+                    </h2>
+                    <p className="text-gray-600 text-lg md:text-xl lg:text-2xl text-center">
+                      Thank you for register your Company in Wow Community.
+                    </p>
+                    <Loader />
+                    <p className="text-sm md:text-base lg:text-lg text-gray-500 text-center">
+                      Redirecting to sign-in page...
+                    </p>
+                  </div>
+                </Popup>
               )}
             </div>
           </div>

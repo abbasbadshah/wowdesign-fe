@@ -1,6 +1,7 @@
 import { Checkbox } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/20/solid";
 import React from "react";
+import { SiteLogo } from "../../../components/shared";
 
 export const StepOne = ({ register, watch, setValue, errors }) => {
   const selectedOptions = watch("options") || [];
@@ -55,10 +56,13 @@ export const StepOne = ({ register, watch, setValue, errors }) => {
 
   return (
     <div>
-      <h2 className="text-2xl font-bold mb-4">My Company</h2>
+    <div className="flex justify-center">
+      <SiteLogo className={'w-56'}/>
+    </div>
+      <h2 className="text-2xl font-bold my-4">My Company</h2>
       <div className="text-left flex flex-wrap">
         {options.map((option, index) => (
-          <div key={index} className="w-1/2 mb-2 flex items-center">
+          <div key={index} className="w-1/3 mb-2 flex items-center">
             <Checkbox
               checked={selectedOptions.includes(option)}
               onChange={() => handleCheckboxChange(option)}

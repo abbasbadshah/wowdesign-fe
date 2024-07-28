@@ -3,6 +3,7 @@ import { ProjectLocationMap } from "../Location";
 import ClientAvatar from "../../../../assets/images/User Profile/man.jpg";
 import { ProjectPagination } from "../Pagination";
 import { Query } from "../Query";
+import { NewsletterCTA } from "../../../../components/shared";
 
 export const ProjectPageDetails = () => {
   const companiesInvolved = [
@@ -462,6 +463,7 @@ export const ProjectPageDetails = () => {
           <ProjectLocationMap />
           <CustomerReview />
           <Query />
+
         </div>
         <div className="hidden w-full max-w-sm pb-11 lg:block xl:max-w-md 3xl:max-w-lg">
           <div className="sticky top-32 4xl:top-40">

@@ -1,7 +1,12 @@
 import { Input } from "@headlessui/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { SiteLogo, FadingBackground } from "../../components/shared/index";
+import {
+  SiteLogo,
+  FadingBackground,
+  Popup,
+  Loader,
+} from "../../components/shared/index";
 import bgImage1 from "../../assets/images/Loginsignup/Background/img1.jpg";
 import bgImage2 from "../../assets/images/Loginsignup/Background/img2.jpg";
 import bgImage3 from "../../assets/images/Loginsignup/Background/img3.jpg";
@@ -9,9 +14,11 @@ import bgImage4 from "../../assets/images/Loginsignup/Background/img4.jpg";
 import bgImage5 from "../../assets/images/Loginsignup/Background/img5.jpg";
 import { GlobeAltIcon } from "@heroicons/react/24/outline";
 import { Helmet } from "react-helmet";
-
+import { useEffect, useState } from "react";
 const backgroundImages = [bgImage1, bgImage2, bgImage3, bgImage4, bgImage5];
 export const Signup = () => {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -20,8 +27,19 @@ export const Signup = () => {
 
   const onSubmit = (data) => {
     console.log(data);
+    setIsPopupOpen(true);
   };
 
+  useEffect(() => {
+    let timer;
+    if (isPopupOpen) {
+      timer = setTimeout(() => {
+        setIsPopupOpen(false);
+        navigate("/sign-in");
+      }, 5000);
+    }
+    return () => clearTimeout(timer);
+  }, [isPopupOpen, navigate]);
   return (
     <section className="px-6 lg:px-0 h-screen flex items-center justify-center bg-no-repeat inset-0 bg-cover">
       <Helmet>
@@ -35,13 +53,10 @@ export const Signup = () => {
               <div className="bg-theme-color text-white rounded-lg flex flex-col justify-between gap-10 h-full w-full p-7">
                 <SiteLogo white={true} className="w-55" />
                 <div>
-                  <h1 className="text-3xl/tight mb-4">
-                    We're here to help you level up.
-                  </h1>
+                  <h1 className="text-3xl/tight mb-4">Joint Wow Community</h1>
                   <p className="text-gray-200 font-normal leading-relaxed">
-                    It is a long established fact that a reader will be
-                    distracted by the readable content of a page when looking at
-                    its layout.
+                    Instead of Signup as individual, Joint Wow community by
+                    registering your company and get wow benifits.
                   </p>
                 </div>
 
@@ -191,12 +206,11 @@ export const Signup = () => {
                     Sign Up
                   </button>
                   <p className="text-sm font-medium text-gray-500">
-                    Better Signup with company{" "}
                     <Link
                       to="/create-company"
                       className="ms-2 underline font-bols text-black"
                     >
-                      Create Company
+                      registering your Company
                     </Link>
                   </p>
                 </div>
@@ -205,6 +219,21 @@ export const Signup = () => {
           </div>
         </div>
       </div>
+      <Popup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)}>
+        <div className="flex flex-col items-center justify-center min-h-[300px] space-y-6">
+          <SiteLogo className="w-32 md:w-40 lg:w-48" />
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center">
+            Success!
+          </h2>
+          <p className="text-gray-600 text-lg md:text-xl lg:text-2xl text-center">
+            Thank you for signing up.
+          </p>
+          <Loader />
+          <p className="text-sm md:text-base lg:text-lg text-gray-500 text-center">
+            Redirecting to sign-in page...
+          </p>
+        </div>
+      </Popup>
     </section>
   );
 };

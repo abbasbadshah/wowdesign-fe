@@ -63,14 +63,45 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
   return (
     <div className="mr-2">
       <h2 className="text-2xl font-bold mb-4">Company Profile</h2>
-      <div className="mb-4 flex justify-start">
+      <div className="mb-4 flex justify-start gap-10">
+        <div className="flex flex-row-reverse items-center justify-start gap-5">
+          <div className="flex flex-col gap-5">
+            <label
+              className="block mb-2 font-medium text-sm text-left"
+              htmlFor="bannerPhoto"
+            >
+              Banner Photo
+            </label>
+            <p className="font-medium text-sm text-left">
+              We recommend an image <br />
+              of at least 1920x1080
+            </p>
+          </div>
+          <div
+            {...getRootProps()}
+            className="w-96 h-48 border-2 border-dashed rounded flex items-center justify-center cursor-pointer"
+          >
+            <Input {...getInputProps()} id="bannerPhoto" />
+            {preview ? (
+              <img
+                src={preview}
+                alt="Preview"
+                className="w-full h-full object-cover rounded-full"
+              />
+            ) : (
+              <div className="text-center">
+                <p>Upload Profile Image</p>
+              </div>
+            )}
+          </div>
+        </div>
         <div className="flex flex-row-reverse items-center justify-start gap-5">
           <div className="flex flex-col gap-5">
             <label
               className="block mb-2 font-medium text-sm text-left"
               htmlFor="profilePhoto"
             >
-              Profile Photo
+              Upload Logo
             </label>
             <p className="font-medium text-sm text-left">
               We recommend an image <br />

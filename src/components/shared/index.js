@@ -6,6 +6,8 @@ import ScrollDownArrow from './Scroll Down Arrow/scrollDown';
 import { DetailPageBreadCrumb } from './Detail Pages Header/detailpage';  
 import NewsletterCTA from './Newsletter/newsletter';
 import Gallery from './Gallery/gallery';
+import { Popup } from './Popup/popup';
+import { Loader } from './Loader/loader';
 
 export {
     BreadcrumbComponent,
@@ -15,5 +17,7 @@ export {
     ScrollDownArrow,
     DetailPageBreadCrumb,
     NewsletterCTA,
-    Gallery
+    Gallery,
+    Popup,
+    Loader
 }

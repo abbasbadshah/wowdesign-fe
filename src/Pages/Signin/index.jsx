@@ -4,14 +4,21 @@ import bgImage2 from "../../assets/images/Loginsignup/Background/img2.jpg";
 import bgImage3 from "../../assets/images/Loginsignup/Background/img3.jpg";
 import bgImage4 from "../../assets/images/Loginsignup/Background/img4.jpg";
 import bgImage5 from "../../assets/images/Loginsignup/Background/img5.jpg";
-import { SiteLogo, FadingBackground } from "../../components/shared/index";
-import { Link } from "react-router-dom";
+import {
+  SiteLogo,
+  FadingBackground,
+  Loader,
+} from "../../components/shared/index";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { GlobeAltIcon } from "@heroicons/react/24/outline";
 import { Helmet } from "react-helmet";
+import { useState } from "react";
 
 const backgroundImages = [bgImage1, bgImage2, bgImage3, bgImage4, bgImage5];
 export const Signin = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -20,6 +27,11 @@ export const Signin = () => {
 
   const onSubmit = (data) => {
     console.log(data);
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      navigate("/");
+    }, 2500); // 2.5 seconds delay
   };
   return (
     <section className="px-6 lg:px-0 h-screen flex items-center justify-center bg-no-repeat inset-0 bg-cover">
@@ -157,6 +169,13 @@ export const Signin = () => {
           </div>
         </div>
       </div>
+      {isLoading && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[999]">
+          <div className="bg-white rounded-lg p-8">
+            <Loader className="w-16 h-16" />
+          </div>
+        </div>
+      )}
     </section>
   );
 };
