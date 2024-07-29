@@ -30,8 +30,8 @@ export const Signin = () => {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-      navigate("/");
-    }, 2500); // 2.5 seconds delay
+      navigate("/company-profile");
+    }, 2500);
   };
   return (
     <section className="px-6 lg:px-0 h-screen flex items-center justify-center bg-no-repeat inset-0 bg-cover">

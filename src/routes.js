@@ -1,5 +1,6 @@
 import { AboutCompany } from "./Pages/About";
 import { CompanyBrowsing } from "./Pages/Company Browsing";
+import { CompanyProfile } from "./Pages/Company Profile";
 import { CreateCompany } from "./Pages/Create Company";
 import { DashboardProjects } from "./Pages/Dashboard/Projects";
 import { Home } from "./Pages/Home";
@@ -10,6 +11,7 @@ import { ProjectDetails } from "./Pages/Projects/Project Details";
 import { Signin } from "./Pages/Signin";
 import { Signup } from "./Pages/Signup";
 import { UserProfile } from "./Pages/User Profile";
+import DashboardCreateCompany from "./Pages/Dashboard/Create Company";
 
 export const routes = [
   {
@@ -70,6 +72,16 @@ export const routes = [
   {
     path: "/admin/add-projects",
     component: DashboardProjects,
+    exact: true,
+  },  
+  {
+    path: "/company-profile",
+    component: CompanyProfile,
+    exact: true,
+  },  
+  {
+    path: "/dashboard/create-company",
+    component: DashboardCreateCompany,
     exact: true,
   }
 ];

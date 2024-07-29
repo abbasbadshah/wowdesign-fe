@@ -1,47 +1,36 @@
+import React, { useState, useEffect } from "react";
 import CustomerReviews from "./Review Section/review";
+import { Popup } from "../../../../components/shared";
+import { ReviewForm } from "./Review Form/form";
+
 export const CustomerReview = () => {
-  const reviews = [
-    {
-      name: "Faddie Jaction",
-      date: "26 Oct, 2022 9:34 pm",
-      rating: 5,
-      location: "San Diago CA",
-      comment:
-        "I bought two of these hoodies - one for my husband, and an xs for myself. I don't find the quality of this cashmere to be any better than what you'd find at a major retailer. It's fine for the price point, but we both experienced pilling on the very first wear, and it gets worse with each wear. So it probably will not have a long life. That said, it's a great leisure-wear piece that looks more pulled together than wearing a yoga brand zip-up, and I would buy another if they made this piece in grey.",
-      avatar: "/path/to/avatar.jpg",
-    },
-    {
-      name: "Faddie Jaction",
-      date: "26 Oct, 2022 9:34 pm",
-      rating: 5,
-      location: "San Diago CA",
-      comment:
-        "I bought two of these hoodies - one for my husband, and an xs for myself. I don't find the quality of this cashmere to be any better than what you'd find at a major retailer. It's fine for the price point, but we both experienced pilling on the very first wear, and it gets worse with each wear. So it probably will not have a long life. That said, it's a great leisure-wear piece that looks more pulled together than wearing a yoga brand zip-up, and I would buy another if they made this piece in grey.",
-      avatar: "/path/to/avatar.jpg",
-    },
-    {
-      name: "Faddie Jaction",
-      date: "26 Oct, 2022 9:34 pm",
-      rating: 5,
-      location: "San Diago CA",
-      comment:
-        "I bought two of these hoodies - one for my husband, and an xs for myself. I don't find the quality of this cashmere to be any better than what you'd find at a major retailer. It's fine for the price point, but we both experienced pilling on the very first wear, and it gets worse with each wear. So it probably will not have a long life. That said, it's a great leisure-wear piece that looks more pulled together than wearing a yoga brand zip-up, and I would buy another if they made this piece in grey.",
-      avatar: "/path/to/avatar.jpg",
-    },
-    // Add more review objects here...
-  ];
+  const [reviews, setReviews] = useState([]);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  useEffect(() => {
+    const storedReviews = JSON.parse(localStorage.getItem("reviews") || "[]");
+    setReviews(storedReviews);
+  }, []);
+
+  const handleAddReview = (newReview) => {
+    const updatedReviews = [...reviews, newReview];
+    setReviews(updatedReviews);
+    localStorage.setItem("reviews", JSON.stringify(updatedReviews));
+  };
+
   return (
     <div>
       <section className="scroll-mt-20 py-5 xl:py-7" id="reviews">
         <header className="flex justify-between capitalize">
           <div>
             <h2 className="md:text-h2 font-bold text-gray-dark text-xl md:!text-[22px] 2xl:!text-2xl hidden md:block">
-              35 reviews
+              {reviews.length} reviews
             </h2>
           </div>
           <div>
             <button
               type="button"
+              onClick={() => setIsPopupOpen(true)}
               className="p-2 text-sm font-semibold leading-6 text-white border-2 rounded bg-theme-color hover:bg-transparent hover:text-theme-color border-theme-color"
             >
               Add Review
@@ -63,14 +52,16 @@ export const CustomerReview = () => {
               clipRule="evenodd"
             />
           </svg>
-          4.9 - 35 Reviews
+          4.9 - {reviews.length} Reviews
         </h2>
         <div className="mt-8 hidden items-center md:mt-8 md:flex">
           <div className="flex-shrink-0 border-r-[1px] border-gray-lighter py-3 pr-5 md:pr-14">
             <h3 className="text-center text-3xl font-bold sm:text-6xl md:text-left">
               4.5
             </h3>
-            <p className="mt-3 text-sm capitalize md:text-base">35 Ratings</p>
+            <p className="mt-3 text-sm capitalize md:text-base">
+              {reviews.length} Ratings
+            </p>
           </div>
           <div className="grid w-full grid-cols-1 gap-3 pl-5 md:pl-14">
             <div className="flex items-center gap-3 sm:gap-4">
@@ -139,6 +130,13 @@ export const CustomerReview = () => {
           <CustomerReviews reviews={reviews} />
         </div>
       </section>
+      <Popup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)}>
+        <h2 className="text-2xl font-bold mb-4">Add a Review</h2>
+        <ReviewForm
+          onSubmit={handleAddReview}
+          onClose={() => setIsPopupOpen(false)}
+        />
+      </Popup>
     </div>
   );
 };

@@ -9,13 +9,14 @@ import {
 import { ArrowLeftCircleIcon, ChartBarIcon } from "@heroicons/react/24/outline";
 import React from "react";
 import { SiteLogo } from "../../shared";
+import { Link } from "react-router-dom";
 
 const DashboardSidebar = ({ isCollapsed, toggleSidebar }) => {
   const sidebarItems = [
     { name: "Profile", icon: UserIcon, path: "/admin" },
     { name: "Products", icon: HomeIcon, path: "/dashboard" },
     { name: "Projects", icon: HomeIcon, path: "/admin/add-projects" },
-    { name: "Company", icon: CogIcon, path: "/settings" },
+    { name: "Company", icon: CogIcon, path: "/dashboard/create-company" },
   ];
 
   return (
@@ -35,14 +36,14 @@ const DashboardSidebar = ({ isCollapsed, toggleSidebar }) => {
         {/* Navigation Items */}
         <nav className="flex-1 px-2 py-4 space-y-2 overflow-y-auto">
           {sidebarItems.map((item, index) => (
-            <a
+            <Link
               key={index}
               href={item.path}
               className="flex items-center p-2 space-x-2 rounded-md hover:bg-gray-700"
             >
               <item.icon className="w-6 h-6" />
               {!isCollapsed && <span>{item.name}</span>}
-            </a>
+            </Link>
           ))}
         </nav>
 
