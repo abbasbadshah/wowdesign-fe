@@ -5,6 +5,7 @@ import {
   HomeIcon,
   ShoppingCartIcon,
   UserIcon,
+  ChatBubbleBottomCenterTextIcon,
 } from "@heroicons/react/20/solid";
 import { ArrowLeftCircleIcon, ChartBarIcon } from "@heroicons/react/24/outline";
 import React from "react";
@@ -17,6 +18,11 @@ const DashboardSidebar = ({ isCollapsed, toggleSidebar }) => {
     { name: "Products", icon: HomeIcon, path: "/dashboard" },
     { name: "Projects", icon: HomeIcon, path: "/admin/add-projects" },
     { name: "Company", icon: CogIcon, path: "/dashboard/create-company" },
+    {
+      name: "Social Media",
+      icon: ChatBubbleBottomCenterTextIcon,
+      path: "/dashboard/social-profile-settings",
+    },
   ];
 
   return (
@@ -38,7 +44,7 @@ const DashboardSidebar = ({ isCollapsed, toggleSidebar }) => {
           {sidebarItems.map((item, index) => (
             <Link
               key={index}
-              href={item.path}
+              to={item.path}
               className="flex items-center p-2 space-x-2 rounded-md hover:bg-gray-700"
             >
               <item.icon className="w-6 h-6" />

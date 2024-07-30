@@ -56,10 +56,6 @@ export const StepOne = ({ register, watch, setValue, errors }) => {
 
   return (
     <div>
-    <div className="flex justify-center">
-      <SiteLogo className={'w-56'}/>
-    </div>
-      <h2 className="text-2xl font-bold my-4">My Company</h2>
       <div className="text-left flex flex-wrap">
         {options.map((option, index) => (
           <div key={index} className="w-1/3 mb-2 flex items-center">

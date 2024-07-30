@@ -12,6 +12,7 @@ import { Signin } from "./Pages/Signin";
 import { Signup } from "./Pages/Signup";
 import { UserProfile } from "./Pages/User Profile";
 import DashboardCreateCompany from "./Pages/Dashboard/Create Company";
+import { UserSocialMediaSettings } from "./Pages/Dashboard/Social Media";
 
 export const routes = [
   {
@@ -82,6 +83,11 @@ export const routes = [
   {
     path: "/dashboard/create-company",
     component: DashboardCreateCompany,
+    exact: true,
+  },  
+  {
+    path: "/dashboard/social-profile-settings",
+    component: UserSocialMediaSettings,
     exact: true,
   }
 ];
