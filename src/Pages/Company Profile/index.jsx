@@ -52,7 +52,7 @@ export const CompanyProfile = () => {
   return (
     <Layout>
       <div
-        className="relative h-[75vh] bg-cover bg-center -mt-[6.5rem]"
+        className="relative h-[65vh] bg-cover bg-center -mt-[6.5rem]"
         style={{
           backgroundImage: `url(${BannerImage})`,
           backgroundRepeat: "no-repeat",
@@ -232,7 +232,7 @@ export const CompanyProfile = () => {
               </button>
             </div>
             <div className="flex justify-center mt-3">
-              <Link to={'/dashboard/create-company'} className="flex gap-2 justify-center items-center bg-theme-color text-black font-bold w-40 h-12 text-center rounded">
+              <Link to={'/dashboard'} className="flex gap-2 justify-center items-center bg-theme-color text-black font-bold w-40 h-12 text-center rounded">
                 Edit Details <PencilIcon className="w-4" />
               </Link>
             </div>

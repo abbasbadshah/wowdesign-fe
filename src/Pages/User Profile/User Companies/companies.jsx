@@ -4,7 +4,7 @@ import spotify from "../../../assets/images/User Profile/companies/spotify.png";
 export const UserCompanies = () => {
   return (
     <div className="relative p-6 bg-white rounded-md shadow h-fit">
-      <h5 className="text-xl font-semibold">Companies :</h5>
+      <h5 className="text-xl font-semibold">Social Profile :</h5>
 
       <div className="flex items-center p-4 mt-6 duration-500 ease-in-out bg-white rounded-md shadow-md hover:scale-105 hover:shadow-md">
         <img
@@ -13,12 +13,11 @@ export const UserCompanies = () => {
           alt=""
         />
         <div className="flex-1 content ms-4">
-          <h4 className="text-lg text-medium">Foster + Partners</h4>
+          <h4 className="text-lg text-medium">Instagram</h4>
           <p className="mb-0 text-slate-400">
             <a href="" className="text-theme-color">
-              Architecture and Interior Design
-            </a>{" "}
-            @London, UK
+              @company-name
+            </a>
           </p>
         </div>
       </div>
@@ -30,12 +29,11 @@ export const UserCompanies = () => {
           alt=""
         />
         <div className="flex-1 content ms-4">
-          <h4 className="text-lg text-medium">Zaha Hadid Architects</h4>
+          <h4 className="text-lg text-medium">facebook</h4>
           <p className="mb-0 text-slate-400">
             <a href="" className="text-theme-color">
-              Architecture and Interior Design
-            </a>{" "}
-            @Dubai United Arab Emirates
+              fb/company-name
+            </a>
           </p>
         </div>
       </div>
@@ -47,12 +45,11 @@ export const UserCompanies = () => {
           alt=""
         />
         <div className="flex-1 content ms-4">
-          <h4 className="text-lg text-medium">Herman Miller</h4>
+          <h4 className="text-lg text-medium">Shopify</h4>
           <p className="mb-0 text-slate-400">
             <a href="" className="text-theme-color">
-              Manufacturing (Furniture and Interior Products)
-            </a>{" "}
-            @Perth, Australia
+              shopify/name
+            </a>
           </p>
         </div>
       </div>

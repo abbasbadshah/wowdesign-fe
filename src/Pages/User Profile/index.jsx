@@ -14,6 +14,7 @@ import { useState } from "react";
 import { UserProfileSettings } from "./Profile Settings/settings";
 import { SocialProfiles } from "./User Social Profiles/social";
 import { Layout } from "../../components/layout/layout";
+import { Link } from "react-router-dom";
 export const UserProfile = () => {
   const [activeSection, setActiveSection] = useState("profile");
 
@@ -48,36 +49,36 @@ export const UserProfile = () => {
           <div className="grid grid-cols-1 md:grid-cols-12">
             <div className="mx-6 xl:col-span-3 lg:col-span-4 md:col-span-4">
               <div className="relative p-6 -mt-48 bg-white rounded-md shadow">
-              <div className="mb-5 text-center profile-pic">
-              <input
-                id="pro-img"
-                name="profile-image"
-                type="file"
-                className="hidden"
-                onChange="loadFile(event)"
-              />
-              <div className="flex flex-col items-center">
-                <div className="relative">
-                  <div className="w-[200px] h-[200px] overflow-hidden rounded-full">
-                    <img
-                      src={UserProfileImage}
-                      className="object-cover w-full h-full shadow"
-                      id="profile-image"
-                      alt="User Profile"
-                    />
+                <div className="mb-5 text-center profile-pic">
+                  <input
+                    id="pro-img"
+                    name="profile-image"
+                    type="file"
+                    className="hidden"
+                    onChange="loadFile(event)"
+                  />
+                  <div className="flex flex-col items-center">
+                    <div className="relative">
+                      <div className="w-[200px] h-[200px] overflow-hidden rounded-full">
+                        <img
+                          src={UserProfileImage}
+                          className="object-cover w-full h-full shadow"
+                          id="profile-image"
+                          alt="User Profile"
+                        />
+                      </div>
+                      <label
+                        className="absolute inset-0 cursor-pointer"
+                        htmlFor="pro-img"
+                      ></label>
+                    </div>
+
+                    <div className="mt-4">
+                      <h5 className="text-lg font-semibold">Cristina Murfy</h5>
+                      <p className="text-black">cristina@hotmail.com</p>
+                    </div>
                   </div>
-                  <label
-                    className="absolute inset-0 cursor-pointer"
-                    htmlFor="pro-img"
-                  ></label>
                 </div>
-            
-                <div className="mt-4">
-                  <h5 className="text-lg font-semibold">Cristina Murfy</h5>
-                  <p className="text-black">cristina@hotmail.com</p>
-                </div>
-              </div>
-            </div>
 
                 <div className="border-t border-gray-100">
                   <ul
@@ -98,21 +99,8 @@ export const UserProfile = () => {
                     </li>
 
                     <li className="navbar-item account-menu">
-                      <a
-                        href="#"
-                        className="flex items-center py-2 text-black rounded navbar-link"
-                        onClick={() => setActiveSection("social")}
-                      >
-                        <span className="me-2 text-[18px] mb-0">
-                          <DevicePhoneMobileIcon className="w-6 text-theme-color" />
-                        </span>
-                        <h6 className="mb-0 font-semibold">Social Profile</h6>
-                      </a>
-                    </li>
-
-                    <li className="navbar-item account-menu">
-                      <a
-                        href="#"
+                      <Link
+                        to="/dashboard"
                         className="flex items-center py-2 text-black rounded navbar-link"
                         onClick={() => setActiveSection("settings")}
                       >
@@ -120,45 +108,19 @@ export const UserProfile = () => {
                           <Cog6ToothIcon className="w-6 text-theme-color" />
                         </span>
                         <h6 className="mb-0 font-semibold">Profile Settings</h6>
-                      </a>
+                      </Link>
                     </li>
 
                     <li className="navbar-item account-menu">
-                      <a
-                        href="#"
-                        className="flex items-center py-2 text-black rounded navbar-link"
-                        onClick={() => setActiveSection("settings")}
-                      >
-                        <span className="me-2 text-[18px] mb-0">
-                          <ClipboardDocumentCheckIcon className="w-6 text-theme-color" />
-                        </span>
-                        <h6 className="mb-0 font-semibold">Add Projects</h6>
-                      </a>
-                    </li>
-
-                    <li className="navbar-item account-menu">
-                      <a
-                        href="#"
-                        className="flex items-center py-2 text-black rounded navbar-link"
-                        onClick={() => setActiveSection("settings")}
-                      >
-                        <span className="me-2 text-[18px] mb-0">
-                          <PlusCircleIcon className="w-6 text-theme-color" />
-                        </span>
-                        <h6 className="mb-0 font-semibold">Add Products</h6>
-                      </a>
-                    </li>
-
-                    <li className="navbar-item account-menu">
-                      <a
-                        href="auth-lock-screen.html"
+                      <Link
+                        to="/sign-in"
                         className="flex items-center py-2 text-black rounded navbar-link"
                       >
                         <span className="me-2 text-[18px] mb-0">
                           <ArrowLeftEndOnRectangleIcon className="w-6 text-theme-color" />
                         </span>
                         <h6 className="mb-0 font-semibold">Sign Out</h6>
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
