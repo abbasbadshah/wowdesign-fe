@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { StepOne } from "./StepOne/stepOne";
 import { StepTwo } from "./StepTwo/stepTwo";
-import { StepThree } from "./StepThree/stepThree";
 import {
   FadingBackground,
   Popup,
@@ -21,20 +20,12 @@ import { Helmet } from "react-helmet";
 const backgroundImages = [bgImage1, bgImage2, bgImage3, bgImage4, bgImage5];
 
 const pageVariants = {
-  initial: {
-    opacity: 0,
-    y: 20,
-    scale: 0.95,
-  },
+  initial: { opacity: 0, y: 20, scale: 0.95 },
   animate: {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: {
-      type: "spring",
-      stiffness: 100,
-      damping: 20,
-    },
+    transition: { type: "spring", stiffness: 100, damping: 20 },
   },
   exit: {
     opacity: 0,
@@ -44,11 +35,7 @@ const pageVariants = {
   },
 };
 
-const stepTitles = [
-  "Choose Options",
-  "Company Details",
-  "Business Information",
-];
+const stepTitles = ["Choose Options", "Company Details"];
 
 export const CreateCompany = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -88,12 +75,6 @@ export const CreateCompany = () => {
         return await trigger(["options"]);
       case 1:
         return await trigger(["companyName", "description"]);
-      case 2:
-        return await trigger([
-          "businessType",
-          "employeeCount",
-          "annualRevenue",
-        ]);
       default:
         return false;
     }
@@ -102,9 +83,9 @@ export const CreateCompany = () => {
   const nextStep = async (event) => {
     event.preventDefault();
     const isValid = await validateStep(step);
-    if (isValid && step < 2) {
+    if (isValid && step < 1) {
       setStep(step + 1);
-    } else if (isValid && step === 2) {
+    } else if (isValid && step === 1) {
       handleSubmit(onSubmit)();
     } else {
       console.log("Either not valid or last step reached.");
@@ -214,17 +195,6 @@ export const CreateCompany = () => {
                       />
                     </motion.div>
                   )}
-                  {step === 2 && (
-                    <motion.div
-                      key="step2"
-                      variants={pageVariants}
-                      initial="initial"
-                      animate="animate"
-                      exit="exit"
-                    >
-                      <StepThree register={register} errors={errors} />
-                    </motion.div>
-                  )}
                 </AnimatePresence>
               </form>
             ) : (
@@ -276,7 +246,7 @@ export const CreateCompany = () => {
                   Back
                 </button>
                 <ul className="flex gap-1 items-center">
-                  {[0, 1, 2].map((index) => (
+                  {[0, 1].map((index) => (
                     <li
                       key={index}
                       className={`w-2 h-2 rounded-full ${
@@ -289,7 +259,7 @@ export const CreateCompany = () => {
                   onClick={nextStep}
                   className="flex items-center gap-1.5 border-none text-base font-medium py-2.5 text-gray-700 transition-all duration-300 hover:text-theme-color"
                 >
-                  {step === 2 ? "Submit" : "Next"}
+                  {step === 1 ? "Submit" : "Next"}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="22"

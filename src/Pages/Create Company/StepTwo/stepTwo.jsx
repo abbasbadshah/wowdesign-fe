@@ -61,10 +61,9 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
   };
 
   return (
-    <div className="mr-2">
-      <h2 className="text-2xl font-bold mb-4">Company Profile</h2>
-      <div className="mb-4 flex justify-start gap-10">
-        <div className="flex flex-row-reverse items-center justify-start gap-5">
+    <div className="px-4 sm:px-6 lg:px-8">
+      <div className="mb-4 flex flex-col md:flex-row justify-start gap-10">
+        <div className="flex flex-col md:flex-row-reverse items-center justify-start gap-5">
           <div className="flex flex-col gap-5">
             <label
               className="block mb-2 font-medium text-sm text-left"
@@ -79,23 +78,23 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
           </div>
           <div
             {...getRootProps()}
-            className="w-96 h-48 border-2 border-dashed rounded flex items-center justify-center cursor-pointer"
+            className="w-full md:w-96 h-48 border-2 border-dashed rounded flex items-center justify-center cursor-pointer"
           >
             <Input {...getInputProps()} id="bannerPhoto" />
             {preview ? (
               <img
                 src={preview}
                 alt="Preview"
-                className="w-full h-full object-cover rounded-full"
+                className="w-full h-full object-cover rounded"
               />
             ) : (
               <div className="text-center">
-                <p>Upload Profile Image</p>
+                <p>Upload Banner Image</p>
               </div>
             )}
           </div>
         </div>
-        <div className="flex flex-row-reverse items-center justify-start gap-5">
+        <div className="flex flex-col md:flex-row-reverse items-center justify-start gap-5 mt-4 md:mt-0">
           <div className="flex flex-col gap-5">
             <label
               className="block mb-2 font-medium text-sm text-left"
@@ -127,8 +126,8 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col md:flex-row gap-5">
-        <div className="w-full md:w-1/2">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div>
           <label
             className="font-medium text-sm text-left block mb-2"
             htmlFor="companyName"
@@ -150,7 +149,7 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
             </span>
           )}
         </div>
-        <div className="w-full md:w-1/2">
+        <div>
           <label
             className="font-medium text-sm text-left block mb-2"
             htmlFor="companyType"
@@ -174,10 +173,7 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
             </span>
           )}
         </div>
-      </div>
-
-      <div className="flex flex-col md:flex-row gap-5 mt-4">
-        <div className="w-full md:w-1/2">
+        <div>
           <label
             className="font-medium text-sm text-left block mb-2"
             htmlFor="companyPhoneNumber"
@@ -199,7 +195,7 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
             </span>
           )}
         </div>
-        <div className="w-full md:w-1/2">
+        <div>
           <label
             className="font-medium text-sm text-left block mb-2"
             htmlFor="companyEmail"
@@ -221,10 +217,7 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
             </span>
           )}
         </div>
-      </div>
-
-      <div className="flex flex-col md:flex-row gap-5 mt-4">
-        <div className="w-full md:w-1/2">
+        <div>
           <label
             className="font-medium text-sm text-left block mb-2"
             htmlFor="country"
@@ -233,9 +226,7 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
           </label>
           <select
             id="country"
-            {...register("country", {
-              required: "Please select your country",
-            })}
+            {...register("country", { required: "Please select your country" })}
             className="w-full border rounded-lg p-2"
             onChange={handleCountryChange}
             value={selectedCountry}
@@ -253,7 +244,7 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
             </span>
           )}
         </div>
-        <div className="w-full md:w-1/2">
+        <div>
           <label
             className="font-medium text-sm text-left block mb-2"
             htmlFor="city"
@@ -264,9 +255,7 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
             <Input
               type="text"
               id="city"
-              {...register("city", {
-                required: "City is required",
-              })}
+              {...register("city", { required: "City is required" })}
               value={cityInput}
               onChange={handleCityInputChange}
               placeholder="Enter city name"
@@ -290,32 +279,31 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
             <span className="text-red-500 text-sm">{errors.city.message}</span>
           )}
         </div>
-      </div>
-
-      <div className="mt-4">
-        <label
-          className="font-medium text-sm text-left block mb-2"
-          htmlFor="description"
-        >
-          Company Description
-        </label>
-        <Textarea
-          id="description"
-          {...register("description", {
-            required: "Company description is required",
-            minLength: {
-              value: 50,
-              message: "Description must be at least 50 characters long",
-            },
-          })}
-          className="w-full border rounded-lg p-2 min-h-[100px] resize-y"
-          placeholder="Enter your company description here..."
-        />
-        {errors.description && (
-          <span className="text-red-500 text-sm">
-            {errors.description.message}
-          </span>
-        )}
+        <div className="md:col-span-2">
+          <label
+            className="font-medium text-sm text-left block mb-2"
+            htmlFor="description"
+          >
+            Company Description
+          </label>
+          <Textarea
+            id="description"
+            {...register("description", {
+              required: "Company description is required",
+              minLength: {
+                value: 50,
+                message: "Description must be at least 50 characters long",
+              },
+            })}
+            className="w-full border rounded-lg p-2 min-h-[100px] resize-y"
+            placeholder="Enter your company description here..."
+          />
+          {errors.description && (
+            <span className="text-red-500 text-sm">
+              {errors.description.message}
+            </span>
+          )}
+        </div>
       </div>
 
       <div className="mt-8">
@@ -355,6 +343,82 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
           referrerPolicy="no-referrer-when-downgrade"
           title="Google Maps - Noorani Nagar, Indore"
         />
+      </div>
+
+      <div className="mt-8">
+        <h3 className="text-xl font-bold mb-4 text-left">Business Details</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div>
+            <label
+              className="font-medium text-sm text-left block mb-2"
+              htmlFor="businessType"
+            >
+              Business Type
+            </label>
+            <select
+              id="businessType"
+              {...register("businessType", {
+                required: "Business type is required",
+              })}
+              className="w-full border rounded-lg p-2"
+            >
+              <option value="">Select business type</option>
+              <option value="sole_proprietorship">Sole Proprietorship</option>
+              <option value="partnership">Partnership</option>
+              <option value="corporation">Corporation</option>
+              <option value="llc">LLC</option>
+            </select>
+            {errors.businessType && (
+              <p className="text-red-500 text-sm">
+                {errors.businessType.message}
+              </p>
+            )}
+          </div>
+          <div>
+            <label
+              className="font-medium text-sm text-left block mb-2"
+              htmlFor="employeeCount"
+            >
+              Number of Employees
+            </label>
+            <Input
+              type="number"
+              id="employeeCount"
+              {...register("employeeCount", {
+                required: "Employee count is required",
+                min: 1,
+              })}
+              className="w-full border rounded-lg p-2"
+            />
+            {errors.employeeCount && (
+              <p className="text-red-500 text-sm">
+                {errors.employeeCount.message}
+              </p>
+            )}
+          </div>
+          <div>
+            <label
+              className="font-medium text-sm text-left block mb-2"
+              htmlFor="annualRevenue"
+            >
+              Annual Revenue
+            </label>
+            <Input
+              type="number"
+              id="annualRevenue"
+              {...register("annualRevenue", {
+                required: "Annual revenue is required",
+                min: 0,
+              })}
+              className="w-full border rounded-lg p-2"
+            />
+            {errors.annualRevenue && (
+              <p className="text-red-500 text-sm">
+                {errors.annualRevenue.message}
+              </p>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );
