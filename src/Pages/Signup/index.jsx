@@ -16,12 +16,14 @@ import { GlobeAltIcon } from "@heroicons/react/24/outline";
 import { Helmet } from "react-helmet";
 import { useEffect, useState } from "react";
 const backgroundImages = [bgImage1, bgImage2, bgImage3, bgImage4, bgImage5];
+
 export const Signup = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const navigate = useNavigate();
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm();
 
@@ -40,6 +42,9 @@ export const Signup = () => {
     }
     return () => clearTimeout(timer);
   }, [isPopupOpen, navigate]);
+
+  const password = watch("password");
+
   return (
     <section className="px-6 lg:px-0 h-screen flex items-center justify-center bg-no-repeat inset-0 bg-cover">
       <Helmet>
@@ -59,7 +64,6 @@ export const Signup = () => {
                     registering your company and get wow benifits.
                   </p>
                 </div>
-
                 <div>
                   <div className="bg-[#DA9B58] rounded-lg p-5">
                     <p className="text-gray-200 text-sm font-normal leading mb-4">
@@ -132,9 +136,9 @@ export const Signup = () => {
                     type="text"
                     id="lastName"
                     {...register("lastName", {
-                      required: "First Name is required",
+                      required: "Last Name is required",
                     })}
-                    placeholder="John"
+                    placeholder="Doe"
                     className="w-full border rounded-lg data-[hover]:shadow data-[focus]:bg-blue-100"
                   />
                   {errors.lastName && (
@@ -201,6 +205,31 @@ export const Signup = () => {
                 <div>
                   <label
                     className="font-medium text-sm text-left block mb-2"
+                    htmlFor="confirmPassword"
+                  >
+                    Confirm Password
+                  </label>
+                  <Input
+                    type="password"
+                    id="confirmPassword"
+                    {...register("confirmPassword", {
+                      required: "Confirm Password is required",
+                      validate: (value) =>
+                        value === password || "Passwords do not match",
+                    })}
+                    placeholder="xxxxxxxxx"
+                    className="w-full border rounded-lg data-[hover]:shadow data-[focus]:bg-blue-100"
+                  />
+                  {errors.confirmPassword && (
+                    <span className="text-red-500 text-sm">
+                      {errors.confirmPassword.message}
+                    </span>
+                  )}
+                </div>
+
+                <div>
+                  <label
+                    className="font-medium text-sm text-left block mb-2"
                     htmlFor="role"
                   >
                     I am a
@@ -225,6 +254,7 @@ export const Signup = () => {
                     </span>
                   )}
                 </div>
+
                 <div className="flex flex-wrap items-center justify-between gap-6 mt-8">
                   <button
                     type="submit"
@@ -235,7 +265,7 @@ export const Signup = () => {
                   <p className="text-sm font-medium text-gray-500">
                     <Link
                       to="/create-company"
-                      className="ms-2 underline font-bols text-black"
+                      className="ms-2 underline font-bold text-black"
                     >
                       registering your Company
                     </Link>

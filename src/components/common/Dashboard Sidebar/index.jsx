@@ -15,6 +15,7 @@ import { Link } from "react-router-dom";
 const DashboardSidebar = ({ isCollapsed, toggleSidebar }) => {
   const sidebarItems = [
     { name: "Dashboard", icon: UserIcon, path: "/dashboard" },
+    { name: "Profile Setting", icon: UserIcon, path: "//dashboard/profile-settings" },
     { name: "Products", icon: HomeIcon, path: "/add-products" },
     { name: "Projects", icon: HomeIcon, path: "/admin/add-projects" },
     { name: "Company", icon: CogIcon, path: "/dashboard/create-company" },

@@ -62,70 +62,6 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
 
   return (
     <div className="px-4 sm:px-6 lg:px-8">
-      <div className="mb-4 flex flex-col md:flex-row justify-start gap-10">
-        <div className="flex flex-col md:flex-row-reverse items-center justify-start gap-5">
-          <div className="flex flex-col gap-5">
-            <label
-              className="block mb-2 font-medium text-sm text-left"
-              htmlFor="bannerPhoto"
-            >
-              Banner Photo
-            </label>
-            <p className="font-medium text-sm text-left">
-              We recommend an image <br />
-              of at least 1920x1080
-            </p>
-          </div>
-          <div
-            {...getRootProps()}
-            className="w-full md:w-96 h-48 border-2 border-dashed rounded flex items-center justify-center cursor-pointer"
-          >
-            <Input {...getInputProps()} id="bannerPhoto" />
-            {preview ? (
-              <img
-                src={preview}
-                alt="Preview"
-                className="w-full h-full object-cover rounded"
-              />
-            ) : (
-              <div className="text-center">
-                <p>Upload Banner Image</p>
-              </div>
-            )}
-          </div>
-        </div>
-        <div className="flex flex-col md:flex-row-reverse items-center justify-start gap-5 mt-4 md:mt-0">
-          <div className="flex flex-col gap-5">
-            <label
-              className="block mb-2 font-medium text-sm text-left"
-              htmlFor="profilePhoto"
-            >
-              Upload Logo
-            </label>
-            <p className="font-medium text-sm text-left">
-              We recommend an image <br />
-              of at least 200x200
-            </p>
-          </div>
-          <div
-            {...getRootProps()}
-            className="w-48 h-48 border-2 border-dashed rounded-full flex items-center justify-center cursor-pointer"
-          >
-            <Input {...getInputProps()} id="profilePhoto" />
-            {preview ? (
-              <img
-                src={preview}
-                alt="Preview"
-                className="w-full h-full object-cover rounded-full"
-              />
-            ) : (
-              <div className="text-center">
-                <p>Upload Profile Image</p>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
           <label
@@ -417,6 +353,73 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
                 {errors.annualRevenue.message}
               </p>
             )}
+          </div>
+        </div>
+      </div>
+      <div className="mt-8">
+        <h3 className="text-xl font-bold mb-4 text-left">Media</h3>
+        <div className="mb-4 flex flex-col md:flex-row justify-start gap-10">
+          <div className="flex flex-col md:flex-row-reverse items-center justify-start gap-5">
+            <div className="flex flex-col gap-5">
+              <label
+                className="block mb-2 font-medium text-sm text-left"
+                htmlFor="bannerPhoto"
+              >
+                Banner Photo
+              </label>
+              <p className="font-medium text-sm text-left">
+                We recommend an image <br />
+                of at least 1920x1080
+              </p>
+            </div>
+            <div
+              {...getRootProps()}
+              className="w-full md:w-96 h-48 border-2 border-dashed rounded flex items-center justify-center cursor-pointer"
+            >
+              <Input {...getInputProps()} id="bannerPhoto" />
+              {preview ? (
+                <img
+                  src={preview}
+                  alt="Preview"
+                  className="w-full h-full object-cover rounded"
+                />
+              ) : (
+                <div className="text-center">
+                  <p>Upload Banner Image</p>
+                </div>
+              )}
+            </div>
+          </div>
+          <div className="flex flex-col md:flex-row-reverse items-center justify-start gap-5 mt-4 md:mt-0">
+            <div className="flex flex-col gap-5">
+              <label
+                className="block mb-2 font-medium text-sm text-left"
+                htmlFor="profilePhoto"
+              >
+                Upload Logo
+              </label>
+              <p className="font-medium text-sm text-left">
+                We recommend an image <br />
+                of at least 200x200
+              </p>
+            </div>
+            <div
+              {...getRootProps()}
+              className="w-48 h-48 border-2 border-dashed rounded-full flex items-center justify-center cursor-pointer"
+            >
+              <Input {...getInputProps()} id="profilePhoto" />
+              {preview ? (
+                <img
+                  src={preview}
+                  alt="Preview"
+                  className="w-full h-full object-cover rounded-full"
+                />
+              ) : (
+                <div className="text-center">
+                  <p>Upload Profile Image</p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

@@ -116,9 +116,9 @@ export const CreateCompany = () => {
                     href="#"
                     className={`flex items-center font-medium px-4 py-5 w-full rounded-lg ${
                       index === step
-                        ? "bg-[#FBF5EE]"
-                        : index < step
                         ? "bg-[#EFD8BD]"
+                        : index < step
+                        ? "bg-[#FBF5EE]"
                         : ""
                     }`}
                   >

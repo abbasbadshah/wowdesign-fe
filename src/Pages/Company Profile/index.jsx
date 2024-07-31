@@ -3,15 +3,12 @@ import { Layout } from "../../components/layout/layout";
 import BannerImage from "../../assets/images/Projects/hospitality.jpeg";
 import { CompanyProjects } from "./Company Projects/projects";
 import { CompanyProducts } from "./Company Products/products";
+import CompanyBrochure from "./Company Broucher";
 import HeroProjectImage from "../../assets/images/Projects/resdentials.jpg";
 import { Link } from "react-router-dom";
-import {
-  ArrowDownIcon,
-  PencilIcon,
-  PlayIcon,
-  ShareIcon,
-} from "@heroicons/react/24/outline";
+import { PencilIcon, PlayIcon, ShareIcon } from "@heroicons/react/24/outline";
 import CompanyLogo from "../../assets/images/Company/companylistingDummylogo.png";
+import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from "react-icons/fa";
 
 export const CompanyProfile = () => {
   const [activeTab, setActiveTab] = useState("Overview");
@@ -67,9 +64,8 @@ export const CompanyProfile = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
               Company Name
             </h1>
-            <button className="flex items-center gap-2 bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:px-8 lg:py-4 rounded-lg font-semibold">
-              View All Images
-              <ArrowDownIcon className="w-4" />
+            <button className="gap-2 bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:px-8 lg:py-4 rounded-lg font-semibold">
+              Enquire Now
             </button>
           </div>
         </div>
@@ -85,7 +81,7 @@ export const CompanyProfile = () => {
         >
           <div className="px-6 lg:px-24">
             <div className="flex justify-start space-x-8 py-4">
-              {["Overview", "Projects", "Products"].map((tab) => (
+              {["Overview", "Projects", "Products", "Brochure"].map((tab) => (
                 <button
                   key={tab}
                   className={`text-lg font-medium ${
@@ -183,6 +179,11 @@ export const CompanyProfile = () => {
               <CompanyProducts />
             </section>
           )}
+          {activeTab === "Brochure" && (
+            <section>
+              <CompanyBrochure />
+            </section>
+          )}
         </div>
         {/* Sidebar */}
         <div className="hidden w-full max-w-sm pb-11 lg:block xl:max-w-md 3xl:max-w-lg">
@@ -197,29 +198,50 @@ export const CompanyProfile = () => {
                   className="w-full object-cover rounded-full"
                 />
               </div>
-              <p className="flex items-center justify-between text-xs text-red">
-                <span />
-                <span />
-                <span />
-              </p>
+              <div className="flex justify-center space-x-4 mt-4">
+                <a
+                  href="#"
+                  className="text-gray-600 hover:text-blue-600 transition-colors"
+                >
+                  <FaFacebook className="w-6 h-6" />
+                </a>
+                <a
+                  href="#"
+                  className="text-gray-600 hover:text-blue-400 transition-colors"
+                >
+                  <FaTwitter className="w-6 h-6" />
+                </a>
+                <a
+                  href="#"
+                  className="text-gray-600 hover:text-blue-700 transition-colors"
+                >
+                  <FaLinkedin className="w-6 h-6" />
+                </a>
+                <a
+                  href="#"
+                  className="text-gray-600 hover:text-pink-600 transition-colors"
+                >
+                  <FaInstagram className="w-6 h-6" />
+                </a>
+              </div>
               <ul className="mt-3 xl:mt-5">
-                <li className="flex items-center justify-between py-1.5 text-base capitalize text-gray-dark first:pt-0 last:border-t last:border-gray-lighter last:pb-0">
+                <li className="flex items-center justify-between py-1.5 text-lg capitalize text-gray-dark first:pt-0 last:border-t last:border-gray-lighter last:pb-0">
                   <span className="font-normal">Total Products</span>
                   <span className="font-bold">164</span>
                 </li>
-                <li className="flex items-center justify-between py-1.5 text-base capitalize text-gray-dark first:pt-0 last:border-t last:border-gray-lighter last:pb-0">
+                <li className="flex items-center justify-between py-1.5 text-lg capitalize text-gray-dark first:pt-0 last:border-t last:border-gray-lighter last:pb-0">
                   <span className="font-normal">Total Projects</span>
                   <span className="font-bold text-red">45</span>
                 </li>
-                <li className="flex items-center justify-between py-1.5 text-base capitalize text-gray-dark first:pt-0 last:border-t last:border-gray-lighter last:pb-0">
+                <li className="flex items-center justify-between py-1.5 text-lg capitalize text-gray-dark first:pt-0 last:border-t last:border-gray-lighter last:pb-0">
                   <span className="font-normal">Location </span>
                   <span className="font-bold">Dubai, UAE</span>
                 </li>
-                <li className="flex items-center justify-between py-1.5 text-base capitalize text-gray-dark first:pt-0 last:border-t last:border-gray-lighter last:pb-0">
+                <li className="flex items-center justify-between py-1.5 text-lg capitalize text-gray-dark first:pt-0 last:border-t last:border-gray-lighter last:pb-0">
                   <span className="font-normal">Category</span>
                   <span className="font-bold">Commercials</span>
                 </li>
-                <li className="flex items-center justify-between py-1.5 text-base capitalize text-gray-dark first:pt-0 last:border-t last:border-gray-lighter last:pb-0">
+                <li className="flex items-center justify-between py-1.5 text-lg capitalize text-gray-dark first:pt-0 last:border-t last:border-gray-lighter last:pb-0">
                   <span className="font-normal">Year of Establishment</span>
                   <span className="font-bold">2017</span>
                 </li>
@@ -227,13 +249,16 @@ export const CompanyProfile = () => {
             </div>
             <div className="mt-4 w-full text-center 4xl:mt-8"></div>
             <div className="flex justify-center mt-3">
-              <button className="flex gap-2 justify-center items-center bg-theme-color text-black font-bold w-40 h-12 text-center rounded">
+              <button className="flex gap-2 justify-center items-center bg-theme-color text-black font-bold w-48 h-12 text-center rounded">
                 Share <ShareIcon className="w-4" />
               </button>
             </div>
             <div className="flex justify-center mt-3">
-              <Link to={'/dashboard'} className="flex gap-2 justify-center items-center bg-theme-color text-black font-bold w-40 h-12 text-center rounded">
-                Edit Details <PencilIcon className="w-4" />
+              <Link
+                to={"/dashboard"}
+                className="flex gap-2 justify-center items-center bg-theme-color text-black font-bold w-48 h-12 text-center rounded"
+              >
+                Submit Projects <PencilIcon className="w-4" />
               </Link>
             </div>
           </div>

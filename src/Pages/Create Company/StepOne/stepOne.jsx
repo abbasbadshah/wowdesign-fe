@@ -44,6 +44,7 @@ export const StepOne = ({ register, watch, setValue, errors }) => {
     "Signage",
     "Technical Services and Installers",
     "Ceilings and Partition Installers",
+    "Others"
   ];
 
   const handleCheckboxChange = (option) => {

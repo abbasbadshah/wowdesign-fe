@@ -298,27 +298,29 @@ export const CompanyBrowsing = () => {
 
   const renderCompanyCard = (company) => (
     <div key={company.name} className="text-center bg-white rounded shadow">
-      <img src={BGImage} alt="" />
-      <img
-        src={company.logo}
-        alt="company logo"
-        className="object-cover mx-auto rounded shadow-md w-28 h-28 -mt-14"
-      />
-      <div className="p-7">
-        <h3 className="mb-2 text-xl font-bold">{company.name}</h3>
-        <span className="flex items-center justify-center gap-2 mt-4">
-          <BuildingOffice2Icon className="w-6 text-black" />
-          <p>{company.category}</p>
-        </span>
-        <span className="flex items-center justify-center gap-2 mt-4">
-          <MapIcon className="w-6 text-black" />
-          <p>{company.location}</p>
-        </span>
-        <span className="flex items-center justify-center gap-2 mt-4">
-          <DocumentDuplicateIcon className="w-6 text-black" />
-          <p>{company.projects} Projects</p>
-        </span>
-      </div>
+      <Link to={"/company-profile"}>
+        <img src={BGImage} alt="" />
+        <img
+          src={company.logo}
+          alt="company logo"
+          className="object-cover mx-auto rounded shadow-md w-28 h-28 -mt-14"
+        />
+        <div className="p-7">
+          <h3 className="mb-2 text-xl font-bold">{company.name}</h3>
+          <span className="flex items-center justify-center gap-2 mt-4">
+            <BuildingOffice2Icon className="w-6 text-black" />
+            <p>{company.category}</p>
+          </span>
+          <span className="flex items-center justify-center gap-2 mt-4">
+            <MapIcon className="w-6 text-black" />
+            <p>{company.location}</p>
+          </span>
+          <span className="flex items-center justify-center gap-2 mt-4">
+            <DocumentDuplicateIcon className="w-6 text-black" />
+            <p>{company.projects} Projects</p>
+          </span>
+        </div>
+      </Link>
     </div>
   );
 

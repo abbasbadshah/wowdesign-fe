@@ -14,6 +14,7 @@ import { UserProfile } from "./Pages/User Profile";
 import DashboardCreateCompany from "./Pages/Dashboard/Create Company";
 import { UserSocialMediaSettings } from "./Pages/Dashboard/Social Media";
 import { DashboardProfile } from "./Pages/Dashboard/Profile";
+import { IndividualDetailFillup } from "./Pages/Dashboard/Individual Profile Settings";
 
 export const routes = [
   {
@@ -89,6 +90,11 @@ export const routes = [
   {
     path: "/dashboard/social-profile-settings",
     component: UserSocialMediaSettings,
+    exact: true,
+  },  
+  {
+    path: "/dashboard/profile-settings",
+    component: IndividualDetailFillup,
     exact: true,
   },  
   {
