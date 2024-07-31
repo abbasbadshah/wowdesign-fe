@@ -2,50 +2,53 @@ import React, { useState } from "react";
 
 export const AboutSectionFive = () => {
   return (
-    <section className="relative z-20 overflow-hidden bg-white pb-12 pt-20 lg:pb-[90px] lg:pt-[120px]">
-      <div className="container mx-auto">
-        <div className="flex flex-wrap -mx-4">
-          <div className="w-full px-4">
-            <div class="text-center mb-[70px]">
-              <h2 class="font-bold  mx-auto text-[35px] leading-[44px] md:text-[46px] md:leading-[52px] lg:text-heading-1 text-gray-900 mb-5 md:mb-[30px] md:w-[19ch]">
+    <section classname="relative z-20 overflow-hidden bg-white pb-12 pt-20 lg:pb-[90px] lg:pt-[120px]">
+      <div classname="container mx-auto">
+        <div classname="flex flex-wrap -mx-4">
+          <div classname="w-full px-4">
+            <div className="text-center mb-[70px]">
+              <h2 className="font-bold  mx-auto text-[35px] leading-[44px] md:text-[46px] md:leading-[52px] lg:text-heading-1 text-gray-900 mb-5 md:mb-[30px] md:w-[19ch]">
                 FAQ's
               </h2>
-              <p class="text-quote md:text-lead-lg text-gray-600 mx-auto md:w-[63ch]">
+              <p className="text-quote md:text-lead-lg text-gray-600 mx-auto md:w-[63ch]">
                 Developers are trusted to create an engaging experience for
                 their companies, so we build tools to help them.
               </p>
             </div>
           </div>
         </div>
-
-        <div className="flex flex-wrap -mx-4">
-          <div className="w-full px-4 lg:w-1/2">
+        <div classname="flex flex-wrap -mx-4">
+          <div classname="w-full px-4 lg:w-1/2">
             <AccordionItem
               header="How long we deliver your first blog post?"
               text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
-            />
-            <AccordionItem
-              header="How long we deliver your first blog post?"
-              text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
-            />
-            <AccordionItem
-              header="How long we deliver your first blog post?"
-              text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
-            />
+            >
+              <AccordionItem
+                header="How long we deliver your first blog post?"
+                text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
+              >
+                <AccordionItem
+                  header="How long we deliver your first blog post?"
+                  text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
+                ></AccordionItem>
+              </AccordionItem>
+            </AccordionItem>
           </div>
-          <div className="w-full px-4 lg:w-1/2">
+          <div classname="w-full px-4 lg:w-1/2">
             <AccordionItem
               header="How long we deliver your first blog post?"
               text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
-            />
-            <AccordionItem
-              header="How long we deliver your first blog post?"
-              text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
-            />
-            <AccordionItem
-              header="How long we deliver your first blog post?"
-              text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
-            />
+            >
+              <AccordionItem
+                header="How long we deliver your first blog post?"
+                text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
+              >
+                <AccordionItem
+                  header="How long we deliver your first blog post?"
+                  text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
+                ></AccordionItem>
+              </AccordionItem>
+            </AccordionItem>
           </div>
         </div>
       </div>

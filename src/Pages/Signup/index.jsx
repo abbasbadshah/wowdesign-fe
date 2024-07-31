@@ -174,6 +174,33 @@ export const Signup = () => {
                 <div>
                   <label
                     className="font-medium text-sm text-left block mb-2"
+                    htmlFor="password"
+                  >
+                    Password
+                  </label>
+                  <Input
+                    type="password"
+                    id="password"
+                    {...register("password", {
+                      required: "Password is required",
+                      minLength: {
+                        value: 8,
+                        message: "Password must have at least 8 characters",
+                      },
+                    })}
+                    placeholder="xxxxxxxxx"
+                    className="w-full border rounded-lg data-[hover]:shadow data-[focus]:bg-blue-100"
+                  />
+                  {errors.password && (
+                    <span className="text-red-500 text-sm">
+                      {errors.password.message}
+                    </span>
+                  )}
+                </div>
+
+                <div>
+                  <label
+                    className="font-medium text-sm text-left block mb-2"
                     htmlFor="role"
                   >
                     I am a
