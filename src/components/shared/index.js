@@ -8,6 +8,7 @@ import NewsletterCTA from './Newsletter/newsletter';
 import Gallery from './Gallery/gallery';
 import { Popup } from './Popup/popup';
 import { Loader } from './Loader/loader';
+import { FileUpload } from './File Upload/fileupload';
 
 export {
     BreadcrumbComponent,
@@ -19,5 +20,6 @@ export {
     NewsletterCTA,
     Gallery,
     Popup,
-    Loader
+    Loader,
+    FileUpload
 }

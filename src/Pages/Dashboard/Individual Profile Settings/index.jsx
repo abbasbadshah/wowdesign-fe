@@ -1,16 +1,49 @@
+import React, { useState } from "react";
 import { Input, Select } from "@headlessui/react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { DashboardLayout } from "../../../components/layout/Dashboard Layout";
+import {
+  FileUpload,
+  Loader,
+  SiteLogo,
+  Popup,
+} from "../../../components/shared";
+
 export const IndividualDetailFillup = () => {
   const {
     register,
     handleSubmit,
+    control,
     watch,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+  const [isRedirecting, setIsRedirecting] = useState(false);
+
+  const onSubmit = async (data) => {
+    setIsSubmitting(true);
+    // Simulate API call
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    // Include file URLs in the console output
+    const formDataWithFiles = {
+      ...data,
+      bannerImage: data.bannerImage ? data.bannerImage.name : null,
+      profileImage: data.profileImage ? data.profileImage.name : null,
+    };
+    console.log(formDataWithFiles);
+    setIsSubmitting(false);
+    setShowSuccessPopup(true);
+  };
+
+  const handleViewProfile = () => {
+    setShowSuccessPopup(false);
+    setIsRedirecting(true);
+    setTimeout(() => {
+      console.log("Redirecting to profile...");
+      setIsRedirecting(false);
+    }, 2000);
   };
 
   const companyCount = watch("companyCount", "1");
@@ -23,182 +56,261 @@ export const IndividualDetailFillup = () => {
 
   return (
     <DashboardLayout>
-    <div className="max-w-[90rem] w-[85rem] max-h-[85vh] overflow-y-auto z-[99] p-10 bg-white shadow-md rounded text-left">
-      <h2 className="text-2xl font-semibold mb-6">Individual Profile Setting</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          <div>
-            <label className="block mb-2 text-sm font-medium" htmlFor="firstname">
-              First Name: <span className="text-red-600">*</span>
-            </label>
-            <Input
-              type="text"
-              id="firstname"
-              {...register("firstname", { required: "First name is required" })}
-              className="w-full border rounded-lg"
-            />
-            {errors.firstname && <span className="text-sm text-red-500">{errors.firstname.message}</span>}
-          </div>
-          <div>
-            <label className="block mb-2 text-sm font-medium" htmlFor="lastname">
-              Last Name: <span className="text-red-600">*</span>
-            </label>
-            <Input
-              type="text"
-              id="lastname"
-              {...register("lastname", { required: "Last name is required" })}
-              className="w-full border rounded-lg"
-            />
-            {errors.lastname && <span className="text-sm text-red-500">{errors.lastname.message}</span>}
-          </div>
-          <div>
-            <label className="block mb-2 text-sm font-medium" htmlFor="email">
-              Email: <span className="text-red-600">*</span>
-            </label>
-            <Input
-              type="email"
-              id="email"
-              {...register("email", {
-                required: "Email is required",
-                pattern: {
-                  value: /\S+@\S+\.\S+/,
-                  message: "Invalid email format",
-                },
-              })}
-              className="w-full border rounded-lg"
-            />
-            {errors.email && <span className="text-sm text-red-500">{errors.email.message}</span>}
-          </div>
-          <div>
-            <label className="block mb-2 text-sm font-medium" htmlFor="phoneNumber">
-              Phone Number:
-            </label>
-            <Input
-              type="tel"
-              id="phoneNumber"
-              {...register("phoneNumber")}
-              className="w-full border rounded-lg"
-            />
-          </div>
-          <div className="md:col-span-2">
-            <label className="block mb-2 text-sm font-medium" htmlFor="address">
-              Address:
-            </label>
-            <Input
-              type="text"
-              id="address"
-              {...register("address")}
-              className="w-full border rounded-lg"
-            />
-          </div>
-          <div>
-            <label className="block mb-2 text-sm font-medium" htmlFor="country">
-              Country:
-            </label>
-            <Input
-              type="text"
-              id="country"
-              {...register("country")}
-              className="w-full border rounded-lg"
-            />
-          </div>
-          <div>
-            <label className="block mb-2 text-sm font-medium" htmlFor="companyCount">
-              Companies you work for:
-            </label>
-            <Select
-              id="companyCount"
-              {...register("companyCount")}
-              className="w-full border rounded-lg"
-            >
-              {[1, 2, 3, 4, 5].map((num) => (
-                <option key={num} value={num.toString()}>
-                  {num}
-                </option>
-              ))}
-            </Select>
+      <div className="max-w-[90rem] w-[85rem] max-h-[85vh] overflow-y-auto z-[99] p-10 bg-white shadow-md rounded text-left">
+        <div className="bg-white overflow-hidden">
+          <div className="px-4 py-5 sm:p-6">
+            <h2 className="text-3xl font-bold text-gray-900 mb-8">
+              Individual Profile Setting
+            </h2>
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
+              <div className="grid grid-cols-1 gap-y-6 gap-x-10 sm:grid-cols-2">
+                <div className="space-y-6 shadow-md p-6">
+                  <h3 className="text-xl font-semibold text-gray-900">
+                    Personal Details
+                  </h3>
+                  <div>
+                    <label
+                      htmlFor="fullName"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Full Name <span className="text-red-600">*</span>
+                    </label>
+                    <Input
+                      type="text"
+                      id="fullName"
+                      {...register("fullName", {
+                        required: "Full Name is required",
+                      })}
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                    />
+                    {errors.fullName && (
+                      <p className="mt-2 text-sm text-red-600">
+                        {errors.fullName.message}
+                      </p>
+                    )}
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Email <span className="text-red-600">*</span>
+                    </label>
+                    <Input
+                      type="email"
+                      id="email"
+                      {...register("email", {
+                        required: "Email is required",
+                        pattern: {
+                          value: /\S+@\S+\.\S+/,
+                          message: "Invalid email format",
+                        },
+                      })}
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                    />
+                    {errors.email && (
+                      <p className="mt-2 text-sm text-red-600">
+                        {errors.email.message}
+                      </p>
+                    )}
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="phoneNumber"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Phone Number
+                    </label>
+                    <Input
+                      type="tel"
+                      id="phoneNumber"
+                      {...register("phoneNumber")}
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="address"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Address
+                    </label>
+                    <Input
+                      type="text"
+                      id="address"
+                      {...register("address")}
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="country"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Country
+                    </label>
+                    <Input
+                      type="text"
+                      id="country"
+                      {...register("country")}
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="description"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Description
+                    </label>
+                    <textarea
+                      id="description"
+                      {...register("description")}
+                      rows={4}
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                    ></textarea>
+                  </div>
+                </div>
+
+                <div className="space-y-6 shadow-md p-6">
+                  <h3 className="text-xl font-semibold text-gray-900">
+                    Social Media Profiles
+                  </h3>
+                  {socialMedias.map((social) => (
+                    <div key={social.name}>
+                      <label
+                        htmlFor={social.name}
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        {social.name.charAt(0).toUpperCase() +
+                          social.name.slice(1)}
+                      </label>
+                      <Input
+                        type="url"
+                        id={social.name}
+                        {...register(social.name)}
+                        placeholder={social.placeholder}
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 gap-y-6 gap-x-10 sm:grid-cols-2">
+                <div className="space-y-6 shadow-md p-6">
+                  <h3 className="text-xl font-semibold text-gray-900">
+                    Company Details
+                  </h3>
+                  <div>
+                    <label
+                      htmlFor="companyCount"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Companies you work for
+                    </label>
+                    <Select
+                      id="companyCount"
+                      {...register("companyCount")}
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                    >
+                      {[1, 2, 3, 4, 5].map((num) => (
+                        <option key={num} value={num.toString()}>
+                          {num}
+                        </option>
+                      ))}
+                    </Select>
+                  </div>
+                  {[...Array(parseInt(companyCount))].map((_, index) => (
+                    <div key={index}>
+                      <label
+                        htmlFor={`company${index + 1}`}
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        Company {index + 1}
+                      </label>
+                      <Input
+                        type="text"
+                        id={`company${index + 1}`}
+                        {...register(`company${index + 1}`)}
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                      />
+                    </div>
+                  ))}
+                </div>
+
+                <div className="space-y-6 shadow-md p-6">
+                  <h3 className="text-xl font-semibold text-gray-900">Media</h3>
+                  <Controller
+                    name="bannerImage"
+                    control={control}
+                    render={({ field }) => (
+                      <FileUpload
+                        label="Banner Image"
+                        onFileChange={(file) => field.onChange(file)}
+                      />
+                    )}
+                  />
+                  <Controller
+                    name="profileImage"
+                    control={control}
+                    render={({ field }) => (
+                      <FileUpload
+                        label="Profile Image"
+                        onFileChange={(file) => field.onChange(file)}
+                      />
+                    )}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <button
+                  type="submit"
+                  className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
           </div>
         </div>
+      </div>
 
-        {[...Array(parseInt(companyCount))].map((_, index) => (
-          <div key={index} className="mt-4">
-            <label className="block mb-2 text-sm font-medium" htmlFor={`company${index + 1}`}>
-              Company {index + 1}:
-            </label>
-            <Input
-              type="text"
-              id={`company${index + 1}`}
-              {...register(`company${index + 1}`)}
-              className="w-full border rounded-lg"
-            />
-          </div>
-        ))}
-
-        <div className="mt-6">
-          <label className="block mb-2 text-sm font-medium" htmlFor="description">
-            Description:
-          </label>
-          <textarea
-            id="description"
-            {...register("description")}
-            className="w-full border rounded-lg h-32 p-2"
-          ></textarea>
+      {/* Overlay with Loader */}
+      {isSubmitting && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[9999999]">
+          <Loader />
         </div>
+      )}
 
-        <div className="mt-6">
-          <h3 className="text-lg font-semibold mb-4">Social Media Profiles</h3>
-          {socialMedias.map((social) => (
-            <div key={social.name} className="mb-4">
-              <label className="block mb-2 text-sm font-medium" htmlFor={social.name}>
-                {social.name.charAt(0).toUpperCase() + social.name.slice(1)}:
-              </label>
-              <Input
-                type="url"
-                id={social.name}
-                {...register(social.name)}
-                placeholder={social.placeholder}
-                className="w-full border rounded-lg"
-              />
-            </div>
-          ))}
+      {/* Success Popup */}
+      <Popup
+        isOpen={showSuccessPopup}
+        onClose={() => setShowSuccessPopup(false)}
+      >
+        <div className="text-center">
+          <SiteLogo className="mx-auto mb-4 w-40" />
+          <h3 className="text-lg font-medium text-gray-900 mb-2">Success!</h3>
+          <p className="text-sm text-gray-500 mb-4">
+            Your profile has been successfully updated.
+          </p>
+          <button
+            onClick={handleViewProfile}
+            className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          >
+            View Profile
+          </button>
         </div>
+      </Popup>
 
-        <div className="mt-6">
-          <h3 className="text-lg font-semibold mb-4">Image Uploads</h3>
-          <div className="mb-4">
-            <label className="block mb-2 text-sm font-medium" htmlFor="bannerUpload">
-              Banner Image:
-            </label>
-            <input
-              type="file"
-              id="bannerUpload"
-              {...register("bannerUpload")}
-              accept="image/*"
-              className="w-full"
-            />
-          </div>
-          <div>
-            <label className="block mb-2 text-sm font-medium" htmlFor="profileUpload">
-              Profile Image:
-            </label>
-            <input
-              type="file"
-              id="profileUpload"
-              {...register("profileUpload")}
-              accept="image/*"
-              className="w-full"
-            />
-          </div>
+      {/* Redirecting Overlay */}
+      {isRedirecting && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[9999999]">
+          <Loader />
         </div>
-
-        <button
-          type="submit"
-          className="px-4 py-2 mt-6 text-sm font-bold text-white rounded-lg bg-blue-600 hover:bg-blue-700"
-        >
-          Submit
-        </button>
-      </form>
-    </div>
+      )}
     </DashboardLayout>
   );
 };
