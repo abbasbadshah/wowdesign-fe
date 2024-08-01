@@ -5,11 +5,12 @@ import { HomeMainSectionOne } from "./Main";
 import { News } from "./News";
 import { FeatureProjects } from "./Feature/Projects";
 import { FeaturePorfolios } from "./Feature/Portfolio";
+import HomeSliderTwo from "./Hero/Slider";
 
 export const Home = () => {
   return (
     <Layout headerType="2">
-      <HeroSlider />
+      <HomeSliderTwo />
       <Section>
         <HomeMainSectionOne />
       </Section>
