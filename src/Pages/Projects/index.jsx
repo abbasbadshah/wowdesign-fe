@@ -412,7 +412,7 @@ export const Projects = () => {
                         />
                       </Link>
 
-                      <div className="mt-5 bg-white">
+                      <div className="mt-5 bg-white flex flex-col">
                         <div className="flex items-center justify-between">
                           <div className="w-3/4">
                             <Link
@@ -423,9 +423,6 @@ export const Projects = () => {
                                 {project.title}
                               </h2>
                             </Link>
-                            <p className="text-sm font-medium text-gray-500">
-                              {project.description}
-                            </p>
                           </div>
 
                           <div className="w-1/4">
@@ -435,6 +432,9 @@ export const Projects = () => {
                             </span>
                           </div>
                         </div>
+                        <p className="text-sm font-medium text-gray-500 mt-5">
+                          {project.description}
+                        </p>
                       </div>
                     </div>
                   ))}

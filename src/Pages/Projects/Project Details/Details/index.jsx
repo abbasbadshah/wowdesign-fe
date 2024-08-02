@@ -171,14 +171,14 @@ export const ProjectPageDetails = () => {
               noValidate=""
               className="rounded-xl border border-gray-lighter bg-white p-8 shadow-card"
             >
-              <div className="flex justify-between items-center">
+              <div className="flex flex-col justify-between items-center">
                 <div>
                   <img
                     src={ClientAvatar}
-                    className="w-12 h-12 object-cover rounded-full"
+                    className="w-[150px] h-[150px] object-cover rounded-full"
                   />
                 </div>
-                <p className="text-xl font-bold text-gray-dark xl:text-[22px]">
+                <p className="text-xl font-bold text-gray-dark xl:text-[22px] mt-5">
                   <span className="text-xl font-bold">Cristina Murfy,</span>
                 </p>
               </div>

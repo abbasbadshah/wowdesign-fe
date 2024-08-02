@@ -7,25 +7,22 @@ import bgimage2 from "../../../assets/images/Projects/healthcare.jpg";
 const backgroundImages = [bgimage1, bgimage2];
 
 export const DashboardLayout = ({ children }) => {
-  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
-    setIsSidebarCollapsed(!isSidebarCollapsed);
+    setIsSidebarOpen(!isSidebarOpen);
   };
 
   return (
     <div className="flex h-screen">
       <FadingBackground images={backgroundImages} />
       <DashboardSidebar
-        isCollapsed={isSidebarCollapsed}
+        isSidebarOpen={isSidebarOpen}
         toggleSidebar={toggleSidebar}
       />
-      <div className="flex flex-col w-full overflow-hidden">
-        <DashboardHeader
-          toggleSidebar={toggleSidebar}
-          isSidebarCollapsed={isSidebarCollapsed}
-        />
-        <main className="flex items-center justify-center h-full">
+      <div className="flex flex-col flex-1 overflow-hidden">
+        <DashboardHeader toggleSidebar={toggleSidebar} />
+        <main className="flex flex-1 flex-col p-6 lg:p-10">
           {children}
         </main>
       </div>

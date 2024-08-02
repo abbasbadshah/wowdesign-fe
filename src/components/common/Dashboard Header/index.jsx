@@ -14,7 +14,7 @@ import {
 } from "@heroicons/react/20/solid";
 import { Link } from "react-router-dom";
 
-const DashboardHeader = ({ toggleSidebar, isSidebarCollapsed }) => {
+const DashboardHeader = ({ toggleSidebar }) => {
   const [isFullscreen, setIsFullscreen] = React.useState(false);
 
   const toggleFullscreen = () => {
@@ -34,7 +34,7 @@ const DashboardHeader = ({ toggleSidebar, isSidebarCollapsed }) => {
       {/* Sidebar Toggle Button */}
       <button
         onClick={toggleSidebar}
-        className="p-2 rounded-full hover:bg-gray-700"
+        className="p-2 rounded-full lg:hidden hover:bg-gray-700"
         aria-label="Toggle navigation"
       >
         <Bars3Icon className="w-6 h-6" />

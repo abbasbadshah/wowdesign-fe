@@ -9,6 +9,7 @@ import {
   Popup,
 } from "../../../components/shared";
 import { DashboardLayout } from "../../../components/layout/Dashboard Layout";
+
 export const IndividualDetailFillup = () => {
   const navigate = useNavigate();
   const {
@@ -72,7 +73,7 @@ export const IndividualDetailFillup = () => {
 
   return (
     <DashboardLayout>
-      <div className="max-w-[90rem] w-[85rem] max-h-[85vh] overflow-y-auto z-[99] p-10 bg-white shadow-md rounded text-left">
+      <div className="max-h-[85vh] overflow-y-auto z-[99] p-10 bg-white shadow-md rounded text-left">
         <div className="bg-white overflow-hidden">
           <div className="px-4 py-5 sm:p-6">
             <h2 className="text-3xl font-bold text-gray-900 mb-8">
