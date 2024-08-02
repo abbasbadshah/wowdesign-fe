@@ -1,9 +1,6 @@
 import {
   ArrowLeftEndOnRectangleIcon,
-  ClipboardDocumentCheckIcon,
   Cog6ToothIcon,
-  DevicePhoneMobileIcon,
-  PlusCircleIcon,
   UserCircleIcon,
 } from "@heroicons/react/20/solid";
 import UserProfileImage from "../../assets/images/User Profile/man.jpg";
@@ -15,8 +12,14 @@ import { UserProfileSettings } from "./Profile Settings/settings";
 import { SocialProfiles } from "./User Social Profiles/social";
 import { Layout } from "../../components/layout/layout";
 import { Link } from "react-router-dom";
+import { useUserProfileData } from "../../components/hooks/useUserProfileData";
 export const UserProfile = () => {
   const [activeSection, setActiveSection] = useState("profile");
+  const profileData = useUserProfileData();
+
+  if (!profileData) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <Layout headerType="2">
@@ -74,8 +77,8 @@ export const UserProfile = () => {
                     </div>
 
                     <div className="mt-4">
-                      <h5 className="text-lg font-semibold">Cristina Murfy</h5>
-                      <p className="text-black">cristina@hotmail.com</p>
+                      <h5 className="text-lg font-semibold">{profileData.fullName}'s Profile</h5>
+                      <p className="text-black">{profileData.email}</p>
                     </div>
                   </div>
                 </div>
@@ -131,22 +134,10 @@ export const UserProfile = () => {
               <div className="grid grid-cols-1 gap-6">
                 {activeSection === "profile" && (
                   <div className="relative p-6 bg-white rounded-md shadow">
-                    <h5 className="text-xl font-semibold">Cristina Murfy</h5>
+                    <h5 className="text-xl font-semibold">{profileData.fullName}</h5>
 
                     <p className="mt-3 text-black">
-                      i am a visionary architect renowned for her innovative
-                      approach to interior design and sustainable architecture.
-                      With a career spanning over two decades, she has
-                      established herself as a leading figure in the industry,
-                      blending creativity with functionality to create spaces
-                      that inspire and endure. Her work is characterized by a
-                      commitment to ecological responsibility, cutting-edge
-                      technology, and a deep understanding of the human
-                      experience in built environments. Cristina's portfolio
-                      includes a diverse array of projects, from luxurious
-                      residential interiors to groundbreaking commercial
-                      developments, all reflecting her unique design philosophy
-                      and meticulous attention to detail..
+                    {profileData.description}
                     </p>
                   </div>
                 )}

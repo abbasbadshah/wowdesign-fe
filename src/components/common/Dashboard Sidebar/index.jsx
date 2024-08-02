@@ -1,27 +1,18 @@
-import {
-  BookOpenIcon,
-  CalendarDaysIcon,
-  CogIcon,
-  HomeIcon,
-  ShoppingCartIcon,
-  UserIcon,
-  ChatBubbleBottomCenterTextIcon,
-} from "@heroicons/react/20/solid";
-import { ArrowLeftCircleIcon, ChartBarIcon } from "@heroicons/react/24/outline";
+import { MdDashboard, MdPerson, MdShoppingBag, MdOutlineTask, MdBusiness, MdMessage, MdLogout } from "react-icons/md";
 import React from "react";
 import { SiteLogo } from "../../shared";
 import { Link } from "react-router-dom";
 
 const DashboardSidebar = ({ isCollapsed, toggleSidebar }) => {
   const sidebarItems = [
-    { name: "Dashboard", icon: UserIcon, path: "/dashboard" },
-    { name: "Profile Setting", icon: UserIcon, path: "/dashboard/profile-settings" },
-    { name: "Products", icon: HomeIcon, path: "/add-products" },
-    { name: "Projects", icon: HomeIcon, path: "/admin/add-projects" },
-    { name: "Company", icon: CogIcon, path: "/dashboard/create-company" },
+    { name: "Dashboard", icon: MdDashboard, path: "/dashboard" },
+    { name: "Profile Setting", icon: MdPerson, path: "/dashboard/profile-settings" },
+    { name: "Products", icon: MdShoppingBag, path: "/add-products" },
+    { name: "Projects", icon: MdOutlineTask, path: "/admin/add-projects" },
+    { name: "Company", icon: MdBusiness, path: "/dashboard/create-company" },
     {
       name: "Social Media",
-      icon: ChatBubbleBottomCenterTextIcon,
+      icon: MdMessage,
       path: "/dashboard/social-profile-settings",
     },
   ];
@@ -57,7 +48,7 @@ const DashboardSidebar = ({ isCollapsed, toggleSidebar }) => {
         {/* Logout button */}
         <div className="p-4">
           <button className="flex items-center w-full p-2 space-x-2 rounded-md hover:bg-gray-700">
-            <ArrowLeftCircleIcon className="w-6 h-6" />
+            <MdLogout className="w-6 h-6" />
             {!isCollapsed && <span>Logout</span>}
           </button>
         </div>

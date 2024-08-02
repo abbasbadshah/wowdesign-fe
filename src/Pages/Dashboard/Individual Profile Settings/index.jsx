@@ -1,48 +1,63 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Input, Select } from "@headlessui/react";
 import { useForm, Controller } from "react-hook-form";
-import { DashboardLayout } from "../../../components/layout/Dashboard Layout";
+import { useNavigate } from "react-router-dom";
 import {
   FileUpload,
   Loader,
   SiteLogo,
   Popup,
 } from "../../../components/shared";
-
+import { DashboardLayout } from "../../../components/layout/Dashboard Layout";
 export const IndividualDetailFillup = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     control,
     watch,
+    reset,
+    setValue,
     formState: { errors },
   } = useForm();
 
+  useEffect(() => {
+    const storedData = localStorage.getItem("userProfileData");
+    if (storedData) {
+      const parsedData = JSON.parse(storedData);
+      Object.keys(parsedData).forEach((key) => {
+        setValue(key, parsedData[key]);
+      });
+    }
+  }, [setValue]);
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
-  const [isRedirecting, setIsRedirecting] = useState(false);
 
   const onSubmit = async (data) => {
     setIsSubmitting(true);
-    // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 2000));
-    // Include file URLs in the console output
     const formDataWithFiles = {
       ...data,
       bannerImage: data.bannerImage ? data.bannerImage.name : null,
       profileImage: data.profileImage ? data.profileImage.name : null,
     };
     console.log(formDataWithFiles);
+
+    // Store the data in local storage
+    localStorage.setItem("userProfileData", JSON.stringify(formDataWithFiles));
+
     setIsSubmitting(false);
     setShowSuccessPopup(true);
+    reset(); // Clear the form
   };
 
   const handleViewProfile = () => {
     setShowSuccessPopup(false);
-    setIsRedirecting(true);
+    setIsSubmitting(true);
     setTimeout(() => {
-      console.log("Redirecting to profile...");
-      setIsRedirecting(false);
+      navigate("/user-profile");
+      setIsSubmitting(false);
     }, 2000);
   };
 
@@ -52,6 +67,7 @@ export const IndividualDetailFillup = () => {
     { name: "linkedin", placeholder: "LinkedIn Profile URL" },
     { name: "twitter", placeholder: "Twitter Profile URL" },
     { name: "facebook", placeholder: "Facebook Profile URL" },
+    { name: "instagram", placeholder: "Instagram Profile URL" },
   ];
 
   return (
@@ -156,7 +172,6 @@ export const IndividualDetailFillup = () => {
                       className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                     />
                   </div>
-
                   <div>
                     <label
                       htmlFor="description"
@@ -277,8 +292,6 @@ export const IndividualDetailFillup = () => {
           </div>
         </div>
       </div>
-
-      {/* Overlay with Loader */}
       {isSubmitting && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[9999999]">
           <Loader />
@@ -304,13 +317,6 @@ export const IndividualDetailFillup = () => {
           </button>
         </div>
       </Popup>
-
-      {/* Redirecting Overlay */}
-      {isRedirecting && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[9999999]">
-          <Loader />
-        </div>
-      )}
     </DashboardLayout>
   );
 };

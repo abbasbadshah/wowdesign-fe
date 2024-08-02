@@ -7,11 +7,17 @@ import {
   PhoneIcon,
 } from "@heroicons/react/20/solid";
 import { UserCompanies } from "../User Companies/companies";
+import { useUserProfileData } from "../../../components/hooks/useUserProfileData";
 
 // Import social media icons
 import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from "react-icons/fa";
 
 export const UserPersonalDetails = () => {
+  const profileData = useUserProfileData();
+
+  if (!profileData) {
+    return <div>Loading...</div>;
+  }
   return (
     <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
       <div>
@@ -85,28 +91,28 @@ export const UserPersonalDetails = () => {
           <h5 className="text-xl font-semibold mb-4">Social Media :</h5>
           <div className="grid grid-cols-2 gap-4">
             <a
-              href="#"
+              href={profileData.facebook}
               className="flex items-center p-3 rounded-lg bg-[#FBF5EE] hover:bg-[#EFD8BD] transition-colors"
             >
               <FaFacebook className="text-blue-600 text-xl mr-3" />
               <span className="text-slate-600">Facebook</span>
             </a>
             <a
-              href="#"
+              href={profileData.twitter}
               className="flex items-center p-3 rounded-lg bg-[#FBF5EE] hover:bg-[#EFD8BD] transition-colors"
             >
               <FaTwitter className="text-blue-400 text-xl mr-3" />
               <span className="text-slate-600">Twitter</span>
             </a>
             <a
-              href="#"
+              href={profileData.linkedin}
               className="flex items-center p-3 rounded-lg bg-[#FBF5EE] hover:bg-[#EFD8BD] transition-colors"
             >
               <FaLinkedin className="text-blue-700 text-xl mr-3" />
               <span className="text-slate-600">LinkedIn</span>
             </a>
             <a
-              href="#"
+              href={profileData.instagram}
               className="flex items-center p-3 rounded-lg bg-[#FBF5EE] hover:bg-[#EFD8BD] transition-colors"
             >
               <FaInstagram className="text-pink-600 text-xl mr-3" />
