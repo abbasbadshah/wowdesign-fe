@@ -2,11 +2,22 @@ import React, { useEffect, useRef, useState } from "react";
 import { Layout } from "../../components/layout/layout";
 import BGImage from "../../assets/images/Projects/hospitality.jpeg";
 import Avatar from "../../assets/images/User Profile/man.jpg";
+import LogoOne from "../../assets/images/Company/browsing/logo/logo1.avif";
+import LogoTwo from "../../assets/images/Company/browsing/logo/logo2.avif";
+import LogoThree from "../../assets/images/Company/browsing/logo/logo3.avif";
+import LogoFour from "../../assets/images/Company/browsing/logo/logo4.avif";
+import BGImageOne from "../../assets/images/Company/browsing/background/company browsing (1).jpg"
+import BGImageTwo from "../../assets/images/Company/browsing/background/company browsing (2).jpg"
+import BGImageThree from "../../assets/images/Company/browsing/background/company browsing (3).jpg"
+import BGImageFrour from "../../assets/images/Company/browsing/background/company browsing (4).jpg"
+import BGImageFive from "../../assets/images/Company/browsing/background/company browsing (5).jpg"
+import BGImageSix from "../../assets/images/Company/browsing/background/company browsing (6).jpg"
+import BGImageSeven from "../../assets/images/Company/browsing/background/company browsing (7).jpg"
+import BGImageEight from "../../assets/images/Company/browsing/background/company browsing 8.jpg"
 import { Link } from "react-router-dom";
-import Fuse from "fuse.js"; // Import Fuse.js
+import Fuse from "fuse.js";
 import { NewsletterCTA, BreadcrumbComponent } from "../../components/shared";
 import {
-  BuildingLibraryIcon,
   BuildingOffice2Icon,
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -25,34 +36,46 @@ const categoryData = [
         category: "Civil Engineering",
         location: "New York, NY 10001",
         projects: 15,
-        logo: Avatar,
+        image: BGImageOne,
+        logo: LogoThree,
       },
       {
         name: "BuildWell Inc.",
         category: "Civil Engineering",
         location: "Los Angeles, CA 90001",
         projects: 22,
-        logo: Avatar,
+        image: BGImageTwo,
+        logo: LogoOne,
       },
       {
         name: "StructurePro",
         category: "Civil Engineering",
         location: "Chicago, IL 60601",
         projects: 18,
-        logo: Avatar,
+        image: BGImageThree,
+        logo: LogoTwo,
       },
       {
         name: "Urban Planners Ltd.",
         category: "Civil Engineering",
         location: "Houston, TX 77001",
         projects: 25,
-        logo: Avatar,
+        image: BGImageFrour,
+        logo: LogoThree,
+      },
+      {
+        name: "Indore Planners Ltd.",
+        category: "Civil Engineering",
+        location: "Houston, TX 77001",
+        projects: 25,
+        image: BGImageFive,
+        logo: LogoOne,
       },
     ],
   },
   {
     title: "Sanitaryware Suppliers",
-    image: BGImage,
+    image: BGImageOne,
     link: "/sanitaryware-suppliers",
     listings: [
       {
@@ -60,27 +83,30 @@ const categoryData = [
         category: "Sanitaryware",
         location: "Chicago, IL 60601",
         projects: 8,
-        logo: Avatar,
+        image: BGImageTwo,
+        logo: LogoThree,
       },
       {
         name: "ModernBath Co.",
         category: "Sanitaryware",
         location: "Miami, FL 33101",
         projects: 12,
-        logo: Avatar,
+        image: BGImageThree,
+        logo: LogoTwo,
       },
       {
         name: "HygieneFirst",
         category: "Sanitaryware",
         location: "Seattle, WA 98101",
         projects: 10,
-        logo: Avatar,
+        image: BGImageOne,
+        logo: LogoFour,
       },
     ],
   },
   {
     title: "Interior Designers",
-    image: BGImage,
+    image: BGImageSeven,
     link: "/interior-designers",
     listings: [
       {
@@ -88,21 +114,24 @@ const categoryData = [
         category: "Interior Design",
         location: "New York, NY 10001",
         projects: 30,
-        logo: Avatar,
+        image: BGImageSeven,
+        logo: LogoOne,
       },
       {
         name: "ModernSpace Designs",
         category: "Interior Design",
         location: "San Francisco, CA 94101",
         projects: 25,
-        logo: Avatar,
+        image: BGImageSeven,
+        logo: LogoTwo,
       },
       {
         name: "Cozy Home Creators",
         category: "Interior Design",
         location: "Boston, MA 02101",
         projects: 20,
-        logo: Avatar,
+        image: BGImageSeven,
+        logo: LogoThree,
       },
     ],
   },
@@ -299,11 +328,17 @@ export const CompanyBrowsing = () => {
   const renderCompanyCard = (company) => (
     <div key={company.name} className="text-center bg-white rounded shadow">
       <Link to={"/company-profile"}>
-        <img src={BGImage} alt="" />
+        <img
+          src={company.image}
+          alt=""
+          className="w-full h-72 object-cover rounded-t"
+          style={{ minWidth: '325px', maxWidth: '325px' }}
+        />
         <img
           src={company.logo}
           alt="company logo"
-          className="object-cover mx-auto rounded shadow-md w-28 h-28 -mt-14"
+          className="object-fill mx-auto rounded shadow-md"
+          style={{ width: '112px', height: '112px', marginTop: '-3.5rem' }}
         />
         <div className="p-7">
           <h3 className="mb-2 text-xl font-bold">{company.name}</h3>
@@ -323,6 +358,7 @@ export const CompanyBrowsing = () => {
       </Link>
     </div>
   );
+  
 
   return (
     <Layout Classes={"mb-24"}>
@@ -441,7 +477,7 @@ export const CompanyBrowsing = () => {
             </p>
           </div>
           <div className="flex items-center justify-center mt-10">
-            <div className="grid gap-6 lg:grid-cols-4">
+            <div className="grid gap-6 lg:grid-cols-5">
               {category.listings.map(renderCompanyCard)}
             </div>
           </div>

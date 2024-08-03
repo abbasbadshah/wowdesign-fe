@@ -212,10 +212,10 @@ export const HeaderStyleTwo = () => {
               Products
             </Link>
             <Link
-              to="/company-browsing"
+              to="/company"
               className="text-sm font-semibold leading-6"
             >
-              Company Browsing
+              Company
             </Link>
           </PopoverGroup>
           <div className="items-center hidden gap-5 lg:flex lg:flex-1 lg:justify-end">
@@ -320,10 +320,10 @@ export const HeaderStyleTwo = () => {
                     Products
                   </Link>
                   <Link
-                    to="/company Browsing"
+                    to="/company"
                     className="block px-3 py-2 -mx-3 text-base font-semibold leading-7 text-gray-900 rounded-lg hover:bg-gray-50"
                   >
-                    Company browsing
+                    Company
                   </Link>
                 </div>
                 <div className="py-6">

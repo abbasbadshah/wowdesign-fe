@@ -63,7 +63,7 @@ export const routes = [
     exact: true,
   },
   {
-    path: "/company-browsing",
+    path: "/company",
     component: CompanyBrowsing,
     exact: true,
   },

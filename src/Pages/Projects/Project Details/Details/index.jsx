@@ -1,6 +1,6 @@
 import { CustomerReview } from "../Customer Review";
 import { ProjectLocationMap } from "../Location";
-import ClientAvatar from "../../../../assets/images/User Profile/man.jpg";
+import Logo from "../../../../assets/images/Company/companylistingDummylogo.png";
 import { Query } from "../Query";
 
 export const ProjectPageDetails = () => {
@@ -162,7 +162,6 @@ export const ProjectPageDetails = () => {
             </div>
           </section>
           <ProjectLocationMap />
-          <CustomerReview />
           <Query />
         </div>
         <div className="hidden w-full max-w-sm pb-11 lg:block xl:max-w-md 3xl:max-w-lg">
@@ -174,12 +173,12 @@ export const ProjectPageDetails = () => {
               <div className="flex flex-col justify-between items-center">
                 <div>
                   <img
-                    src={ClientAvatar}
-                    className="w-[150px] h-[150px] object-cover rounded-full"
+                    src={Logo}
+                    className="bg-contain object-cover"
                   />
                 </div>
                 <p className="text-xl font-bold text-gray-dark xl:text-[22px] mt-5">
-                  <span className="text-xl font-bold">Cristina Murfy,</span>
+                  <span className="text-2xl font-bold">BuildWell Inc.</span>
                 </p>
               </div>
               <p className="flex items-center justify-between text-xs text-red">
@@ -187,15 +186,12 @@ export const ProjectPageDetails = () => {
                 <span />
                 <span />
               </p>
-              <ul className="mt-3 xl:mt-5">
-                <li className="flex items-center justify-between py-1.5 text-base capitalize text-gray-dark first:pt-0 last:border-t last:border-gray-lighter last:pb-0">
-                  <span className="font-normal">Designation</span>
-                  <span className="font-bold">Architects</span>
+              <ul className="mt-5 xl:mt-5">
+              <li className="flex items-center justify-between py-1.5 text-base capitalize text-gray-dark first:pt-0 last:border-t last:border-gray-lighter last:pb-0">
+                  <span className="font-normal">Type</span>
+                  <span className="font-bold text-red">Architect</span>
                 </li>
-                <li className="flex items-center justify-between py-1.5 text-base capitalize text-gray-dark first:pt-0 last:border-t last:border-gray-lighter last:pb-0">
-                  <span className="font-normal">Area</span>
-                  <span className="font-bold text-red">m2 or Sqft</span>
-                </li>
+                
                 <li className="flex items-center justify-between py-1.5 text-base capitalize text-gray-dark first:pt-0 last:border-t last:border-gray-lighter last:pb-0">
                   <span className="font-normal">Location </span>
                   <span className="font-bold">Dubai, UAE</span>
@@ -207,6 +203,10 @@ export const ProjectPageDetails = () => {
                 <li className="flex items-center justify-between py-1.5 text-base capitalize text-gray-dark first:pt-0 last:border-t last:border-gray-lighter last:pb-0">
                   <span className="font-normal">Year of Completion</span>
                   <span className="font-bold">2017</span>
+                </li>
+                <li className="flex items-center justify-between py-1.5 text-base capitalize text-gray-dark first:pt-0 last:border-t last:border-gray-lighter last:pb-0">
+                  <span className="font-normal">Area</span>
+                  <span className="font-bold text-red">m2 or Sqft</span>
                 </li>
               </ul>
             </form>

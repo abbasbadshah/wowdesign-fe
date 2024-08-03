@@ -265,6 +265,7 @@ export const IndividualDetailFillup = () => {
                       <FileUpload
                         label="Banner Image"
                         onFileChange={(file) => field.onChange(file)}
+                        multiple
                       />
                     )}
                   />
@@ -275,6 +276,8 @@ export const IndividualDetailFillup = () => {
                       <FileUpload
                         label="Profile Image"
                         onFileChange={(file) => field.onChange(file)}
+                        multiple
+                        maxFiles={1}
                       />
                     )}
                   />
