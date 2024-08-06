@@ -43,12 +43,11 @@ const PhotoDisplay = ({ photoId, className }) => {
   }
 
   return (
-    <div>
+    <div className="relative w-full h-full">
       <img
         src={photo.urls.regular}
         alt={photo.description || 'Unsplash Photo'}
-        className={className}
-        style={{ maxWidth: '100%', height: 'auto' }}
+        className={`object-cover w-full h-full ${className}`}
       />
     </div>
   );

@@ -15,6 +15,7 @@ import CatImageFour from "../../../assets/images/Company/browsing/background/com
 import CatImageFive from "../../../assets/images/Company/browsing/background/company browsing (5).jpg";
 import logo from "../../../assets/images/Company/browsing/logo/logo2.avif";
 import { PhotoDisplay } from "../../../components/shared";
+import { StarIcon } from "lucide-react";
 
 const categories = [
   "Architects",
@@ -58,7 +59,7 @@ const categories = [
 const companies = [
   {
     id: "architect-1",
-    name: "Foster + Partners [Real]",
+    name: "Foster + Partners",
     category: "Architects",
     location: "London",
     projects: 250,
@@ -67,7 +68,7 @@ const companies = [
   },
   {
     id: "architect-2",
-    name: "Zaha Hadid Architects [Real]",
+    name: "Zaha Hadid Architects",
     category: "Architects",
     location: "London",
     projects: 200,
@@ -76,7 +77,7 @@ const companies = [
   },
   {
     id: "architect-3",
-    name: "Gensler [Real]",
+    name: "Gensler",
     category: "Architects",
     location: "San Francisco",
     projects: 300,
@@ -112,7 +113,7 @@ const companies = [
   },
   {
     id: "interior-1",
-    name: "Kelly Wearstler [Real]",
+    name: "Kelly Wearstler",
     category: "Interior Designer",
     location: "Los Angeles",
     projects: 100,
@@ -121,7 +122,7 @@ const companies = [
   },
   {
     id: "interior-2",
-    name: "Philippe Starck [Real]",
+    name: "Philippe Starck",
     category: "Interior Designer",
     location: "Paris",
     projects: 150,
@@ -130,7 +131,7 @@ const companies = [
   },
   {
     id: "interior-3",
-    name: "Nate Berkus Associates [Real]",
+    name: "Nate Berkus Associates",
     category: "Interior Designer",
     location: "Chicago",
     projects: 80,
@@ -234,49 +235,50 @@ const CategoryItem = React.memo(
 );
 
 const CompanyCard = React.memo(({ company }) => (
-  <div className="w-full max-w-md mx-auto overflow-hidden bg-white rounded-lg shadow-lg">
-    <div className="relative h-48">
-      <div className="absolute inset-0 overflow-hidden">
+  <Link to={`/company-profile/${company.id}`} className="block">
+    <div className="relative w-full h-96 rounded-xl overflow-hidden group">
+      <div className="absolute inset-0">
         <PhotoDisplay
           photoId={company.cover}
-          className="w-full h-auto min-h-full object-cover"
+          className="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
         />
       </div>
-      <div className="absolute inset-0 bg-black bg-opacity-30" />
-      <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-        <h3 className="text-xl font-bold">{company.name}</h3>
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
+
+      <div className="absolute inset-0 p-6 flex flex-col justify-between">
+        <div className="flex justify-between items-start">
+          <div className="bg-white p-2 rounded-lg shadow-md">
+            <img
+              src={company.logo}
+              alt={`${company.name} logo`}
+              className="w-16 h-16 object-contain"
+            />
+          </div>
+          <span className="bg-theme-color text-white px-4 py-2 rounded-full text-sm font-bold">
+            {company.projects} Projects
+          </span>
+        </div>
+
+        <div className="text-white">
+          <h3 className="text-2xl font-bold mb-2">{company.name}</h3>
+          <div className="space-y-2 text-sm">
+            <div className="flex items-center">
+              <BuildingOffice2Icon className="w-5 h-5 mr-2" />
+              <span>{company.category}</span>
+            </div>
+            <div className="flex items-center">
+              <MapIcon className="w-5 h-5 mr-2" />
+              <span>{company.location}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
+        <span className="text-white font-bold text-lg">View Profile</span>
       </div>
     </div>
-    <div className="relative px-6 py-4">
-      <img
-        src={company.logo}
-        alt="Company Logo"
-        className="w-20 h-20 rounded-full absolute -top-10 right-6 border-4 border-white shadow-md"
-      />
-      <div className="mt-8 space-y-3">
-        <div className="flex items-center space-x-3">
-          <BuildingOffice2Icon className="w-5 h-5 text-gray-600" />
-          <span className="text-gray-700">{company.category}</span>
-        </div>
-        <div className="flex items-center space-x-3">
-          <MapIcon className="w-5 h-5 text-gray-600" />
-          <span className="text-gray-700">{company.location}</span>
-        </div>
-        <div className="flex items-center space-x-3">
-          <DocumentDuplicateIcon className="w-5 h-5 text-gray-600" />
-          <span className="text-gray-700">{company.projects} Projects</span>
-        </div>
-      </div>
-    </div>
-    <div className="px-6 py-4 bg-gray-50">
-      <Link
-        to={`/company-profile`}
-        className="block w-full py-2 text-center text-white bg-theme-color rounded-md hover:bg-black transition duration-300"
-      >
-        View Profile
-      </Link>
-    </div>
-  </div>
+  </Link>
 ));
 
 const CompanySection = React.memo(({ category, companies }) => {
