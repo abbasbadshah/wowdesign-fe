@@ -9,6 +9,7 @@ import Gallery from './Gallery/gallery';
 import { Popup } from './Popup/popup';
 import { Loader } from './Loader/loader';
 import { FileUpload } from './File Upload/fileupload';
+import PhotoDisplay from './images/images';
 
 export {
     BreadcrumbComponent,
@@ -21,5 +22,6 @@ export {
     Gallery,
     Popup,
     Loader,
-    FileUpload
+    FileUpload,
+    PhotoDisplay
 }

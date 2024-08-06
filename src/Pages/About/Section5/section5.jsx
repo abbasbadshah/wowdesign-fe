@@ -2,100 +2,281 @@ import React, { useState } from "react";
 
 export const AboutSectionFive = () => {
   return (
-    <section classname="relative z-20 overflow-hidden bg-white pb-12 pt-20 lg:pb-[90px] lg:pt-[120px]">
-      <div classname="container mx-auto">
-        <div classname="flex flex-wrap -mx-4">
-          <div classname="w-full px-4">
-            <div className="text-center mb-[70px]">
-              <h2 className="font-bold  mx-auto text-[35px] leading-[44px] md:text-[46px] md:leading-[52px] lg:text-heading-1 text-gray-900 mb-5 md:mb-[30px] md:w-[19ch]">
-                FAQ's
-              </h2>
-              <p className="text-quote md:text-lead-lg text-gray-600 mx-auto md:w-[63ch]">
-                Developers are trusted to create an engaging experience for
-                their companies, so we build tools to help them.
-              </p>
-            </div>
-          </div>
+    <div className="mt-10 px-24 bg-white">
+      <div className="max-w-screen-md mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-between">
+        <div className="text-center">
+          <p className="mt-4 text-sm leading-7 text-gray-500 font-regular">
+            F.A.Q
+          </p>
+          <h3 className="text-3xl sm:text-4xl leading-normal font-extrabold tracking-tight text-gray-900">
+            Frequently Asked <span className="text-theme-color">Questions</span>
+          </h3>
         </div>
-        <div classname="flex flex-wrap -mx-4">
-          <div classname="w-full px-4 lg:w-1/2">
-            <AccordionItem
-              header="How long we deliver your first blog post?"
-              text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
-            >
-              <AccordionItem
-                header="How long we deliver your first blog post?"
-                text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
-              >
-                <AccordionItem
-                  header="How long we deliver your first blog post?"
-                  text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
-                ></AccordionItem>
-              </AccordionItem>
-            </AccordionItem>
-          </div>
-          <div classname="w-full px-4 lg:w-1/2">
-            <AccordionItem
-              header="How long we deliver your first blog post?"
-              text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
-            >
-              <AccordionItem
-                header="How long we deliver your first blog post?"
-                text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
-              >
-                <AccordionItem
-                  header="How long we deliver your first blog post?"
-                  text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
-                ></AccordionItem>
-              </AccordionItem>
-            </AccordionItem>
-          </div>
+        <div className="mt-20">
+          <ul className="">
+            <li className="text-left mb-10">
+              <div className="flex flex-row items-start mb-5">
+                <div className="hidden sm:flex items-center justify-center p-3 mr-3 rounded-full bg-theme-color text-white border-4 border-white text-xl font-semibold">
+                  <svg
+                    width="30px"
+                    fill="white"
+                    height="30px"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g data-name="Layer 2">
+                      <g data-name="menu-arrow">
+                        <rect
+                          width={24}
+                          height={24}
+                          transform="rotate(180 12 12)"
+                          opacity={0}
+                        />
+                        <path d="M17 9A5 5 0 0 0 7 9a1 1 0 0 0 2 0 3 3 0 1 1 3 3 1 1 0 0 0-1 1v2a1 1 0 0 0 2 0v-1.1A5 5 0 0 0 17 9z"></path>
+                        <circle cx={12} cy={19} r={1} />
+                      </g>
+                    </g>
+                  </svg>
+                </div>
+                <div className="bg-gray-100 p-5 px-10 w-full flex items-center">
+                  <h4 className="text-md leading-6 font-medium text-gray-900">
+                    What could possibly be your first question?
+                  </h4>
+                </div>
+              </div>
+              <div className="flex flex-row items-start">
+                <div className="bg-[#FBF5EE] p-5 px-10 w-full flex items-center">
+                  <p className="text-gray-700 text-sm">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Maiores impedit perferendis suscipit eaque, iste dolor
+                    cupiditate blanditiis ratione. Lorem ipsum, dolor sit amet
+                    consectetur adipisicing elit.
+                  </p>
+                </div>
+                <div className="hidden sm:flex items-center justify-center p-3 ml-3 rounded-full bg-theme-color text-white border-4 border-white text-xl font-semibold">
+                  <svg
+                    height="25px"
+                    fill="white"
+                    version="1.1"
+                    id="Layer_1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlnsXlink="http://www.w3.org/1999/xlink"
+                    x="0px"
+                    y="0px"
+                    viewBox="0 0 295.238 295.238"
+                    style={{ enableBackground: "new 0 0 295.238 295.238" }}
+                    xmlSpace="preserve"
+                  >
+                    <g>
+                      <g>
+                        <g>
+                          <path
+                            d="M277.462,0.09l-27.681,20.72l-27.838,64.905h-22.386l-8.79-19.048h5.743c10.505,0,19.048-8.452,19.048-18.957V28.571
+				h9.524V0H196.51v28.571h9.524V47.71c0,5.248-4.271,9.433-9.524,9.433h-10.138L174.2,30.81l14.581-7.267L141.038,3.095
+				l-11.224,39.281c-0.305-23.371-19.386-42.29-42.829-42.29c-23.633,0-42.857,19.224-42.857,42.857
+				c0,14.281,7.233,27.676,19.048,35.595v7.176H51.643L50.9,89.619c-2.314,12.005-2.529,24.343-0.638,36.648l-32.486,57.905
+				l35.876,8.195v60.014h47.619v42.857h114.286v-66.357c33.333-23.581,52.371-61.495,52.343-101.943l0.01-17.371
+				c0-6.548-0.605-13.276-1.824-19.905l-0.705-3.948h-9.348l21.429-51.338V0.09z M206.033,19.138V9.614h9.524v9.524H206.033z
+				 M189.067,85.714h-18.062l-8.657-19.048h17.929L189.067,85.714z M147.219,16.119l18.929,8.11l-4.467,2.19l14.2,30.724h-17.862
+				l-11.605-25.471l-4.262,2.152L147.219,16.119z M160.543,85.715h-21.176v-9.433c0-5.252,4.271-9.614,9.524-9.614h2.995v-0.001
+				L160.543,85.715z M141.843,44.652l5.776,12.71c-9.905,0.667-17.776,8.848-17.776,18.919v9.433h-19.048v-7.176
+				c9.529-6.386,15.995-16.352,18.176-27.452L141.843,44.652z M53.653,42.948c0-18.376,14.957-33.333,33.333-33.333
+				c18.376,0,33.333,14.957,33.333,33.333c0,11.829-6.39,22.881-16.671,28.838l-2.376,1.371v12.557h-9.524V56.352
+				c5.529-1.971,9.524-7.21,9.524-13.41c0-7.876-6.41-14.286-14.286-14.286c-7.876,0-14.286,6.411-14.286,14.287
+				c0,6.2,3.995,11.438,9.524,13.41v29.362H72.7V73.157l-2.376-1.376C60.043,65.824,53.653,54.776,53.653,42.948z M86.986,47.71
+				c-2.629,0-4.762-2.139-4.762-4.762c0-2.629,2.133-4.762,4.762-4.762c2.629,0,4.762,2.133,4.762,4.762S89.615,47.71,86.986,47.71z
+				 M257.366,95.239c0.691,4.761,1.039,9.59,1.039,14.285l0.01,17.405c0.029,38.148-18.795,73.871-50.286,95.552l-2.095,1.429
+				v61.805h-95.238v-42.857h-47.62v-58.086l-30.862-7.043l27.876-49.7l-0.271-1.7c-1.771-10.419-1.871-21.567-0.333-31.09h3.59
+				h47.619H257.366z M245.714,85.714H232.3l23.738-55.343l10.557,5.257L245.714,85.714z M267.938,25.714l-5.267-2.633l5.267-3.943
+				V25.714z"
+                          />
+                          <path
+                            d="M96.51,123.81c-7.876,0-14.286-4.762-14.286-14.286H72.7c0,14.286,10.681,23.81,23.81,23.81
+				c13.129,0,23.81-9.524,23.81-23.81h-9.524C110.795,119.048,104.386,123.81,96.51,123.81z"
+                          />
+                        </g>
+                      </g>
+                    </g>
+                  </svg>
+                </div>
+              </div>
+            </li>
+            <li className="text-left mb-10">
+              <div className="flex flex-row items-start mb-5">
+                <div className="hidden sm:flex items-center justify-center p-3 mr-3 rounded-full bg-theme-color text-white border-4 border-white text-xl font-semibold">
+                  <svg
+                    width="30px"
+                    fill="white"
+                    height="30px"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g data-name="Layer 2">
+                      <g data-name="menu-arrow">
+                        <rect
+                          width={24}
+                          height={24}
+                          transform="rotate(180 12 12)"
+                          opacity={0}
+                        />
+                        <path d="M17 9A5 5 0 0 0 7 9a1 1 0 0 0 2 0 3 3 0 1 1 3 3 1 1 0 0 0-1 1v2a1 1 0 0 0 2 0v-1.1A5 5 0 0 0 17 9z"></path>
+                        <circle cx={12} cy={19} r={1} />
+                      </g>
+                    </g>
+                  </svg>
+                </div>
+                <div className="bg-gray-100 p-5 px-10 w-full flex items-center">
+                  <h4 className="text-md leading-6 font-medium text-gray-900">
+                    What could possibly be your first question?
+                  </h4>
+                </div>
+              </div>
+              <div className="flex flex-row items-start">
+                <div className="bg-[#FBF5EE] p-5 px-10 w-full flex items-center">
+                  <p className="text-gray-700 text-sm">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Maiores impedit perferendis suscipit eaque, iste dolor
+                    cupiditate blanditiis ratione. Lorem ipsum, dolor sit amet
+                    consectetur adipisicing elit.
+                  </p>
+                </div>
+                <div className="hidden sm:flex items-center justify-center p-3 ml-3 rounded-full bg-theme-color text-white border-4 border-white text-xl font-semibold">
+                  <svg
+                    height="25px"
+                    fill="white"
+                    version="1.1"
+                    id="Layer_1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlnsXlink="http://www.w3.org/1999/xlink"
+                    x="0px"
+                    y="0px"
+                    viewBox="0 0 295.238 295.238"
+                    style={{ enableBackground: "new 0 0 295.238 295.238" }}
+                    xmlSpace="preserve"
+                  >
+                    <g>
+                      <g>
+                        <g>
+                          <path
+                            d="M277.462,0.09l-27.681,20.72l-27.838,64.905h-22.386l-8.79-19.048h5.743c10.505,0,19.048-8.452,19.048-18.957V28.571
+				h9.524V0H196.51v28.571h9.524V47.71c0,5.248-4.271,9.433-9.524,9.433h-10.138L174.2,30.81l14.581-7.267L141.038,3.095
+				l-11.224,39.281c-0.305-23.371-19.386-42.29-42.829-42.29c-23.633,0-42.857,19.224-42.857,42.857
+				c0,14.281,7.233,27.676,19.048,35.595v7.176H51.643L50.9,89.619c-2.314,12.005-2.529,24.343-0.638,36.648l-32.486,57.905
+				l35.876,8.195v60.014h47.619v42.857h114.286v-66.357c33.333-23.581,52.371-61.495,52.343-101.943l0.01-17.371
+				c0-6.548-0.605-13.276-1.824-19.905l-0.705-3.948h-9.348l21.429-51.338V0.09z M206.033,19.138V9.614h9.524v9.524H206.033z
+				 M189.067,85.714h-18.062l-8.657-19.048h17.929L189.067,85.714z M147.219,16.119l18.929,8.11l-4.467,2.19l14.2,30.724h-17.862
+				l-11.605-25.471l-4.262,2.152L147.219,16.119z M160.543,85.715h-21.176v-9.433c0-5.252,4.271-9.614,9.524-9.614h2.995v-0.001
+				L160.543,85.715z M141.843,44.652l5.776,12.71c-9.905,0.667-17.776,8.848-17.776,18.919v9.433h-19.048v-7.176
+				c9.529-6.386,15.995-16.352,18.176-27.452L141.843,44.652z M53.653,42.948c0-18.376,14.957-33.333,33.333-33.333
+				c18.376,0,33.333,14.957,33.333,33.333c0,11.829-6.39,22.881-16.671,28.838l-2.376,1.371v12.557h-9.524V56.352
+				c5.529-1.971,9.524-7.21,9.524-13.41c0-7.876-6.41-14.286-14.286-14.286c-7.876,0-14.286,6.411-14.286,14.287
+				c0,6.2,3.995,11.438,9.524,13.41v29.362H72.7V73.157l-2.376-1.376C60.043,65.824,53.653,54.776,53.653,42.948z M86.986,47.71
+				c-2.629,0-4.762-2.139-4.762-4.762c0-2.629,2.133-4.762,4.762-4.762c2.629,0,4.762,2.133,4.762,4.762S89.615,47.71,86.986,47.71z
+				 M257.366,95.239c0.691,4.761,1.039,9.59,1.039,14.285l0.01,17.405c0.029,38.148-18.795,73.871-50.286,95.552l-2.095,1.429
+				v61.805h-95.238v-42.857h-47.62v-58.086l-30.862-7.043l27.876-49.7l-0.271-1.7c-1.771-10.419-1.871-21.567-0.333-31.09h3.59
+				h47.619H257.366z M245.714,85.714H232.3l23.738-55.343l10.557,5.257L245.714,85.714z M267.938,25.714l-5.267-2.633l5.267-3.943
+				V25.714z"
+                          />
+                          <path
+                            d="M96.51,123.81c-7.876,0-14.286-4.762-14.286-14.286H72.7c0,14.286,10.681,23.81,23.81,23.81
+				c13.129,0,23.81-9.524,23.81-23.81h-9.524C110.795,119.048,104.386,123.81,96.51,123.81z"
+                          />
+                        </g>
+                      </g>
+                    </g>
+                  </svg>
+                </div>
+              </div>
+            </li>
+            <li className="text-left mb-10">
+              <div className="flex flex-row items-start mb-5">
+                <div className="hidden sm:flex items-center justify-center p-3 mr-3 rounded-full bg-theme-color text-white border-4 border-white text-xl font-semibold">
+                  <svg
+                    width="30px"
+                    fill="white"
+                    height="30px"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g data-name="Layer 2">
+                      <g data-name="menu-arrow">
+                        <rect
+                          width={24}
+                          height={24}
+                          transform="rotate(180 12 12)"
+                          opacity={0}
+                        />
+                        <path d="M17 9A5 5 0 0 0 7 9a1 1 0 0 0 2 0 3 3 0 1 1 3 3 1 1 0 0 0-1 1v2a1 1 0 0 0 2 0v-1.1A5 5 0 0 0 17 9z"></path>
+                        <circle cx={12} cy={19} r={1} />
+                      </g>
+                    </g>
+                  </svg>
+                </div>
+                <div className="bg-gray-100 p-5 px-10 w-full flex items-center">
+                  <h4 className="text-md leading-6 font-medium text-gray-900">
+                    What could possibly be your first question?
+                  </h4>
+                </div>
+              </div>
+              <div className="flex flex-row items-start">
+                <div className="bg-[#FBF5EE] p-5 px-10 w-full flex items-center">
+                  <p className="text-gray-700 text-sm">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Maiores impedit perferendis suscipit eaque, iste dolor
+                    cupiditate blanditiis ratione. Lorem ipsum, dolor sit amet
+                    consectetur adipisicing elit.
+                  </p>
+                </div>
+                <div className="hidden sm:flex items-center justify-center p-3 ml-3 rounded-full bg-theme-color text-white border-4 border-white text-xl font-semibold">
+                  <svg
+                    height="25px"
+                    fill="white"
+                    version="1.1"
+                    id="Layer_1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlnsXlink="http://www.w3.org/1999/xlink"
+                    x="0px"
+                    y="0px"
+                    viewBox="0 0 295.238 295.238"
+                    style={{ enableBackground: "new 0 0 295.238 295.238" }}
+                    xmlSpace="preserve"
+                  >
+                    <g>
+                      <g>
+                        <g>
+                          <path
+                            d="M277.462,0.09l-27.681,20.72l-27.838,64.905h-22.386l-8.79-19.048h5.743c10.505,0,19.048-8.452,19.048-18.957V28.571
+				h9.524V0H196.51v28.571h9.524V47.71c0,5.248-4.271,9.433-9.524,9.433h-10.138L174.2,30.81l14.581-7.267L141.038,3.095
+				l-11.224,39.281c-0.305-23.371-19.386-42.29-42.829-42.29c-23.633,0-42.857,19.224-42.857,42.857
+				c0,14.281,7.233,27.676,19.048,35.595v7.176H51.643L50.9,89.619c-2.314,12.005-2.529,24.343-0.638,36.648l-32.486,57.905
+				l35.876,8.195v60.014h47.619v42.857h114.286v-66.357c33.333-23.581,52.371-61.495,52.343-101.943l0.01-17.371
+				c0-6.548-0.605-13.276-1.824-19.905l-0.705-3.948h-9.348l21.429-51.338V0.09z M206.033,19.138V9.614h9.524v9.524H206.033z
+				 M189.067,85.714h-18.062l-8.657-19.048h17.929L189.067,85.714z M147.219,16.119l18.929,8.11l-4.467,2.19l14.2,30.724h-17.862
+				l-11.605-25.471l-4.262,2.152L147.219,16.119z M160.543,85.715h-21.176v-9.433c0-5.252,4.271-9.614,9.524-9.614h2.995v-0.001
+				L160.543,85.715z M141.843,44.652l5.776,12.71c-9.905,0.667-17.776,8.848-17.776,18.919v9.433h-19.048v-7.176
+				c9.529-6.386,15.995-16.352,18.176-27.452L141.843,44.652z M53.653,42.948c0-18.376,14.957-33.333,33.333-33.333
+				c18.376,0,33.333,14.957,33.333,33.333c0,11.829-6.39,22.881-16.671,28.838l-2.376,1.371v12.557h-9.524V56.352
+				c5.529-1.971,9.524-7.21,9.524-13.41c0-7.876-6.41-14.286-14.286-14.286c-7.876,0-14.286,6.411-14.286,14.287
+				c0,6.2,3.995,11.438,9.524,13.41v29.362H72.7V73.157l-2.376-1.376C60.043,65.824,53.653,54.776,53.653,42.948z M86.986,47.71
+				c-2.629,0-4.762-2.139-4.762-4.762c0-2.629,2.133-4.762,4.762-4.762c2.629,0,4.762,2.133,4.762,4.762S89.615,47.71,86.986,47.71z
+				 M257.366,95.239c0.691,4.761,1.039,9.59,1.039,14.285l0.01,17.405c0.029,38.148-18.795,73.871-50.286,95.552l-2.095,1.429
+				v61.805h-95.238v-42.857h-47.62v-58.086l-30.862-7.043l27.876-49.7l-0.271-1.7c-1.771-10.419-1.871-21.567-0.333-31.09h3.59
+				h47.619H257.366z M245.714,85.714H232.3l23.738-55.343l10.557,5.257L245.714,85.714z M267.938,25.714l-5.267-2.633l5.267-3.943
+				V25.714z"
+                          />
+                          <path
+                            d="M96.51,123.81c-7.876,0-14.286-4.762-14.286-14.286H72.7c0,14.286,10.681,23.81,23.81,23.81
+				c13.129,0,23.81-9.524,23.81-23.81h-9.524C110.795,119.048,104.386,123.81,96.51,123.81z"
+                          />
+                        </g>
+                      </g>
+                    </g>
+                  </svg>
+                </div>
+              </div>
+            </li>
+          </ul>
         </div>
-      </div>
-    </section>
-  );
-};
-
-const AccordionItem = ({ header, text }) => {
-  const [active, setActive] = useState(false);
-
-  const handleToggle = (e) => {
-    e.preventDefault();
-    setActive(!active);
-  };
-
-  return (
-    <div className="w-full p-4 mb-8 bg-white rounded-lg shadow-xl sm:p-8 lg:px-6 xl:px-8">
-      <button className="flex w-full text-left faq-btn" onClick={handleToggle}>
-        <div className="mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg bg-primary/5 text-primary dark:bg-white/5">
-          <svg
-            className={`fill-primary stroke-primary duration-200 ease-in-out ${
-              active ? "rotate-180" : ""
-            }`}
-            width="17"
-            height="10"
-            viewBox="0 0 17 10"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M7.28687 8.43257L7.28679 8.43265L7.29496 8.43985C7.62576 8.73124 8.02464 8.86001 8.41472 8.86001C8.83092 8.86001 9.22376 8.69083 9.53447 8.41713L9.53454 8.41721L9.54184 8.41052L15.7631 2.70784L15.7691 2.70231L15.7749 2.69659C16.0981 2.38028 16.1985 1.80579 15.7981 1.41393C15.4803 1.1028 14.9167 1.00854 14.5249 1.38489L8.41472 7.00806L2.29995 1.38063L2.29151 1.37286L2.28271 1.36548C1.93092 1.07036 1.38469 1.06804 1.03129 1.41393L1.01755 1.42738L1.00488 1.44184C0.69687 1.79355 0.695778 2.34549 1.0545 2.69659L1.05999 2.70196L1.06565 2.70717L7.28687 8.43257Z"
-              fill=""
-              stroke=""
-            />
-          </svg>
-        </div>
-
-        <div className="w-full">
-          <h4 className="mt-1 text-lg font-semibold text-black">{header}</h4>
-        </div>
-      </button>
-
-      <div
-        className={`pl-[62px] duration-200 ease-in-out ${
-          active ? "block" : "hidden"
-        }`}
-      >
-        <p className="py-3 text-base leading-relaxed text-body-color">{text}</p>
       </div>
     </div>
   );

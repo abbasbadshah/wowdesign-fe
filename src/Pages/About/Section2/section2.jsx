@@ -1,5 +1,5 @@
-import IconRight from "../../../assets/images/About/icons/icon-right.svg";
 import Avatar from "../../../assets/images/User Profile/man.jpg";
+
 export const AboutSectionTwo = () => {
   return (
     <div className="full-width bg-[#F0D7BC]">

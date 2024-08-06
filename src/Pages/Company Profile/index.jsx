@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { PencilIcon, PlayIcon, ShareIcon } from "@heroicons/react/24/outline";
 import CompanyLogo from "../../assets/images/Company/companylistingDummylogo.png";
 import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from "react-icons/fa";
+import { SimiliarCompanies } from "./Similiar Company";
 
 export const CompanyProfile = () => {
   const [activeTab, setActiveTab] = useState("Overview");
@@ -264,6 +265,7 @@ export const CompanyProfile = () => {
           </div>
         </div>
       </div>
+      <SimiliarCompanies />
     </Layout>
   );
 };

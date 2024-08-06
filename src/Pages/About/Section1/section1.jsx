@@ -2,10 +2,10 @@ import fbIcon from "../../../assets/images/About/icons/icon-facebook-gray.svg";
 import inIcon from "../../../assets/images/About/icons/icon-instagram-gray.svg";
 import IconRight from "../../../assets/images/About/icons/icon-right.svg";
 import IconPlayButton from "../../../assets/images/About/icons/icon-button.svg";
-import aboutTopImage1 from "../../../assets/images/About/abt1.png";
-import aboutTopImage2 from "../../../assets/images/About/abt2.png";
 import circleblur1 from "../../../assets/images/About/circle-blur-1.svg";
 import circleblur2 from "../../../assets/images/About/circle-blur-2.svg";
+import { PhotoDisplay } from "../../../components/shared";
+
 
 const socialIcons = [
   { src: fbIcon, alt: "facebook icon", link: "/" },
@@ -93,29 +93,18 @@ export const AboutSectionOne = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-5 mt-16 lg:mt-28 lg:flex-row">
-          <div className="flex-[1.4]">
-            <img
-              className="object-cover w-full h-full"
-              src={aboutTopImage1}
-              alt="Agon"
-            />
-          </div>
-          <div className="flex-1">
-            <img
-              className="object-cover w-full h-full"
-              src={aboutTopImage2}
-              alt="Agon"
-            />
-          </div>
-          <div className="flex-1">
-            <img
-              className="object-cover w-full h-full"
-              src={aboutTopImage2}
-              alt="Agon"
-            />
-          </div>
-        </div>
+        <div className="flex flex-col gap-5 mt-16 lg:mt-28 lg:flex-row h-full">
+  <div className="flex-1">
+    <PhotoDisplay className={'object-cover w-full'} photoId={'042Srn0-82o'} />
+  </div>
+  <div className="flex-1">
+    <PhotoDisplay className={'object-cover w-full'} photoId={'X48hkTT1qQc'} />
+  </div>
+  <div className="flex-1">
+    <PhotoDisplay className={'object-cover w-full'} photoId={'Gng-ygXlN_E'} />
+  </div>
+</div>
+
         <div className="mt-16 lg:mt-20">
           <div className="grid grid-cols-2 gap-2 text-center gap-y-8 md:grid-cols-2 xl:gap-y-16 lg:grid-cols-4">
             {stats.map((stat, index) => (

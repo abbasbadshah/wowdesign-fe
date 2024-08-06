@@ -1,17 +1,16 @@
-import Thumb1 from "../../../assets/images/About/thumbnail-15.png";
-import ChartImage from "../../../assets/images/About/chart.png";
-import medium_safety from "../../../assets/images/About/medium_safety.png";
-import icon_leaf from "../../../assets/images/About/icons/icon-leaf.svg";
+import { Leaf } from "lucide-react";
+import { PhotoDisplay } from "../../../components/shared";
 export const AboutSectionThree = () => {
   return (
     <div className="px-6 my-24 lg:px-24">
       <div className="bg-opacity-50 rounded-full opacity-50 blur-2xl absolute -translate-x-4 max-w-full bg-[#F5E2C6] w-[562px] h-[562px] translate-y-1/3"></div>
       <div className="lg:grid lg:grid-cols-2 gap-[100px]">
         <div className="relative">
-          <img
-            className="h-full w-full object-cover mx-auto mb-[30px] lg:mb-0 lg:flex-1 max-w-[70%]"
-            src={Thumb1}
-            alt="Agon"
+          <PhotoDisplay
+            className={
+              "h-full w-full object-cover mx-auto mb-[30px] lg:mb-0 lg:flex-1 max-w-[70%]"
+            }
+            photoId={"p6p6TYnDgrw"}
           />
         </div>
         <div className="flex-1 lg:gap-[30px] xl:gap-[64px]">
@@ -26,8 +25,8 @@ export const AboutSectionThree = () => {
               <h1 className="font-extrabold font-chivo text-[35px] leading-[44px] sm:text-[46px] sm:leading-[52px] md:text-heading-1 text-theme-color mb-[14px]">
                 01
               </h1>
-              <div className="flex items-center mb-[17px]">
-                <img className="mr-[9px]" src={icon_leaf} alt="leaf icon" />
+              <div className="flex items-center mb-[17px] gap-2">
+                <Leaf className="w-4 text-theme-color" />
                 <h4 className="font-bold text-heading-6 font-chivo">
                   Boost your sale
                 </h4>
@@ -40,8 +39,8 @@ export const AboutSectionThree = () => {
               <h1 className="font-extrabold font-chivo text-[35px] leading-[44px] sm:text-[46px] sm:leading-[52px] md:text-heading-1 text-theme-color mb-[14px]">
                 02
               </h1>
-              <div className="flex items-center mb-[17px]">
-                <img className="mr-[9px]" src={icon_leaf} alt="leaf icon" />
+              <div className="flex items-center mb-[17px] gap-2">
+                <Leaf className="w-4 text-theme-color" />
                 <h4 className="font-bold text-heading-6 font-chivo">
                   Smart Installation Tools
                 </h4>
@@ -54,8 +53,8 @@ export const AboutSectionThree = () => {
               <h1 className="font-extrabold font-chivo text-[35px] leading-[44px] sm:text-[46px] sm:leading-[52px] md:text-heading-1 text-theme-color mb-[14px]">
                 03
               </h1>
-              <div className="flex items-center mb-[17px]">
-                <img className="mr-[9px]" src={icon_leaf} alt="leaf icon" />
+              <div className="flex items-center mb-[17px] gap-2">
+                <Leaf className="w-4 text-theme-color" />
                 <h4 className="font-bold text-heading-6 font-chivo">
                   Introducing New Features
                 </h4>
@@ -68,8 +67,8 @@ export const AboutSectionThree = () => {
               <h1 className="font-extrabold font-chivo text-[35px] leading-[44px] sm:text-[46px] sm:leading-[52px] md:text-heading-1 text-theme-color mb-[14px]">
                 04
               </h1>
-              <div className="flex items-center mb-[17px]">
-                <img className="mr-[9px]" src={icon_leaf} alt="leaf icon" />
+              <div className="flex items-center mb-[17px] gap-2">
+                <Leaf className="w-4 text-theme-color" />
                 <h4 className="font-bold text-heading-6 font-chivo">
                   Dynamic Boosting
                 </h4>

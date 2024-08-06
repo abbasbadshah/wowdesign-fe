@@ -15,6 +15,7 @@ import DashboardCreateCompany from "./Pages/Dashboard/Create Company";
 import { UserSocialMediaSettings } from "./Pages/Dashboard/Social Media";
 import { DashboardProfile } from "./Pages/Dashboard/Profile";
 import { IndividualDetailFillup } from "./Pages/Dashboard/Individual Profile Settings";
+import CompanyBrowsingPage from "./Pages/Company Browsing/company browsing Two";
 
 export const routes = [
   {
@@ -64,7 +65,7 @@ export const routes = [
   },
   {
     path: "/company",
-    component: CompanyBrowsing,
+    component: CompanyBrowsingPage,
     exact: true,
   },
   {
@@ -101,5 +102,10 @@ export const routes = [
     path: "/dashboard",
     component: DashboardProfile,
     exact: true,
+  },
+  {
+    path: "/company-browsing",
+    component: CompanyBrowsingPage,
+    expect: true,
   }
 ];
