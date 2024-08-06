@@ -235,7 +235,7 @@ const CategoryItem = React.memo(
 );
 
 const CompanyCard = React.memo(({ company }) => (
-  <Link to={`/company-profile/${company.id}`} className="block">
+  <Link to={`/company-profile`} className="block">
     <div className="relative w-full h-96 rounded-xl overflow-hidden group">
       <div className="absolute inset-0">
         <PhotoDisplay
