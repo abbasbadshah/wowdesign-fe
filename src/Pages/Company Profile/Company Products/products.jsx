@@ -34,7 +34,7 @@ const portfolios = [
 
 export const CompanyProducts = () => {
   return (
-    <section className="mb-24">
+    <section className="mt-10">
       <div className="flex flex-col">
         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
           {portfolios.map((portfolio) => (

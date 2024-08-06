@@ -1,8 +1,8 @@
 import React from "react";
-import CommercialImage from "../../../assets/images/Projects/commercials.jpg";
-import HealthcareImage from "../../../assets/images/Projects/healthcare.jpg";
-import RestaurantImage from "../../../assets/images/Projects/restaurant.jpg";
-import HospitalityImage from "../../../assets/images/Projects/hospitality.jpeg";
+import CommercialImage from "../../../../assets/images/Projects/commercials.jpg";
+import HealthcareImage from "../../../../assets/images/Projects/healthcare.jpg";
+import RestaurantImage from "../../../../assets/images/Projects/restaurant.jpg";
+import HospitalityImage from "../../../../assets/images/Projects/hospitality.jpeg";
 import { Link } from "react-router-dom";
 const projectData = [
   {
@@ -39,12 +39,17 @@ const projectData = [
   },
 ];
 
-export const CompanyProjects = () => {
+export const SimiliarProjects = () => {
   return (
-    <section className="mt-10">
+    <section className="my-24">
       <div className="flex flex-col">
+        <div className="flex justify-between">
+          <h2 className="text-4xl font-medium text-left mb-10">
+            Similiar <span className="text-theme-color font-bold">Projects</span>
+          </h2>
+        </div>
 
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
+        <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-8">
           {projectData.map((project) => (
             <div
               key={project.id}

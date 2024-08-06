@@ -23,7 +23,7 @@ const CompanyBrochure = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative mt-10">
       <div className={`relative ${isBlurred ? "filter blur-md" : ""}`}>
         <iframe
           src={Broucher}

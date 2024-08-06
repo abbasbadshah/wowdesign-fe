@@ -95,7 +95,7 @@ export const ProjectPageDetails = () => {
             </div>
           </div>
           <section className="py-5 lg:py-6 xl:py-7">
-            <p className="text-gray-dark text-sm md:text-base !text-base !leading-7 !text-secondary">
+            <p className="text-gray-dark text-sm md:text-base">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -115,7 +115,7 @@ export const ProjectPageDetails = () => {
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
               nisi ut aliquip ex ea commodo consequat.
             </p>
-            <p className="text-gray-dark text-sm md:text-base !text-base !leading-7 !text-secondary mt-2">
+            <p className="text-gray-dark text-sm md:text-base mt-2">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -213,7 +213,7 @@ export const ProjectPageDetails = () => {
             <div className="mt-4 w-full text-center 4xl:mt-8">
               <button
                 type="button"
-                className="inline-flex font-medium items-center justify-center focus:outline-none transition duration-200 active:scale-90 px-5 py-2 text-base rounded-md hover:text-gray-1000 focus:ring-gray-900/30 relative !p-0 !font-bold !text-secondary focus:!ring-0"
+                className="inline-flex font-medium items-center justify-center focus:outline-none transition duration-200 active:scale-90 px-5 py-2 text-base rounded-md hover:text-gray-1000 focus:ring-gray-900/30 relative"
               >
                 Report this listing
                 <span className="absolute bottom-0 left-0 w-full border border-gray" />

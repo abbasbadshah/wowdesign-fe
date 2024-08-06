@@ -5,7 +5,7 @@ import {
   MapIcon,
   DocumentDuplicateIcon,
 } from "@heroicons/react/24/outline";
-import logo from "../../../assets/images/Company/companylistingDummylogo.png";
+import logo from "../../../assets/images/Company/browsing/logo/logo1.avif";
 
 export const SimiliarCompanies = () => {
   const companies = [
@@ -123,6 +123,11 @@ export const SimiliarCompanies = () => {
 
   return (
     <div className="px-4 sm:px-6 lg:px-24 mb-14">
+    <div className="flex justify-between">
+          <h2 className="text-4xl font-medium text-left mb-10">
+            Similiar <span className="text-theme-color font-bold">Companies</span>
+          </h2>
+        </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
         {displayedCompanies.map((company) => (
           <div
