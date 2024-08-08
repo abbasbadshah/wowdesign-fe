@@ -4,37 +4,38 @@ import HealthcareImage from "../../../../assets/images/Projects/healthcare.jpg";
 import RestaurantImage from "../../../../assets/images/Projects/restaurant.jpg";
 import HospitalityImage from "../../../../assets/images/Projects/hospitality.jpeg";
 import { Link } from "react-router-dom";
+import { UserCircleIcon } from "@heroicons/react/24/outline";
 const projectData = [
   {
     id: 1,
     image: CommercialImage,
     title: "Skyline Plaza",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    author:
+      "Mohammad Kika, UAE",
     category: "Commercials",
   },
   {
     id: 2,
     image: HealthcareImage,
     title: "Horizon Medical Complex",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    author:
+      "Mohammad Kika, UAE",
     category: "Healthcare",
   },
   {
     id: 3,
     image: RestaurantImage,
     title: "Garden Bistro",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    author:
+      "Mohammad Kika, UAE",
     category: "Restaurant",
   },
   {
     id: 4,
     image: HospitalityImage,
     title: "Serenity Resort & Spa",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    author:
+      "Mohammad Kika, UAE",
     category: "Hospitality",
   },
 ];
@@ -67,30 +68,32 @@ export const FeatureProjects = () => {
               >
                 <img
                   src={project.image}
-                  className="scale-100 group-hover:scale-105 transition-all duration-500 rounded w-full h-72 object-cover"
                   alt={project.title}
+                  className="scale-100 group-hover:scale-105 transition-all duration-500 rounded w-full h-72 object-cover"
                 />
               </Link>
 
-              <div className="mt-5 bg-white">
-                <div className="flex items-center justify-between">
-                  <div className="w-3/4">
-                    <Link to={`/projects/project-details`}>
-                      <h2 className="text-xl font-bold mb-1 hover:text-theme-color transition-colors">
+              <div className="mt-5 bg-white flex flex-col">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between">
+                  <div className="w-full sm:w-3/4 mb-2 sm:mb-0">
+                    <Link to={`/projects/project-details`} className="block">
+                      <h2 className="text-xl font-bold mb-1 hover:text-theme-color transition-colors line-clamp-2">
                         {project.title}
                       </h2>
                     </Link>
-                    <p className="text-sm font-medium text-gray-500">
-                      {project.description}
-                    </p>
                   </div>
 
-                  <div className="w-1/4">
-                    <span className="text-sm font-semibold py-1.5 px-2 bg-gray-100 inline-block">
-                      {project.category}
+                  <div className="w-auto sm:w-1/4 sm:text-right">
+                    <span className="text-sm font-semibold py-1.5 px-2 bg-gray-100 inline-block break-words max-w-full">
+                      {project.category.charAt(0).toUpperCase() +
+                        project.category.slice(1)}
                     </span>
                   </div>
                 </div>
+                <span className="flex gap-2 text-sm font-medium text-gray-500 mt-2">
+                  <UserCircleIcon className="w-5 text-theme-color flex-shrink-0" />
+                  <span className="truncate">{project.author}</span>
+                </span>
               </div>
             </div>
           ))}

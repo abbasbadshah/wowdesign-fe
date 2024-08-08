@@ -22,18 +22,9 @@ import {
   FaShareAlt,
 } from "react-icons/fa";
 import { SimiliarCompanies } from "./Similiar Company";
-import { ImageGalleryStyleTwo } from "../../components/shared";
 
 export const CompanyProfile = () => {
   const [activeTab, setActiveTab] = useState("Overview");
-  const imageIds = [
-    GalleryImageOne,
-    GalleryImageTwo,
-    GalleryImageThree,
-    GalleryImageFour,
-    GalleryImageFive,
-    GalleryImageSix,
-  ];
   return (
     <Layout>
       <div
@@ -41,22 +32,10 @@ export const CompanyProfile = () => {
         style={{
           backgroundImage: `url(${BannerImage})`,
           backgroundRepeat: "no-repeat",
-          backgroundAttachment: "fixed",
           backgroundPosition: "top-center",
         }}
       >
-        <div className="absolute inset-0 bg-black opacity-50"></div>
-        <div className="relative z-10 h-full">
-          <div className="absolute bottom-0 left-0 p-6 text-white px-6 lg:px-24">
-            <p className="text-white font-medium text-base">Category Name</p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-              Company Name
-            </h1>
-            <button className="gap-2 bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:px-8 lg:py-4 rounded-lg font-semibold">
-              Enquire Now
-            </button>
-          </div>
-        </div>
+        <div className="relative z-10 h-full"></div>
       </div>
 
       {/* Main content */}
@@ -146,7 +125,6 @@ export const CompanyProfile = () => {
                         <div className="absolute inset-0 bg-black bg-gradient-to-b opacity-30 to-transparent" />
                       </div>
                     </section>
-                    <ImageGalleryStyleTwo images={imageIds} />
                   </div>
                 )}
                 {activeTab === "Projects" && (

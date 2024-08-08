@@ -33,6 +33,8 @@ import {
   Squares2X2Icon,
 } from "@heroicons/react/24/outline";
 import { Helmet } from "react-helmet";
+import { UserCircleIcon } from "@heroicons/react/20/solid";
+import Fuse from "fuse.js";
 
 const sortOptions = [
   { name: "Most Popular", href: "#", current: true },
@@ -50,50 +52,12 @@ const subCategories = [
   { name: "Restaurants", value: "restaurants" },
   { name: "Healthcare", value: "healthcare" },
 ];
-const filters = [
-  {
-    id: "color",
-    name: "Color",
-    options: [
-      { value: "white", label: "White", checked: false },
-      { value: "beige", label: "Beige", checked: false },
-      { value: "blue", label: "Blue", checked: true },
-      { value: "brown", label: "Brown", checked: false },
-      { value: "green", label: "Green", checked: false },
-      { value: "purple", label: "Purple", checked: false },
-    ],
-  },
-  {
-    id: "category",
-    name: "Category",
-    options: [
-      { value: "new-arrivals", label: "New Arrivals", checked: false },
-      { value: "sale", label: "Sale", checked: false },
-      { value: "travel", label: "Travel", checked: true },
-      { value: "organization", label: "Organization", checked: false },
-      { value: "accessories", label: "Accessories", checked: false },
-    ],
-  },
-  {
-    id: "size",
-    name: "Size",
-    options: [
-      { value: "2l", label: "2L", checked: false },
-      { value: "6l", label: "6L", checked: false },
-      { value: "12l", label: "12L", checked: false },
-      { value: "18l", label: "18L", checked: false },
-      { value: "20l", label: "20L", checked: false },
-      { value: "40l", label: "40L", checked: true },
-    ],
-  },
-];
 
 const projectData = [
   {
     id: 1,
     title: "Skyline Plaza",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    author: "Cristina Murfy, UAE",
     category: "commercials",
     path: "/projects/project-details",
     image: CommercialImage,
@@ -101,8 +65,7 @@ const projectData = [
   {
     id: 2,
     title: "Harmony Heights",
-    description:
-      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    author: "Cristina Murfy, UAE",
     category: "residentials",
     path: "/projects/project-details",
     image: ResidentialsImage,
@@ -110,8 +73,7 @@ const projectData = [
   {
     id: 3,
     title: "Serenity Resort & Spa",
-    description:
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    author: "Cristina Murfy, UAE",
     category: "hospitality",
     path: "/projects/project-details",
     image: HospitalityImage,
@@ -119,8 +81,7 @@ const projectData = [
   {
     id: 4,
     title: "Greenville Revitalization Project",
-    description:
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    author: "Cristina Murfy, UAE",
     category: "urban-development",
     path: "/projects/project-details",
     image: UrbanDevelopmentImage,
@@ -128,8 +89,7 @@ const projectData = [
   {
     id: 5,
     title: "Garden Bistro",
-    description:
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    author: "Cristina Murfy, UAE",
     category: "restaurants",
     path: "/projects/project-details",
     image: RestaurantImage,
@@ -137,13 +97,17 @@ const projectData = [
   {
     id: 6,
     title: "Horizon Medical Complex",
-    description:
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    author: "Cristina Murfy, UAE",
     category: "healthcare",
     path: "/projects/project-details",
     image: HealthcareImage,
   },
 ];
+
+const fuse = new Fuse(projectData, {
+  keys: ["title", "category"],
+  includeScore: true,
+});
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -152,14 +116,39 @@ function classNames(...classes) {
 export const Projects = () => {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredProjects, setFilteredProjects] = useState(projectData);
   const navigate = useNavigate();
-
-  const filteredProjects = selectedCategory
-    ? projectData.filter((project) => project.category === selectedCategory)
-    : projectData;
 
   const handleCategorySelect = (category) => {
     setSelectedCategory(category);
+    filterByCategory(category);
+  };
+
+  const handleSearchChange = (e) => {
+    const term = e.target.value.trim();
+    setSearchTerm(term);
+    filterBySearch(term);
+  };
+
+  const filterByCategory = (category) => {
+    if (category) {
+      const filtered = projectData.filter(
+        (project) => project.category === category
+      );
+      setFilteredProjects(filtered);
+    } else {
+      setFilteredProjects(projectData);
+    }
+  };
+
+  const filterBySearch = (term) => {
+    if (term) {
+      const results = fuse.search(term);
+      setFilteredProjects(results.map((result) => result.item));
+    } else {
+      setFilteredProjects(projectData);
+    }
   };
 
   const handleViewDetails = (path) => {
@@ -183,118 +172,7 @@ export const Projects = () => {
             className="relative z-[999] lg:hidden"
             onClose={setMobileFiltersOpen}
           >
-            <TransitionChild
-              enter="transition-opacity ease-linear duration-300"
-              enterFrom="opacity-0"
-              enterTo="opacity-100"
-              leave="transition-opacity ease-linear duration-300"
-              leaveFrom="opacity-100"
-              leaveTo="opacity-0"
-            >
-              <div className="fixed inset-0 bg-black bg-opacity-25" />
-            </TransitionChild>
-
-            <div className="fixed inset-0 z-40 flex">
-              <TransitionChild
-                enter="transition ease-in-out duration-300 transform"
-                enterFrom="translate-x-full"
-                enterTo="translate-x-0"
-                leave="transition ease-in-out duration-300 transform"
-                leaveFrom="translate-x-0"
-                leaveTo="translate-x-full"
-              >
-                <DialogPanel className="relative flex flex-col w-full h-full max-w-xs py-4 pb-12 ml-auto overflow-y-auto bg-white shadow-xl">
-                  <div className="flex items-center justify-between px-4">
-                    <h2 className="text-lg font-medium text-gray-900">
-                      Filters
-                    </h2>
-                    <button
-                      type="button"
-                      className="flex items-center justify-center w-10 h-10 p-2 -mr-2 text-gray-400 bg-white rounded-md"
-                      onClick={() => setMobileFiltersOpen(false)}
-                    >
-                      <span className="sr-only">Close menu</span>
-                      <PhoneXMarkIcon className="w-6 h-6" aria-hidden="true" />
-                    </button>
-                  </div>
-
-                  {/* Filters */}
-                  <form className="mt-4 border-t border-gray-200">
-                    <h3 className="sr-only">Categories</h3>
-                    <ul
-                      role="list"
-                      className="px-2 py-3 font-medium text-gray-900"
-                    >
-                      {subCategories.map((category) => (
-                        <li key={category.name}>
-                          <a href={category.href} className="block px-2 py-3">
-                            {category.name}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-
-                    {filters.map((section) => (
-                      <Disclosure
-                        as="div"
-                        key={section.id}
-                        className="px-4 py-6 border-t border-gray-200"
-                      >
-                        {({ open }) => (
-                          <>
-                            <h3 className="flow-root -mx-2 -my-3">
-                              <DisclosureButton className="flex items-center justify-between w-full px-2 py-3 text-gray-400 bg-white hover:text-gray-500">
-                                <span className="font-medium text-gray-900">
-                                  {section.name}
-                                </span>
-                                <span className="flex items-center ml-6">
-                                  {open ? (
-                                    <MinusIcon
-                                      className="w-5 h-5"
-                                      aria-hidden="true"
-                                    />
-                                  ) : (
-                                    <PlusIcon
-                                      className="w-5 h-5"
-                                      aria-hidden="true"
-                                    />
-                                  )}
-                                </span>
-                              </DisclosureButton>
-                            </h3>
-                            <DisclosurePanel className="pt-6">
-                              <div className="space-y-6">
-                                {section.options.map((option, optionIdx) => (
-                                  <div
-                                    key={option.value}
-                                    className="flex items-center"
-                                  >
-                                    <input
-                                      id={`filter-mobile-${section.id}-${optionIdx}`}
-                                      name={`${section.id}[]`}
-                                      defaultValue={option.value}
-                                      type="checkbox"
-                                      defaultChecked={option.checked}
-                                      className="w-4 h-4 border-gray-300 rounded text-theme-color focus:ring-indigo-500"
-                                    />
-                                    <label
-                                      htmlFor={`filter-mobile-${section.id}-${optionIdx}`}
-                                      className="flex-1 min-w-0 ml-3 text-gray-500"
-                                    >
-                                      {option.label}
-                                    </label>
-                                  </div>
-                                ))}
-                              </div>
-                            </DisclosurePanel>
-                          </>
-                        )}
-                      </Disclosure>
-                    ))}
-                  </form>
-                </DialogPanel>
-              </TransitionChild>
-            </div>
+            {/* Mobile filter dialog content */}
           </Dialog>
         </Transition>
 
@@ -306,8 +184,38 @@ export const Projects = () => {
 
             <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
               {/* Filters */}
-              <form className="hidden lg:block sticky top-24 max-h-[calc(100vh-6rem)] h-fit overflow-y-auto">
+              <div className="hidden lg:block sticky top-24 max-h-[calc(100vh-6rem)] h-fit overflow-y-auto">
                 <h3 className="sr-only">Categories</h3>
+                <div>
+                  <div className="relative my-2 ">
+                    <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                      <svg
+                        className="w-4 h-4 text-gray-500"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                        />
+                      </svg>
+                    </div>
+                    <input
+                      type="search"
+                      id="default-search"
+                      className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50"
+                      placeholder="Search Category, Name..."
+                      required=""
+                      value={searchTerm}
+                      onChange={handleSearchChange}
+                    />
+                  </div>
+                </div>
                 <ul
                   role="list"
                   className="p-6 pb-6 space-y-4 text-base font-medium text-gray-900 border border-gray-200 rounded"
@@ -332,70 +240,10 @@ export const Projects = () => {
                     </li>
                   ))}
                 </ul>
-                {/*
-                  {filters.map((section) => (
-                    <Disclosure
-                      as="div"
-                      key={section.id}
-                      className="py-6 border-b border-gray-200"
-                    >
-                      {({ open }) => (
-                        <>
-                          <h3 className="flow-root -my-3">
-                            <DisclosureButton className="flex items-center justify-between w-full py-3 text-sm text-gray-400 bg-white hover:text-gray-500">
-                              <span className="font-medium text-gray-900">
-                                {section.name}
-                              </span>
-                              <span className="flex items-center ml-6">
-                                {open ? (
-                                  <MinusIcon
-                                    className="w-5 h-5"
-                                    aria-hidden="true"
-                                  />
-                                ) : (
-                                  <PlusIcon
-                                    className="w-5 h-5"
-                                    aria-hidden="true"
-                                  />
-                                )}
-                              </span>
-                            </DisclosureButton>
-                          </h3>
-                            <DisclosurePanel className="pt-6">
-                            <div className="space-y-4">
-                              {section.options.map((option, optionIdx) => (
-                                <div
-                                  key={option.value}
-                                  className="flex items-center"
-                                >
-                                  <input
-                                    id={`filter-${section.id}-${optionIdx}`}
-                                    name={`${section.id}[]`}
-                                    defaultValue={option.value}
-                                    type="checkbox"
-                                    defaultChecked={option.checked}
-                                    className="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
-                                  />
-                                  <label
-                                    htmlFor={`filter-${section.id}-${optionIdx}`}
-                                    className="ml-3 text-sm text-gray-600"
-                                  >
-                                    {option.label}
-                                  </label>
-                                </div>
-                              ))}
-                            </div>
-                          </DisclosurePanel>
-                        </>
-                      )}
-                    </Disclosure>
-                  ))}
-                  */}
-              </form>
+              </div>
               <div className="lg:col-span-3">
                 {/* Products Grid*/}
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
-                  {/*Project Card Start*/}
                   {filteredProjects.map((project) => (
                     <div
                       key={project.id}
@@ -413,32 +261,34 @@ export const Projects = () => {
                       </Link>
 
                       <div className="mt-5 bg-white flex flex-col">
-                        <div className="flex items-center justify-between">
-                          <div className="w-3/4">
+                        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between">
+                          <div className="w-full sm:w-3/4 mb-2 sm:mb-0">
                             <Link
                               to={`/projects/project-details`}
                               className="block"
                             >
-                              <h2 className="text-xl font-bold mb-1 hover:text-theme-color transition-colors">
+                              <h2 className="text-xl font-bold mb-1 hover:text-theme-color transition-colors line-clamp-2">
                                 {project.title}
                               </h2>
                             </Link>
                           </div>
 
-                          <div className="w-1/4">
-                            <span className="text-sm font-semibold py-1.5 px-2 bg-gray-100 inline-block">
-                              {project.category.charAt(0).toUpperCase() +
-                                project.category.slice(1)}
+                          <div className="w-auto sm:w-1/4 sm:text-right">
+                            <span className="text-sm font-semibold py-1.5 px-2 bg-gray-100 inline-block break-words max-w-full">
+                              {project.category
+                                ? project.category.charAt(0).toUpperCase() +
+                                  project.category.slice(1)
+                                : ""}
                             </span>
                           </div>
                         </div>
-                        <p className="text-sm font-medium text-gray-500 mt-5">
-                          {project.description}
-                        </p>
+                        <span className="flex gap-2 text-sm font-medium text-gray-500 mt-2">
+                          <UserCircleIcon className="w-6 text-theme-color flex-shrink-0" />
+                          <span className="truncate">{project.author}</span>
+                        </span>
                       </div>
                     </div>
                   ))}
-                  {/* Project Card End */}
                 </div>
               </div>
             </div>

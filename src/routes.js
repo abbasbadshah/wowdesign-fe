@@ -1,5 +1,4 @@
 import { AboutCompany } from "./Pages/About";
-import { CompanyBrowsing } from "./Pages/Company Browsing";
 import { CompanyProfile } from "./Pages/Company Profile";
 import { CreateCompany } from "./Pages/Create Company";
 import { DashboardProjects } from "./Pages/Dashboard/Projects";
@@ -15,7 +14,7 @@ import DashboardCreateCompany from "./Pages/Dashboard/Create Company";
 import { UserSocialMediaSettings } from "./Pages/Dashboard/Social Media";
 import { DashboardProfile } from "./Pages/Dashboard/Profile";
 import { IndividualDetailFillup } from "./Pages/Dashboard/Individual Profile Settings";
-import CompanyBrowsingPage from "./Pages/Company Browsing/company browsing Two";
+import CompanyBrowsing from "./Pages/Company Browsing";
 
 export const routes = [
   {
@@ -65,7 +64,7 @@ export const routes = [
   },
   {
     path: "/company",
-    component: CompanyBrowsingPage,
+    component: CompanyBrowsing,
     exact: true,
   },
   {
@@ -102,10 +101,5 @@ export const routes = [
     path: "/dashboard",
     component: DashboardProfile,
     exact: true,
-  },
-  {
-    path: "/company-browsing",
-    component: CompanyBrowsingPage,
-    expect: true,
   }
 ];

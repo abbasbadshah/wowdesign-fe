@@ -74,6 +74,8 @@ export const HeaderStyleOne = () => {
   const [scrollDirection, setScrollDirection] = useState(null);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [scrollUpCount, setScrollUpCount] = useState(0);
+  const scrollThreshold = 3;
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
@@ -85,11 +87,13 @@ export const HeaderStyleOne = () => {
 
       if (currentScrollY > lastScrollY) {
         setScrollDirection("down");
+        setScrollUpCount(0);
       } else {
         setScrollDirection("up");
+        setScrollUpCount((prev) => prev + 1);
       }
 
-      if (currentScrollY > 100) {
+      if (currentScrollY > 0) {
         setIsSticky(true);
       } else {
         setIsSticky(false);
@@ -98,9 +102,20 @@ export const HeaderStyleOne = () => {
       setLastScrollY(currentScrollY);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    let ticking = false;
+    const scrollHandler = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", scrollHandler);
+
+    return () => window.removeEventListener("scroll", scrollHandler);
   }, [lastScrollY]);
 
   return (
@@ -111,11 +126,17 @@ export const HeaderStyleOne = () => {
           isSticky
             ? "fixed top-0 left-0 w-full bg-white shadow-lg"
             : "relative",
-          isSticky && scrollDirection === "down"
+          isSticky &&
+            scrollDirection === "down" &&
+            scrollUpCount < scrollThreshold
             ? "-translate-y-full"
             : "translate-y-0",
           !isSticky && "bg-transparent"
         )}
+        style={{
+          transition:
+            "background-color 300ms ease-in-out, transform 300ms ease-in-out",
+        }}
       >
         <nav
           className={classNames(
@@ -209,10 +230,7 @@ export const HeaderStyleOne = () => {
             <Link to="/Products" className="text-sm font-semibold leading-6">
               Products
             </Link>
-            <Link
-              to="/company"
-              className="text-sm font-semibold leading-6"
-            >
+            <Link to="/company" className="text-sm font-semibold leading-6">
               Company
             </Link>
           </PopoverGroup>

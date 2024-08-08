@@ -2,6 +2,13 @@ import { CustomerReview } from "../Customer Review";
 import { ProjectLocationMap } from "../Location";
 import Logo from "../../../../assets/images/Company/companylistingDummylogo.png";
 import { Query } from "../Query";
+import { ImageGalleryStyleTwo } from "../../../../components/shared";
+import GalleryImageOne from "../../../../assets/images/Projects/commercials.jpg";
+import GalleryImageThree from "../../../../assets/images/Projects/healthcare.jpg";
+import GalleryImageTwo from "../../../../assets/images/Projects/hospitality.jpeg";
+import GalleryImageFour from "../../../../assets/images/Projects/resdentials.jpg";
+import GalleryImageFive from "../../../../assets/images/Projects/restaurant.jpg";
+import GalleryImageSix from "../../../../assets/images/Projects/ud.jpeg";
 
 export const ProjectPageDetails = () => {
   const companiesInvolved = [
@@ -11,6 +18,14 @@ export const ProjectPageDetails = () => {
       role: "Suppliers",
       value: "Electronic Sequential Port Fuel Injection (ESPFI)",
     },
+  ];
+  const imageIds = [
+    GalleryImageOne,
+    GalleryImageTwo,
+    GalleryImageThree,
+    GalleryImageFour,
+    GalleryImageFive,
+    GalleryImageSix,
   ];
   return (
     <div>
@@ -162,6 +177,7 @@ export const ProjectPageDetails = () => {
             </div>
           </section>
           <ProjectLocationMap />
+          <ImageGalleryStyleTwo images={imageIds} />
           <Query />
         </div>
         <div className="hidden w-full max-w-sm pb-11 lg:block xl:max-w-md 3xl:max-w-lg">
@@ -172,10 +188,7 @@ export const ProjectPageDetails = () => {
             >
               <div className="flex flex-col justify-between items-center">
                 <div>
-                  <img
-                    src={Logo}
-                    className="bg-contain object-cover"
-                  />
+                  <img src={Logo} className="bg-contain object-cover" />
                 </div>
                 <p className="text-xl font-bold text-gray-dark xl:text-[22px] mt-5">
                   <span className="text-2xl font-bold">BuildWell Inc.</span>
@@ -187,11 +200,11 @@ export const ProjectPageDetails = () => {
                 <span />
               </p>
               <ul className="mt-5 xl:mt-5">
-              <li className="flex items-center justify-between py-1.5 text-base capitalize text-gray-dark first:pt-0 last:border-t last:border-gray-lighter last:pb-0">
+                <li className="flex items-center justify-between py-1.5 text-base capitalize text-gray-dark first:pt-0 last:border-t last:border-gray-lighter last:pb-0">
                   <span className="font-normal">Type</span>
                   <span className="font-bold text-red">Architect</span>
                 </li>
-                
+
                 <li className="flex items-center justify-between py-1.5 text-base capitalize text-gray-dark first:pt-0 last:border-t last:border-gray-lighter last:pb-0">
                   <span className="font-normal">Location </span>
                   <span className="font-bold">Dubai, UAE</span>

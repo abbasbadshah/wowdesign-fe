@@ -74,6 +74,8 @@ export const HeaderStyleThree = () => {
   const [scrollDirection, setScrollDirection] = useState(null);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [scrollUpCount, setScrollUpCount] = useState(0);
+  const scrollThreshold = 3;
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
@@ -85,11 +87,13 @@ export const HeaderStyleThree = () => {
 
       if (currentScrollY > lastScrollY) {
         setScrollDirection("down");
+        setScrollUpCount(0);
       } else {
         setScrollDirection("up");
+        setScrollUpCount((prev) => prev + 1);
       }
 
-      if (currentScrollY > 100) {
+      if (currentScrollY > 0) {
         setIsSticky(true);
       } else {
         setIsSticky(false);
@@ -98,18 +102,30 @@ export const HeaderStyleThree = () => {
       setLastScrollY(currentScrollY);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    let ticking = false;
+    const scrollHandler = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", scrollHandler);
+
+    return () => window.removeEventListener("scroll", scrollHandler);
   }, [lastScrollY]);
-
   return (
     <div>
       <header
         className={classNames(
           "z-[9999] transition-all duration-300 ease-in-out bg-white",
           isSticky ? "fixed top-0 left-0 w-full shadow-lg" : "relative",
-          isSticky && scrollDirection === "down"
+          isSticky &&
+            scrollDirection === "down" &&
+            scrollUpCount < scrollThreshold
             ? "-translate-y-full"
             : "translate-y-0"
         )}
@@ -146,10 +162,7 @@ export const HeaderStyleThree = () => {
             <Link to="/Products" className="text-sm font-semibold leading-6">
               Products
             </Link>
-            <Link
-              to="/company"
-              className="text-sm font-semibold leading-6"
-            >
+            <Link to="/company" className="text-sm font-semibold leading-6">
               Company
             </Link>
           </PopoverGroup>

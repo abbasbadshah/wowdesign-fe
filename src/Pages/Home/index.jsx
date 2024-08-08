@@ -9,7 +9,7 @@ import HomeSliderTwo from "./Hero/Slider";
 
 export const Home = () => {
   return (
-    <Layout headerType="2">
+    <Layout headerType="1">
       <HomeSliderTwo />
       <Section>
         <HomeMainSectionOne />
