@@ -254,7 +254,7 @@ const CompanyCard = React.memo(({ company }) => (
               className="w-16 h-16 object-contain"
             />
           </div>
-          <span className="bg-theme-color text-white px-4 py-2 rounded-full text-sm font-bold">
+          <span className="text-white rounded-full text-sm font-bold">
             {company.projects} Projects
           </span>
         </div>
@@ -272,10 +272,6 @@ const CompanyCard = React.memo(({ company }) => (
             </div>
           </div>
         </div>
-      </div>
-
-      <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
-        <span className="text-white font-bold text-lg">View Profile</span>
       </div>
     </div>
   </Link>
@@ -314,9 +310,9 @@ const CompanySection = React.memo(({ category, companies }) => {
 const CompanyBrowsing = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredCompanies, setFilteredCompanies] = useState(companies);
-  const [visibleCategories, setVisibleCategories] = useState(12);
+  const [visibleCategories, setVisibleCategories] = useState(6);
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const [showLoadButtons, setShowLoadButtons] = useState(false);
+  const [showLoadButtons, setShowLoadButtons] = useState(categories.length > 6);
   const [companyCounts, setCompanyCounts] = useState({});
 
   const fuse = useMemo(
@@ -355,20 +351,20 @@ const CompanyBrowsing = () => {
   };
 
   const handleViewMore = () => {
-    setVisibleCategories(18);
-    setShowLoadButtons(true);
-  };
-
-  const handleLoadMore = () => {
-    const newLength = Math.min(visibleCategories + 6, categories.length);
-    setVisibleCategories(newLength);
+    const newVisibleCategories = Math.min(
+      visibleCategories + 6,
+      categories.length
+    );
+    setVisibleCategories(newVisibleCategories);
+    setShowLoadButtons(
+      newVisibleCategories < categories.length || newVisibleCategories > 6
+    );
   };
 
   const handleLoadLess = () => {
-    setVisibleCategories(12);
-    setShowLoadButtons(false);
+    setVisibleCategories(6);
+    setShowLoadButtons(categories.length > 6);
   };
-
   const categoryHasCompanies = useMemo(() => {
     return (category) =>
       companies.some((company) => company.category === category);
@@ -390,12 +386,18 @@ const CompanyBrowsing = () => {
               from all over the world.
             </div>
           </div>
-          {!showLoadButtons && (
+          {showLoadButtons && (
             <button
-              onClick={handleViewMore}
-              className="w-40 h-14 text-sm font-medium text-white bg-theme-color rounded-md hover:bg-black transition duration-300"
+              onClick={
+                visibleCategories < categories.length
+                  ? handleViewMore
+                  : handleLoadLess
+              }
+              className="text-theme-color font-bold hover:underline"
             >
-              View More
+              {visibleCategories < categories.length
+                ? "Load More"
+                : "Load Less"}
             </button>
           )}
         </div>
@@ -413,7 +415,7 @@ const CompanyBrowsing = () => {
                 hidden: {},
               }}
             >
-              {categories.map((category, index) => (
+              {categories.slice(0, visibleCategories).map((category, index) => (
                 <motion.div
                   key={index}
                   variants={{
@@ -421,7 +423,6 @@ const CompanyBrowsing = () => {
                     hidden: { opacity: 0, y: 20 },
                   }}
                   transition={{ duration: 0.2 }}
-                  className={index >= visibleCategories ? "hidden" : ""}
                 >
                   <CategoryItem
                     href={`#${category.toLowerCase().replace(/\s+/g, "-")}`}
@@ -448,21 +449,18 @@ const CompanyBrowsing = () => {
           </AnimatePresence>
           {showLoadButtons && (
             <div className="mt-8 flex justify-center space-x-4">
-              {visibleCategories < categories.length ? (
-                <button
-                  onClick={handleLoadMore}
-                  className="w-44 h-14 text-sm font-medium text-white bg-theme-color rounded-md hover:bg-black transition duration-300"
-                >
-                  Load More Categories
-                </button>
-              ) : (
-                <button
-                  onClick={handleLoadLess}
-                  className="w-44 h-14 text-sm font-medium text-white bg-theme-color rounded-md hover:bg-black transition duration-300"
-                >
-                  Load Less
-                </button>
-              )}
+              <button
+                onClick={
+                  visibleCategories < categories.length
+                    ? handleViewMore
+                    : handleLoadLess
+                }
+                className="text-theme-color font-bold hover:underline"
+              >
+                {visibleCategories < categories.length
+                  ? "Load More"
+                  : "Load Less"}
+              </button>
             </div>
           )}
         </div>
@@ -476,34 +474,31 @@ const CompanyBrowsing = () => {
                 )}
               />
             )
-          : categories.map((category, index) => {
-              const categoryCompanies = filteredCompanies.filter(
-                (company) => company.category === category
-              );
-              return categoryCompanies.length > 0 ? (
-                <React.Fragment key={category}>
-                  <CompanySection
-                    category={category}
-                    companies={categoryCompanies}
-                  />
-                  {index % 2 === 1 && index < categories.length - 1 && (
-                    <section className="bg-gray-100 px-4 md:px-24 py-16 mb-16">
-                      <h2 className="text-3xl font-bold mb-8 text-center">
-                        Find Your Perfect Match
-                      </h2>
-                      <div className="max-w-md mx-auto">
-                        <input
-                          type="text"
-                          placeholder="Search companies by name, category, or location..."
-                          className="w-full px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                          onChange={(e) => handleSearch(e.target.value)}
-                        />
-                      </div>
-                    </section>
+          : filteredCompanies.map((company, index) => (
+              <React.Fragment key={company.id}>
+                <CompanySection
+                  category={company.category}
+                  companies={filteredCompanies.filter(
+                    (c) => c.category === company.category
                   )}
-                </React.Fragment>
-              ) : null;
-            })}
+                />
+                {index % 2 === 1 && index < filteredCompanies.length - 1 && (
+                  <section className="bg-gray-100 px-4 md:px-24 py-16 mb-16">
+                    <h2 className="text-3xl font-bold mb-8 text-center">
+                      Find Your Perfect Match
+                    </h2>
+                    <div className="max-w-md mx-auto">
+                      <input
+                        type="text"
+                        placeholder="Search companies by name, category, or location..."
+                        className="w-full px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        onChange={(e) => handleSearch(e.target.value)}
+                      />
+                    </div>
+                  </section>
+                )}
+              </React.Fragment>
+            ))}
       </section>
     </Layout>
   );

@@ -240,7 +240,7 @@ export const HeaderStyleOne = () => {
             </Link>
             <Link
               to="/create-company"
-              className="p-2 text-sm font-semibold leading-6 text-white border-2 rounded bg-theme-color hover:bg-transparent border-theme-color"
+              className="p-2 text-sm font-semibold leading-6 text-white border-2 rounded bg-theme-color hover:bg-black border-theme-color hover:border-black"
             >
               Create Company
             </Link>

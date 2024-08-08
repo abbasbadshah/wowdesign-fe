@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { StepOne } from "./StepOne/stepOne";
 import { StepTwo } from "./StepTwo/stepTwo";
+import { StepFour } from "./StepFour/stepfour";
+import { StepThree } from "./StepThree/stepthree";
 import {
   FadingBackground,
   Popup,
@@ -35,7 +37,12 @@ const pageVariants = {
   },
 };
 
-const stepTitles = ["Choose Options", "Company Details"];
+const stepTitles = [
+  "Choose Options",
+  "Company Details",
+  "Media",
+  "Business Details",
+];
 
 export const CreateCompany = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -75,6 +82,15 @@ export const CreateCompany = () => {
         return await trigger(["options"]);
       case 1:
         return await trigger(["companyName", "description"]);
+      case 2:
+        return await trigger(["bannerPhoto", "profilePhoto"]);
+      case 3:
+        return await trigger([
+          "businessType",
+          "employeeCount",
+          "annualRevenue",
+          "companyLocation",
+        ]);
       default:
         return false;
     }
@@ -83,9 +99,9 @@ export const CreateCompany = () => {
   const nextStep = async (event) => {
     event.preventDefault();
     const isValid = await validateStep(step);
-    if (isValid && step < 1) {
+    if (isValid && step < 3) {
       setStep(step + 1);
-    } else if (isValid && step === 1) {
+    } else if (isValid && step === 3) {
       handleSubmit(onSubmit)();
     } else {
       console.log("Either not valid or last step reached.");
@@ -193,6 +209,33 @@ export const CreateCompany = () => {
                         watch={watch}
                         setValue={setValue}
                       />
+                    </motion.div>
+                  )}
+                  {step === 2 && (
+                    <motion.div
+                      key="step2"
+                      variants={pageVariants}
+                      initial="initial"
+                      animate="animate"
+                      exit="exit"
+                    >
+                      <StepThree
+                        register={register}
+                        errors={errors}
+                        setValue={setValue}
+                        watch={watch}
+                      />
+                    </motion.div>
+                  )}
+                  {step === 3 && (
+                    <motion.div
+                      key="step3"
+                      variants={pageVariants}
+                      initial="initial"
+                      animate="animate"
+                      exit="exit"
+                    >
+                      <StepFour register={register} errors={errors} />
                     </motion.div>
                   )}
                 </AnimatePresence>

@@ -48,11 +48,8 @@ export const FeatureProjects = () => {
           <h2 className="text-4xl font-medium text-left mb-10">
             Wow <span className="text-theme-color font-bold">Projects</span>
           </h2>
-          <Link to="/projects">
-            <button className="p-2 text-lg font-bold text-white bg-theme-color hover:bg-transparent hover:text-theme-color border-2 border-theme-color px-8 rounded">
-              {" "}
-              View All{" "}
-            </button>
+          <Link to="/projects" className="text-lg font-bold text-theme-color">
+              View All
           </Link>
         </div>
 

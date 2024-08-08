@@ -16,19 +16,19 @@ const portfolios = [
     id: 2,
     image: FlooringImage,
     name: "DuraStone Tiles",
-    category: "Ceilings",
+    category: "Walls",
   },
   {
     id: 3,
     image: WallsImage,
     name: "TexTure Wallcoverings",
-    category: "Ceilings",
+    category: "Landscape",
   },
   {
     id: 4,
     image: CeilingsImage,
     name: "SkyLite Panels",
-    category: "Ceilings",
+    category: "Acoustic",
   },
 ];
 
@@ -40,11 +40,8 @@ export const FeaturePorfolios = () => {
           <h2 className="text-4xl font-medium text-left mb-10">
             Wow <span className="text-theme-color font-bold">Products</span>
           </h2>
-          <Link to="/portfolios">
-            <button className="p-2 text-lg font-bold text-white bg-theme-color hover:bg-transparent hover:text-theme-color border-2 border-theme-color px-8 rounded">
-              {" "}
-              View All{" "}
-            </button>
+          <Link to="/portfolios" className="text-lg font-bold text-theme-color">
+              View All
           </Link>
         </div>
         <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-8">
@@ -59,7 +56,7 @@ export const FeaturePorfolios = () => {
                   alt=""
                   className="h-96 w-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
-                <div className="absolute top-2 right-2 bg-theme-color text-white px-2 py-1 rounded text-sm font-medium">
+                <div className="absolute top-2 right-2 text-white rounded text-sm font-medium">
                   {portfolio.category}
                 </div>
               </Link>

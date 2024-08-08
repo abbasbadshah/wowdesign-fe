@@ -44,13 +44,11 @@ export const IndividualDetailFillup = () => {
       profileImage: data.profileImage ? data.profileImage.name : null,
     };
     console.log(formDataWithFiles);
-
-    // Store the data in local storage
     localStorage.setItem("userProfileData", JSON.stringify(formDataWithFiles));
 
     setIsSubmitting(false);
     setShowSuccessPopup(true);
-    reset(); // Clear the form
+    reset();
   };
 
   const handleViewProfile = () => {
