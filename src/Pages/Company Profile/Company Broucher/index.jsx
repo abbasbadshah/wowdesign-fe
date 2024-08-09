@@ -23,13 +23,23 @@ const CompanyBrochure = () => {
   };
 
   return (
-    <div className="relative mt-10">
-      <div className={`relative ${isBlurred ? "filter blur-md" : ""}`}>
-        <iframe
-          src={Broucher}
-          className="w-full h-[800px]"
-          title="Company Brochure"
-        />
+    <div className="relative mt-24">
+      <div className="flex justify-between items-baseline my-10">
+        <h2 className="md:text-h2 font-bold text-gray-dark mt-2 !text-2xl uppercase !leading-7 md:!text-[26px] md:!leading-10 2xl:!text-[28px] 4xl:!text-3xl">
+          Projects
+        </h2>
+        <a href="#tabtop" className="text-theme-color font-bold">
+          Go to top
+        </a>
+      </div>
+      <div className="mt-20">
+        <div className={`relative ${isBlurred ? "filter blur-md" : ""}`}>
+          <iframe
+            src={Broucher}
+            className="w-full h-[800px]"
+            title="Company Brochure"
+          />
+        </div>
       </div>
       {isBlurred && (
         <div className="absolute inset-0 flex items-center justify-center">

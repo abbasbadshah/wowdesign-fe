@@ -1,16 +1,10 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import { Layout } from "../../components/layout/layout";
 import BannerImage from "../../assets/images/Projects/hospitality.jpeg";
-import GalleryImageOne from "../../assets/images/Projects/hospitality.jpeg";
-import GalleryImageTwo from "../../assets/images/Projects/commercials.jpg";
-import GalleryImageThree from "../../assets/images/Projects/hospitality.jpeg";
-import GalleryImageFour from "../../assets/images/Projects/resdentials.jpg";
-import GalleryImageFive from "../../assets/images/Projects/restaurant.jpg";
-import GalleryImageSix from "../../assets/images/Projects/commercials.jpg";
+import HeroProjectImage from "../../assets/images/Projects/resdentials.jpg";
 import { CompanyProjects } from "./Company Projects/projects";
 import { CompanyProducts } from "./Company Products/products";
 import CompanyBrochure from "./Company Broucher";
-import HeroProjectImage from "../../assets/images/Projects/resdentials.jpg";
 import { Link } from "react-router-dom";
 import { PencilIcon, PlayIcon } from "@heroicons/react/24/outline";
 import CompanyLogo from "../../assets/images/Company/browsing/logo/logo2.avif";
@@ -24,7 +18,15 @@ import {
 import { SimiliarCompanies } from "./Similiar Company";
 
 export const CompanyProfile = () => {
-  const [activeTab, setActiveTab] = useState("Overview");
+  const overviewRef = useRef(null);
+  const projectsRef = useRef(null);
+  const productsRef = useRef(null);
+  const brochureRef = useRef(null);
+
+  const scrollToSection = (ref) => {
+    ref.current.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <Layout>
       <div
@@ -42,111 +44,107 @@ export const CompanyProfile = () => {
       <div className="flex px-6 py-10 lg:px-24 justify-between gap-5 lg:gap-8 xl:gap-12 4xl:gap-16">
         <div className="w-full">
           <section>
-            <div className="agent-content">
+            <div>
               <div className="w-full">
                 {/* Tabs */}
-                <div className="">
+                <div className="" id="tabtop">
                   <div className="flex justify-start space-x-8 py-4">
-                    {["Overview", "Projects", "Products", "Brochure"].map(
-                      (tab) => (
-                        <button
-                          key={tab}
-                          className={`text-lg font-medium ${
-                            activeTab === tab
-                              ? "text-primary border-b-2 border-black"
-                              : "text-black"
-                          }`}
-                          onClick={() => setActiveTab(tab)}
-                        >
-                          {tab}
-                        </button>
-                      )
-                    )}
+                    {[
+                      { name: "Overview", ref: overviewRef },
+                      { name: "Projects", ref: projectsRef },
+                      { name: "Products", ref: productsRef },
+                      { name: "Brochure", ref: brochureRef },
+                    ].map((tab) => (
+                      <button
+                        key={tab.name}
+                        className="text-lg font-medium text-black"
+                        onClick={() => scrollToSection(tab.ref)}
+                      >
+                        {tab.name}
+                      </button>
+                    ))}
                   </div>
                 </div>
 
                 {/* Tab Content */}
-                {activeTab === "Overview" && (
-                  <div>
-                    <section className="">
-                      <div className="">
-                        <div className="agent-content">
-                          <div className="agent-about">
-                            <h2 className="md:text-h2 font-bold text-gray-dark mt-10 !text-2xl uppercase !leading-7 md:!text-[26px] md:!leading-10 2xl:!text-[28px] 4xl:!text-3xl">
-                              About Company
-                            </h2>
-                            <p className="text-gray-dark text-sm md:text-base !text-base !leading-7 !text-secondary mt-2 text-justify">
-                              Lorem ipsum dolor sit amet, consectetur adipiscing
-                              elit, sed do eiusmod tempor incididunt ut labore
-                              et dolore magna aliqua. Ut enim ad minim veniam,
-                              quis nostrud exercitation ullamco laboris nisi ut
-                              aliquip ex ea commodo consequat. Duis aute irure
-                              dolor in reprehenderit in voluptate velit esse
-                              cillum dolore eu fugiat nulla pariatur. Excepteur
-                              sint occaecat cupidatat non proident, sunt in
-                              culpa qui officia deserunt mollit anim id est
-                              laborum. Lorem ipsum dolor sit amet, consectetur
-                              adipiscing elit, sed do eiusmod tempor incididunt
-                              ut labore et dolore magna aliqua. Ut enim ad minim
-                              veniam, quis nostrud exercitation ullamco laboris
-                              nisi ut aliquip ex ea commodo consequat. Duis aute
-                              irure dolor in reprehenderit in voluptate velit
-                              esse cillum dolore eu fugiat nulla pariatur.
-                              Excepteur sint occaecat cupidatat non proident,
-                              sunt in culpa qui officia deserunt mollit anim id
-                              est laborum. Lorem ipsum dolor sit amet,
-                              consectetur adipiscing elit, sed do eiusmod tempor
-                              incididunt ut labore et dolore magna aliqua. Ut
-                              enim ad minim veniam, quis nostrud exercitation
-                              ullamco laboris nisi ut aliquip ex ea commodo
-                              consequat.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </section>
-                    <section className="py-5 xl:py-7">
-                      <div className="flex justify-between capitalize">
-                        <div>
-                          <h2 className="md:text-h2 font-bold text-gray-dark mt-2 !text-2xl uppercase !leading-7 md:!text-[26px] md:!leading-10 2xl:!text-[28px] 4xl:!text-3xl">
-                            Visuals
+                <div ref={overviewRef}>
+                  <section className="">
+                    <div className="">
+                      <div className="agent-content">
+                        <div className="agent-about">
+                          <h2 className="md:text-h2 font-bold text-gray-dark mt-10 !text-2xl uppercase !leading-7 md:!text-[26px] md:!leading-10 2xl:!text-[28px] 4xl:!text-3xl">
+                            About Company
                           </h2>
+                          <p className="text-gray-dark text-sm md:text-base !text-base !leading-7 !text-secondary mt-2 text-justify">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit, sed do eiusmod tempor incididunt ut labore et
+                            dolore magna aliqua. Ut enim ad minim veniam, quis
+                            nostrud exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat. Duis aute irure dolor in
+                            reprehenderit in voluptate velit esse cillum dolore
+                            eu fugiat nulla pariatur. Excepteur sint occaecat
+                            cupidatat non proident, sunt in culpa qui officia
+                            deserunt mollit anim id est laborum. Lorem ipsum
+                            dolor sit amet, consectetur adipiscing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna
+                            aliqua. Ut enim ad minim veniam, quis nostrud
+                            exercitation ullamco laboris nisi ut aliquip ex ea
+                            commodo consequat. Duis aute irure dolor in
+                            reprehenderit in voluptate velit esse cillum dolore
+                            eu fugiat nulla pariatur. Excepteur sint occaecat
+                            cupidatat non proident, sunt in culpa qui officia
+                            deserunt mollit anim id est laborum. Lorem ipsum
+                            dolor sit amet, consectetur adipiscing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna
+                            aliqua. Ut enim ad minim veniam, quis nostrud
+                            exercitation ullamco laboris nisi ut aliquip ex ea
+                            commodo consequat.
+                          </p>
                         </div>
                       </div>
-                      <div
-                        className="mt-5 relative flex items-center justify-center w-full h-[550px] col-span-6 overflow-hidden rounded"
-                        style={{
-                          backgroundImage: `url(${HeroProjectImage})`,
-                          backgroundSize: "cover",
-                          backgroundPosition: "center center",
-                        }}
-                      >
-                        <PlayIcon className="w-24 text-white z-10" />
-                        <div className="absolute inset-0 bg-black bg-gradient-to-b opacity-30 to-transparent" />
+                    </div>
+                  </section>
+                  <section className="py-5 xl:py-7">
+                    <div className="flex justify-between capitalize">
+                      <div>
+                        <h2 className="md:text-h2 font-bold text-gray-dark mt-2 !text-2xl uppercase !leading-7 md:!text-[26px] md:!leading-10 2xl:!text-[28px] 4xl:!text-3xl">
+                          Visuals
+                        </h2>
                       </div>
-                    </section>
-                  </div>
-                )}
-                {activeTab === "Projects" && (
+                    </div>
+                    <div
+                      className="mt-5 relative flex items-center justify-center w-full h-[550px] col-span-6 overflow-hidden rounded"
+                      style={{
+                        backgroundImage: `url(${HeroProjectImage})`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center center",
+                      }}
+                    >
+                      <PlayIcon className="w-24 text-white z-10" />
+                      <div className="absolute inset-0 bg-black bg-gradient-to-b opacity-30 to-transparent" />
+                    </div>
+                  </section>
+                </div>
+                <div ref={projectsRef}>
                   <section>
                     <CompanyProjects />
                   </section>
-                )}
-                {activeTab === "Products" && (
+                </div>
+                <div ref={productsRef}>
                   <section>
                     <CompanyProducts />
                   </section>
-                )}
-                {activeTab === "Brochure" && (
+                </div>
+                <div ref={brochureRef}>
                   <section>
                     <CompanyBrochure />
                   </section>
-                )}
+                </div>
               </div>
             </div>
           </section>
         </div>
-        <div className="hidden w-full max-w-sm pb-11 lg:block xl:max-w-md 3xl:max-w-lg -mt-[15rem] z-10">
+        <div className="hidden w-full max-w-sm pb-11 lg:block xl:max-w-md 3xl:max-w-lg z-10">
           <div className="rounded-xl border border-gray-200 bg-white p-8 shadow-lg">
             <div className="flex flex-col items-center mb-6">
               <img

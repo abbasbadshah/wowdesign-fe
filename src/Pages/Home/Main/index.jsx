@@ -7,7 +7,7 @@ import { ArrowRightIcon } from "@radix-ui/react-icons";
 export const HomeMainSectionOne = () => {
   return (
     <div
-      className="px-4 sm:px-8 md:px-12 lg:px-16 xl:px-24 pt-16 md:pt-24 grid grid-cols-1 md:grid-col-6 lg:grid-cols-12 gap-4"
+      className="px-4 sm:px-8 md:px-12 lg:px-16 xl:px-24 pt-16 my-24 grid grid-cols-1 md:grid-col-6 lg:grid-cols-12 gap-4"
       id="next-section"
     >
       {/* First Image */}

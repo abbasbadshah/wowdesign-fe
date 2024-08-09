@@ -35,6 +35,14 @@ const portfolios = [
 export const CompanyProducts = () => {
   return (
     <section className="mt-10">
+      <div className="flex justify-between items-baseline my-10">
+        <h2 className="md:text-h2 font-bold text-gray-dark mt-2 !text-2xl uppercase !leading-7 md:!text-[26px] md:!leading-10 2xl:!text-[28px] 4xl:!text-3xl">
+          Products
+        </h2>
+        <a href="#tabtop" className="text-theme-color font-bold">
+          Go to top
+        </a>
+      </div>
       <div className="flex flex-col">
         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
           {portfolios.map((portfolio) => (
@@ -42,7 +50,7 @@ export const CompanyProducts = () => {
               key={portfolio.id}
               className="relative overflow-hidden group rounded"
             >
-              <Link to={'portfolios/portfolio-details'} className="block">
+              <Link to={"portfolios/portfolio-details"} className="block">
                 <img
                   src={portfolio.image}
                   alt=""
@@ -53,7 +61,7 @@ export const CompanyProducts = () => {
                 </div>
               </Link>
               <Link
-                to={'portfolios/portfolio-details'}
+                to={"portfolios/portfolio-details"}
                 className="absolute bottom-0 inset-x-0 m-2"
               >
                 <div className="p-4 bg-white rounded group hover:bg-theme-color">

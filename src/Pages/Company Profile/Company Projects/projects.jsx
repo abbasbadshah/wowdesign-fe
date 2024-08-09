@@ -39,6 +39,14 @@ const projectData = [
 export const CompanyProjects = () => {
   return (
     <section className="mt-10">
+      <div className="flex justify-between items-baseline my-10">
+        <h2 className="md:text-h2 font-bold text-gray-dark mt-2 !text-2xl uppercase !leading-7 md:!text-[26px] md:!leading-10 2xl:!text-[28px] 4xl:!text-3xl">
+          Projects
+        </h2>
+        <a href="#tabtop" className="text-theme-color font-bold">
+          Go to top
+        </a>
+      </div>
       <div className="flex flex-col">
         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
           {projectData.map((project) => (
