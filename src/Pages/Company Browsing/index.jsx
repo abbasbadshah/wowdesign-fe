@@ -197,46 +197,44 @@ const HeroSection = ({ onSearch }) => (
   </div>
 );
 
-const CategoryItem = React.memo(
-  ({ href, imgSrc, alt, label, onClick, companyCount }) => {
-    return (
-      <div className="col">
-        <a
-          className="text-center group block h-full relative z-10 overflow-hidden rounded-md"
-          href={href}
-          onClick={onClick}
-        >
-          <div className="relative overflow-hidden rounded-md">
-            <img
-              alt={alt}
-              loading="lazy"
-              width={200}
-              height={200}
-              decoding="async"
-              data-nimg={1}
-              className="rounded-md w-full h-44 sm:h-56 mx-auto bg-white/10 transition-transform duration-300 group-hover:scale-110 object-cover"
-              src={imgSrc}
-              style={{ color: "transparent" }}
-            />
-            <div className="absolute inset-0 bg-black bg-opacity-30 transition-all duration-300 group-hover:bg-opacity-50"></div>
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-              <span className="text-white text-xl font-bold">
-                {companyCount} Projects
-              </span>
-            </div>
+const CategoryItem = ({ href, imgSrc, alt, label, onClick, companyCount }) => {
+  return (
+    <div className="col">
+      <a
+        className="text-center group block h-full relative z-10 overflow-hidden rounded"
+        href={href}
+        onClick={onClick}
+      >
+        <div className="relative overflow-hidden rounded">
+          <img
+            alt={alt}
+            loading="lazy"
+            width={200}
+            height={200}
+            decoding="async"
+            data-nimg={1}
+            className="rounded w-full h-44 sm:h-56 mx-auto bg-white/10 transition-transform duration-300 group-hover:scale-110 object-cover"
+            src={imgSrc}
+            style={{ color: "transparent" }}
+          />
+          <div className="absolute inset-0 bg-black bg-opacity-30 transition-all duration-300 group-hover:bg-opacity-50"></div>
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            <span className="text-white text-xl font-bold">
+              {companyCount} Projects
+            </span>
           </div>
-          <h4 className="sm:text-lg capitalize absolute bottom-4 sm:bottom-5 w-full text-white z-20 tracking-wide px-2">
-            {label}
-          </h4>
-        </a>
-      </div>
-    );
-  }
-);
+        </div>
+        <h4 className="sm:text-lg capitalize absolute bottom-4 sm:bottom-5 w-full text-white z-20 tracking-wide px-2">
+          {label}
+        </h4>
+      </a>
+    </div>
+  );
+};
 
-const CompanyCard = React.memo(({ company }) => (
+const CompanyCard = ({ company }) => (
   <Link to={`/company-profile`} className="block">
-    <div className="relative w-full h-96 rounded-xl overflow-hidden group">
+    <div className="relative w-full h-96 rounded overflow-hidden group">
       <div className="absolute inset-0">
         <PhotoDisplay
           photoId={company.cover}
@@ -247,7 +245,7 @@ const CompanyCard = React.memo(({ company }) => (
 
       <div className="absolute inset-0 p-6 flex flex-col justify-between">
         <div className="flex justify-between items-start">
-          <div className="bg-white p-2 rounded-lg shadow-md">
+          <div className="bg-white p-2 rounded shadow-md">
             <img
               src={company.logo}
               alt={`${company.name} logo`}
@@ -275,9 +273,9 @@ const CompanyCard = React.memo(({ company }) => (
       </div>
     </div>
   </Link>
-));
+);
 
-const CompanySection = React.memo(({ category, companies }) => {
+const CompanySection = ({ category, companies }) => {
   const [showAll, setShowAll] = useState(false);
   const displayedCompanies = showAll ? companies : companies.slice(0, 5);
 
@@ -305,32 +303,26 @@ const CompanySection = React.memo(({ category, companies }) => {
       </div>
     </section>
   );
-});
+};
 
 const CompanyBrowsing = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredCompanies, setFilteredCompanies] = useState(companies);
   const [visibleCategories, setVisibleCategories] = useState(6);
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const [showLoadButtons, setShowLoadButtons] = useState(categories.length > 6);
-  const [companyCounts, setCompanyCounts] = useState({});
-
-  const fuse = useMemo(
-    () =>
-      new Fuse(companies, {
-        keys: ["name", "category", "location"],
-        threshold: 0.3,
-      }),
-    []
-  );
-
-  useEffect(() => {
-    setCompanyCounts(countCompaniesByCategory(companies));
-  }, []);
 
   useEffect(() => {
     if (searchQuery) {
-      setFilteredCompanies(fuse.search(searchQuery).map((item) => item.item));
+      setFilteredCompanies(
+        companies.filter(
+          (company) =>
+            company.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            company.category
+              .toLowerCase()
+              .includes(searchQuery.toLowerCase()) ||
+            company.location.toLowerCase().includes(searchQuery.toLowerCase())
+        )
+      );
     } else if (selectedCategory) {
       setFilteredCompanies(
         companies.filter((company) => company.category === selectedCategory)
@@ -338,7 +330,7 @@ const CompanyBrowsing = () => {
     } else {
       setFilteredCompanies(companies);
     }
-  }, [searchQuery, selectedCategory, fuse]);
+  }, [searchQuery, selectedCategory]);
 
   const handleSearch = (query) => {
     setSearchQuery(query);
@@ -351,30 +343,22 @@ const CompanyBrowsing = () => {
   };
 
   const handleViewMore = () => {
-    const newVisibleCategories = Math.min(
-      visibleCategories + 6,
-      categories.length
-    );
-    setVisibleCategories(newVisibleCategories);
-    setShowLoadButtons(
-      newVisibleCategories < categories.length || newVisibleCategories > 6
-    );
+    setVisibleCategories(Math.min(visibleCategories + 6, categories.length));
   };
 
   const handleLoadLess = () => {
     setVisibleCategories(6);
-    setShowLoadButtons(categories.length > 6);
   };
-  const categoryHasCompanies = useMemo(() => {
-    return (category) =>
-      companies.some((company) => company.category === category);
-  }, []);
+
+  const countCompaniesByCategory = (category) => {
+    return companies.filter((company) => company.category === category).length;
+  };
 
   return (
     <Layout headerType="3">
       <HeroSection onSearch={handleSearch} />
 
-      <section className="px-24 py-16 md:py-24">
+      <section className="px-6 lg:px-24 py-16 md:py-24">
         <div className="flex justify-between mb-12">
           <div>
             <h2 className="text-5xl font-bold text-theme-color">
@@ -386,7 +370,7 @@ const CompanyBrowsing = () => {
               from all over the world.
             </div>
           </div>
-          {showLoadButtons && (
+          {categories.length > 6 && (
             <button
               onClick={
                 visibleCategories < categories.length
@@ -401,104 +385,51 @@ const CompanyBrowsing = () => {
             </button>
           )}
         </div>
-        <div className="">
-          <AnimatePresence>
-            <motion.div
-              className="justify-center grid grid-cols-6 gap-6"
-              initial="hidden"
-              animate="visible"
-              exit="hidden"
-              variants={{
-                visible: {
-                  transition: { staggerChildren: 0.05 },
-                },
-                hidden: {},
+        <div className="justify-center grid grid-cols-6 gap-6">
+          {categories.slice(0, visibleCategories).map((category, index) => (
+            <CategoryItem
+              key={index}
+              href={`#${category.toLowerCase().replace(/\s+/g, "-")}`}
+              imgSrc={
+                [
+                  CatImageOne,
+                  CatImageTwo,
+                  CatImageThree,
+                  CatImageFour,
+                  CatImageFive,
+                ][index % 5]
+              }
+              alt={category}
+              label={category}
+              onClick={(e) => {
+                e.preventDefault();
+                handleCategoryClick(category);
               }}
-            >
-              {categories.slice(0, visibleCategories).map((category, index) => (
-                <motion.div
-                  key={index}
-                  variants={{
-                    visible: { opacity: 1, y: 0 },
-                    hidden: { opacity: 0, y: 20 },
-                  }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <CategoryItem
-                    href={`#${category.toLowerCase().replace(/\s+/g, "-")}`}
-                    imgSrc={
-                      [
-                        CatImageOne,
-                        CatImageTwo,
-                        CatImageThree,
-                        CatImageFour,
-                        CatImageFive,
-                      ][index % 5]
-                    }
-                    alt={category}
-                    label={category}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleCategoryClick(category);
-                    }}
-                    companyCount={companyCounts[category] || 0}
-                  />
-                </motion.div>
-              ))}
-            </motion.div>
-          </AnimatePresence>
-          {showLoadButtons && (
-            <div className="mt-8 flex justify-center space-x-4">
-              <button
-                onClick={
-                  visibleCategories < categories.length
-                    ? handleViewMore
-                    : handleLoadLess
-                }
-                className="text-theme-color font-bold hover:underline"
-              >
-                {visibleCategories < categories.length
-                  ? "Load More"
-                  : "Load Less"}
-              </button>
-            </div>
-          )}
+              companyCount={countCompaniesByCategory(category)}
+            />
+          ))}
         </div>
-        {selectedCategory
-          ? categoryHasCompanies(selectedCategory) && (
-              <CompanySection
-                key={selectedCategory}
-                category={selectedCategory}
-                companies={filteredCompanies.filter(
-                  (company) => company.category === selectedCategory
-                )}
-              />
-            )
-          : filteredCompanies.map((company, index) => (
-              <React.Fragment key={company.id}>
-                <CompanySection
-                  category={company.category}
-                  companies={filteredCompanies.filter(
-                    (c) => c.category === company.category
-                  )}
-                />
-                {index % 2 === 1 && index < filteredCompanies.length - 1 && (
-                  <section className="bg-gray-100 px-4 md:px-24 py-16 mb-16">
-                    <h2 className="text-3xl font-bold mb-8 text-center">
-                      Find Your Perfect Match
-                    </h2>
-                    <div className="max-w-md mx-auto">
-                      <input
-                        type="text"
-                        placeholder="Search companies by name, category, or location..."
-                        className="w-full px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        onChange={(e) => handleSearch(e.target.value)}
-                      />
-                    </div>
-                  </section>
-                )}
-              </React.Fragment>
-            ))}
+        {selectedCategory ? (
+          <CompanySection
+            key={selectedCategory}
+            category={selectedCategory}
+            companies={filteredCompanies.filter(
+              (company) => company.category === selectedCategory
+            )}
+          />
+        ) : (
+          Array.from(
+            new Set(filteredCompanies.map((company) => company.category))
+          ).map((category) => (
+            <CompanySection
+              key={category}
+              category={category}
+              companies={filteredCompanies.filter(
+                (company) => company.category === category
+              )}
+            />
+          ))
+        )}
       </section>
     </Layout>
   );

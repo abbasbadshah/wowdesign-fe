@@ -1,6 +1,6 @@
 import { CustomerReview } from "../Customer Review";
 import { ProjectLocationMap } from "../Location";
-import Logo from "../../../../assets/images/Company/companylistingDummylogo.png";
+import Logo from "../../../../assets/images/Company/browsing/logo/logo2.avif";
 import { Query } from "../Query";
 import { ImageGalleryStyleTwo } from "../../../../components/shared";
 import GalleryImageOne from "../../../../assets/images/Projects/commercials.jpg";
@@ -11,14 +11,6 @@ import GalleryImageFive from "../../../../assets/images/Projects/restaurant.jpg"
 import GalleryImageSix from "../../../../assets/images/Projects/ud.jpeg";
 
 export const ProjectPageDetails = () => {
-  const companiesInvolved = [
-    { role: "Project Management Consultant", value: "111 ft-lb" },
-    { role: "Contractor or Fitout contractor", value: "Milwaukee-Eight 107" },
-    {
-      role: "Suppliers",
-      value: "Electronic Sequential Port Fuel Injection (ESPFI)",
-    },
-  ];
   const imageIds = [
     GalleryImageOne,
     GalleryImageTwo,
@@ -26,6 +18,24 @@ export const ProjectPageDetails = () => {
     GalleryImageFour,
     GalleryImageFive,
     GalleryImageSix,
+  ];
+  const projectDetails = [
+    { label: "Type", value: "Architect", highlight: true },
+    { label: "Location", value: "Dubai, UAE" },
+    { label: "Project Category", value: "Commercials" },
+    { label: "Year of Completion", value: "2017" },
+    { label: "Area", value: "10,000 m²", highlight: true },
+  ];
+
+  const contractors = ["ABC Construction", "XYZ Builders", "123 Contractors"];
+
+  const companiesInvolved = [
+    "BuildWell Inc.",
+    "ABC Construction",
+    "XYZ Builders",
+    "123 Contractors",
+    "Dubai Architects",
+    "Global Suppliers Ltd.",
   ];
   return (
     <div>
@@ -144,92 +154,77 @@ export const ProjectPageDetails = () => {
               nisi ut aliquip ex ea commodo consequat.
             </p>
           </section>
-          <section className="py-5 xl:py-7">
-            <header className="flex justify-between capitalize">
-              <div>
-                <h2 className="md:text-h2 font-bold text-gray-dark text-xl md:!text-[22px] 2xl:!text-2xl mb-2 md:mb-0">
-                  Companies Involved
-                </h2>
-              </div>
-            </header>
-            <div>
-              <div className="" style={{ height: "auto" }}>
-                <div className="overflow-x-auto">
-                  <table className="min-w-full divide-y divide-gray-200">
-                    <tbody className="bg-white">
-                      {companiesInvolved.map((company, index) => (
-                        <tr
-                          key={index}
-                          className="border-b border-gray-lighter"
-                        >
-                          <td className="py-4 px-6 text-gray opacity-80 sm:text-secondary sm:opacity-100 lg:text-gray lg:opacity-80 xl:text-secondary xl:opacity-100">
-                            {company.role}
-                          </td>
-                          <td className="py-4 px-6 text-secondary sm:text-end lg:text-left xl:text-end">
-                            {company.value}
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </section>
           <ProjectLocationMap />
           <ImageGalleryStyleTwo images={imageIds} />
           <Query />
         </div>
         <div className="hidden w-full max-w-sm pb-11 lg:block xl:max-w-md 3xl:max-w-lg">
-          <div className="sticky top-32 4xl:top-40">
-            <form
-              noValidate=""
-              className="rounded-xl border border-gray-lighter bg-white p-8 shadow-card"
-            >
-              <div className="flex flex-col justify-between items-center">
-                <div>
-                  <img src={Logo} className="bg-contain object-cover" />
-                </div>
-                <p className="text-xl font-bold text-gray-dark xl:text-[22px] mt-5">
-                  <span className="text-2xl font-bold">BuildWell Inc.</span>
-                </p>
-              </div>
-              <p className="flex items-center justify-between text-xs text-red">
-                <span />
-                <span />
-                <span />
-              </p>
-              <ul className="mt-5 xl:mt-5">
-                <li className="flex items-center justify-between py-1.5 text-base capitalize text-gray-dark first:pt-0 last:border-t last:border-gray-lighter last:pb-0">
-                  <span className="font-normal">Type</span>
-                  <span className="font-bold text-red">Architect</span>
-                </li>
+          <div className="bg-white rounded border border-gray-lighter shadow-card overflow-hidden">
+            {/* Company Logo and Name */}
+            <div className="bg-[#FBF5EE] p-8 text-center">
+              <img
+                src={Logo}
+                className="mx-auto w-40 h-40 object-contain mb-6"
+                alt="Company Logo"
+              />
+              <h2 className="text-3xl font-bold text-gray-dark">
+                BuildWell Inc.
+              </h2>
+            </div>
 
-                <li className="flex items-center justify-between py-1.5 text-base capitalize text-gray-dark first:pt-0 last:border-t last:border-gray-lighter last:pb-0">
-                  <span className="font-normal">Location </span>
-                  <span className="font-bold">Dubai, UAE</span>
-                </li>
-                <li className="flex items-center justify-between py-1.5 text-base capitalize text-gray-dark first:pt-0 last:border-t last:border-gray-lighter last:pb-0">
-                  <span className="font-normal">Project Category</span>
-                  <span className="font-bold">Commercials</span>
-                </li>
-                <li className="flex items-center justify-between py-1.5 text-base capitalize text-gray-dark first:pt-0 last:border-t last:border-gray-lighter last:pb-0">
-                  <span className="font-normal">Year of Completion</span>
-                  <span className="font-bold">2017</span>
-                </li>
-                <li className="flex items-center justify-between py-1.5 text-base capitalize text-gray-dark first:pt-0 last:border-t last:border-gray-lighter last:pb-0">
-                  <span className="font-normal">Area</span>
-                  <span className="font-bold text-red">m2 or Sqft</span>
-                </li>
+            {/* Project Details */}
+            <div className="p-6">
+              <h3 className="text-lg font-semibold mb-4">Project Details</h3>
+              <ul className="space-y-3">
+                {projectDetails.map((detail, index) => (
+                  <li key={index} className="flex justify-between items-center">
+                    <span className="text-gray-600">{detail.label}</span>
+                    <span
+                      className={`font-semibold ${
+                        detail.highlight ? "text-red" : "text-gray-800"
+                      }`}
+                    >
+                      {detail.value}
+                    </span>
+                  </li>
+                ))}
               </ul>
-            </form>
-            <div className="mt-4 w-full text-center 4xl:mt-8">
+            </div>
+
+            {/* Contractors */}
+            <div className="p-6 border-y-[1px] border-black">
+              <h3 className="text-lg font-semibold mb-4">Contractors</h3>
+              <ul className="space-y-2">
+                {contractors.map((contractor, index) => (
+                  <li key={index} className="text-gray-800">
+                    {contractor}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Companies Involved */}
+            <div className="p-6">
+              <h3 className="text-lg font-semibold mb-4">Companies Involved</h3>
+              <div className="flex flex-wrap gap-2">
+                {companiesInvolved.map((company, index) => (
+                  <span
+                    key={index}
+                    className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm"
+                  >
+                    {company}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Report Listing Button */}
+            <div className="p-6 text-center">
               <button
                 type="button"
-                className="inline-flex font-medium items-center justify-center focus:outline-none transition duration-200 active:scale-90 px-5 py-2 text-base rounded-md hover:text-gray-1000 focus:ring-gray-900/30 relative"
+                className="inline-flex font-medium items-center justify-center focus:outline-none transition duration-200 active:scale-90 px-6 py-2 text-base rounded text-white bg-red-600 hover:bg-red-400 focus:ring-2 focus:ring-red-400 focus:ring-opacity-50"
               >
                 Report this listing
-                <span className="absolute bottom-0 left-0 w-full border border-gray" />
               </button>
             </div>
           </div>

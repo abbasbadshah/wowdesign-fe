@@ -26,7 +26,7 @@ export const AboutSectionFour = () => {
         </p>
       </div>
       <div className="lg:flex lg:gap-5 xl:gap-[30px]">
-        <div className="relative mb-5 flex flex-col justify-between transition-all duration-300 border-theme-color border-[10px] p-[30px] md:py-[53px] md:px-[48px] hover:translate-y-[-2px]">
+        <div className="rounded relative mb-5 flex flex-col justify-between transition-all duration-300 border-[#F4E1CD] border-[10px] p-[30px] md:py-[53px] md:px-[48px] hover:translate-y-[-2px]">
           <div>
             <img
               className="h-full w-full object-cover mb-[30px] max-w-[80px] max-h-[80px]"
@@ -52,7 +52,7 @@ export const AboutSectionFour = () => {
             <ArrowRightIcon className="text-black w-4 group-hover:text-white" />
           </button>
         </div>
-        <div className="relative mb-5 flex flex-col justify-between transition-all duration-300 border-theme-color border-[10px] p-[30px] md:py-[53px] md:px-[48px] hover:translate-y-[-2px]">
+        <div className="rounded relative mb-5 flex flex-col justify-between transition-all duration-300 border-[#F4E1CD] border-[10px] p-[30px] md:py-[53px] md:px-[48px] hover:translate-y-[-2px]">
           <div>
             <img
               className="h-full w-full object-cover mb-[30px] max-w-[80px] max-h-[80px]"
@@ -78,7 +78,7 @@ export const AboutSectionFour = () => {
             <ArrowRightIcon className="text-black w-4 group-hover:text-white" />
           </button>
         </div>
-        <div className="relative mb-5 flex flex-col justify-between transition-all duration-300 border-theme-color border-[10px] p-[30px] md:py-[53px] md:px-[48px] hover:translate-y-[-2px]">
+        <div className="rounded relative mb-5 flex flex-col justify-between transition-all duration-300 border-[#F4E1CD] border-[10px] p-[30px] md:py-[53px] md:px-[48px] hover:translate-y-[-2px]">
           <div>
             <CloudIcon className="w-20 text-black" />
             <h2 className="font-bold  text-[28px] leading-[32px] md:text-heading-2 mb-[30px]">

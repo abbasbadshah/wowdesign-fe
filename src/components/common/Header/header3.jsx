@@ -172,7 +172,7 @@ export const HeaderStyleThree = () => {
             </Link>
             <Link
               to="/create-company"
-              className="p-2 text-sm font-semibold leading-6 text-white border-2 rounded bg-theme-color hover:bg-transparent hover:text-theme-color border-theme-color"
+              className="p-2 text-sm font-semibold leading-6 text-white border-2 rounded bg-theme-color hover:bg-black border-theme-color hover:border-black"
             >
               Create Company
             </Link>

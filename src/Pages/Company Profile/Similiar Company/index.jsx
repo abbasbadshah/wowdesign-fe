@@ -123,61 +123,53 @@ export const SimiliarCompanies = () => {
 
   return (
     <div className="px-4 sm:px-6 lg:px-24 mb-14">
-    <div className="flex justify-between">
-          <h2 className="text-4xl font-medium text-left mb-10">
-            Similiar <span className="text-theme-color font-bold">Companies</span>
-          </h2>
-        </div>
+      <div className="flex justify-between">
+        <h2 className="text-4xl font-medium text-left mb-10">
+          Similiar <span className="text-theme-color font-bold">Companies</span>
+        </h2>
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
         {displayedCompanies.map((company) => (
-          <div
-            key={company.id}
-            className="w-full overflow-hidden bg-white rounded-lg shadow-lg"
-          >
-            <div className="relative h-48">
-              <div className="absolute inset-0 overflow-hidden">
+          <Link to={`/company-profile`} className="block">
+            <div className="relative w-full h-96 rounded overflow-hidden group">
+              <div className="absolute inset-0">
                 <PhotoDisplay
                   photoId={company.cover}
-                  className="w-full h-auto min-h-full object-cover"
+                  className="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
-              <div className="absolute inset-0 bg-black bg-opacity-30" />
-              <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                <h3 className="text-xl font-bold">{company.name}</h3>
-              </div>
-            </div>
-            <div className="relative px-6 py-4">
-              <img
-                src={company.logo}
-                alt="Company Logo"
-                className="w-20 h-20 rounded-full absolute -top-10 right-6 border-4 border-white shadow-md"
-              />
-              <div className="mt-8 space-y-3">
-                <div className="flex items-center space-x-3">
-                  <BuildingOffice2Icon className="w-5 h-5 text-gray-600" />
-                  <span className="text-gray-700">{company.category}</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <MapIcon className="w-5 h-5 text-gray-600" />
-                  <span className="text-gray-700">{company.location}</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <DocumentDuplicateIcon className="w-5 h-5 text-gray-600" />
-                  <span className="text-gray-700">
+              <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
+
+              <div className="absolute inset-0 p-6 flex flex-col justify-between">
+                <div className="flex justify-between items-start">
+                  <div className="p-2 rounded">
+                    <img
+                      src={company.logo}
+                      alt={`${company.name} logo`}
+                      className="w-16 h-16 object-contain"
+                    />
+                  </div>
+                  <span className="text-white rounded-full text-sm font-bold">
                     {company.projects} Projects
                   </span>
                 </div>
+
+                <div className="text-white">
+                  <h3 className="text-2xl font-bold mb-2">{company.name}</h3>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex items-center">
+                      <BuildingOffice2Icon className="w-5 h-5 mr-2" />
+                      <span>{company.category}</span>
+                    </div>
+                    <div className="flex items-center">
+                      <MapIcon className="w-5 h-5 mr-2" />
+                      <span>{company.location}</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="px-6 py-4 bg-gray-50">
-              <Link
-                to={`/company-profile/${company.id}`}
-                className="block w-full py-2 text-center text-white bg-theme-color rounded-md hover:bg-black transition duration-300"
-              >
-                View Profile
-              </Link>
-            </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

@@ -145,7 +145,7 @@ export const CompanyProfile = () => {
           </section>
         </div>
         <div className="hidden w-full max-w-sm pb-11 lg:block xl:max-w-md 3xl:max-w-lg z-10">
-          <div className="rounded-xl border border-gray-200 bg-white p-8 shadow-lg">
+          <div className="rounded border border-gray-200 bg-white p-8 shadow-lg">
             <div className="flex flex-col items-center mb-6">
               <img
                 src={CompanyLogo}
@@ -176,10 +176,6 @@ export const CompanyProfile = () => {
               <div className="flex justify-between items-center py-2 border-b border-gray-200">
                 <span className="text-gray-600">Year of Establishment</span>
                 <span className="font-semibold text-gray-800">2017</span>
-              </div>
-              <div className="flex justify-between items-center py-2 border-b border-gray-200">
-                <span className="text-gray-600">Companies Involved</span>
-                <span className="font-semibold text-gray-800">12</span>
               </div>
               <div className="flex justify-between items-center py-2 border-b border-gray-200">
                 <span className="text-gray-600">Total Value</span>

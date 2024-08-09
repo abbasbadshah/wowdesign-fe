@@ -24,11 +24,11 @@ const ImageGalleryStyleTwo = ({ images, imagesPerRow = 3 }) => {
     <div className="container mx-auto">
       <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-${imagesPerRow} gap-4`}>
         {images.map((image, index) => (
-          <div key={index} className="relative group">
+          <div key={index} className="relative group rounded">
             <img
               src={image}
               alt={`Gallery image ${index + 1}`}
-              className="w-full h-64 object-cover cursor-pointer"
+              className="w-full h-64 object-cover cursor-pointer rounded"
               onClick={() => openImage(index)}
             />
           </div>
@@ -36,7 +36,7 @@ const ImageGalleryStyleTwo = ({ images, imagesPerRow = 3 }) => {
       </div>
 
       {selectedImage !== null && (
-        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center rounded justify-center z-50">
           <button
             onClick={closeImage}
             className="absolute top-4 right-4 text-white z-60"
