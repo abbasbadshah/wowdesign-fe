@@ -1,10 +1,8 @@
 import { Input, Textarea } from "@headlessui/react";
-import React, { useState, useCallback, useEffect } from "react";
-import { useDropzone } from "react-dropzone";
+import React, { useState, useEffect } from "react";
 import data from "./data.json";
 
 export const StepTwo = ({ register, errors, setValue, watch }) => {
-  const [preview, setPreview] = useState(null);
   const [selectedCountry, setSelectedCountry] = useState("");
   const [cityInput, setCityInput] = useState("");
   const [citySuggestions, setCitySuggestions] = useState([]);
@@ -16,20 +14,45 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
     setCitiesByCountry(data.citiesByCountry || []);
   }, []);
 
-  const onDrop = useCallback(
-    (acceptedFiles) => {
-      const file = acceptedFiles[0];
-      setValue("profilePhoto", file);
-      setPreview(URL.createObjectURL(file));
-    },
-    [setValue]
-  );
-
-  const { getRootProps, getInputProps } = useDropzone({
-    onDrop,
-    accept: "image/*",
-    multiple: false,
-  });
+  const companyTypes = [
+    "Architects",
+    "Interior Designer",
+    "Landscape Designer",
+    "Acoustic Consultant",
+    "Engineering and Structural Consultant",
+    "Facade / Enclosure Consultant",
+    "Sustainability Consultant",
+    "Artist and Art Designer",
+    "MEP Consultant",
+    "Urban Design and Planners",
+    "Brand Designer",
+    "General Contractor",
+    "Fitout Contractor",
+    "Design and Build Contractor",
+    "Real Estate Developers",
+    "Educational Institutions",
+    "Government Agencies",
+    "Law Firms",
+    "Furniture supplier",
+    "Lighting Supplier",
+    "Acoustic supplier",
+    "Sanitaryware Supplier",
+    "Surfaces Supplier",
+    "Flooring Supplier",
+    "Decor supplier",
+    "Partition Supplier",
+    "Ceiling supplier",
+    "Wall Covering Supplier",
+    "Kitchen Supplier",
+    "AV/IT Supplier",
+    "Joinery",
+    "Manufacturers",
+    "Building Material Supplier",
+    "Signage",
+    "Technical Services and Installers",
+    "Ceilings and Partition Installers",
+    "Others",
+  ];
 
   const handleCountryChange = (e) => {
     const country = e.target.value;
@@ -61,8 +84,8 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
   };
 
   return (
-    <div className="px-4 sm:px-6 lg:px-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <div className="py-20 px-4 sm:px-6 lg:px-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         <div>
           <label
             className="font-medium text-sm text-left block mb-2"
@@ -88,24 +111,76 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
         <div>
           <label
             className="font-medium text-sm text-left block mb-2"
-            htmlFor="companyType"
+            htmlFor="primaryCompanyType"
           >
             Primary Company Type
           </label>
           <select
-            id="companyType"
-            {...register("companyType", {
-              required: "Please select your company type",
+            id="primaryCompanyType"
+            {...register("primaryCompanyType", {
+              required: "Please select your primary company type",
             })}
             className="w-full border rounded-lg p-2"
           >
-            <option value="">Select company type</option>
-            <option value="architect">Architect</option>
-            <option value="interior_designer">Interior Designer</option>
+            <option value="">Select primary company type</option>
+            {companyTypes.map((type, index) => (
+              <option key={index} value={type}>
+                {type}
+              </option>
+            ))}
           </select>
-          {errors.companyType && (
+          {errors.primaryCompanyType && (
             <span className="text-red-500 text-sm">
-              {errors.companyType.message}
+              {errors.primaryCompanyType.message}
+            </span>
+          )}
+        </div>
+        <div>
+          <label
+            className="font-medium text-sm text-left block mb-2"
+            htmlFor="secondaryCompanyType"
+          >
+            Secondary Company Type
+          </label>
+          <select
+            id="secondaryCompanyType"
+            {...register("secondaryCompanyType", {
+              required: "Please select your secondary company type",
+            })}
+            className="w-full border rounded-lg p-2"
+          >
+            <option value="">Select secondary company type</option>
+            {companyTypes.map((type, index) => (
+              <option key={index} value={type}>
+                {type}
+              </option>
+            ))}
+          </select>
+          {errors.secondaryCompanyType && (
+            <span className="text-red-500 text-sm">
+              {errors.secondaryCompanyType.message}
+            </span>
+          )}
+        </div>
+        <div>
+          <label
+            className="font-medium text-sm text-left block mb-2"
+            htmlFor="companyPhoneNumber"
+          >
+            Company HOD Name
+          </label>
+          <Input
+            type="text"
+            id="companyHODName"
+            {...register("companyHODName", {
+              required: "Company HOD Name",
+            })}
+            placeholder="Company HOD Name"
+            className="w-full border rounded-lg p-2"
+          />
+          {errors.companyHODName && (
+            <span className="text-red-500 text-sm">
+              {errors.companyHODName.message}
             </span>
           )}
         </div>
@@ -180,7 +255,7 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
             </span>
           )}
         </div>
-        <div>
+        <div className="">
           <label
             className="font-medium text-sm text-left block mb-2"
             htmlFor="city"
@@ -215,7 +290,7 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
             <span className="text-red-500 text-sm">{errors.city.message}</span>
           )}
         </div>
-        <div className="md:col-span-2">
+        <div className="">
           <label
             className="font-medium text-sm text-left block mb-2"
             htmlFor="description"
@@ -241,33 +316,6 @@ export const StepTwo = ({ register, errors, setValue, watch }) => {
           )}
         </div>
       </div>
-
-      <div className="mt-8">
-        <p className="text-lg font-bold text-left">Company Location</p>
-        <div className="mt-4">
-          <label
-            className="font-medium text-sm text-left block mb-2"
-            htmlFor="companyLocation"
-          >
-            Company Location
-          </label>
-          <Input
-            type="text"
-            id="companyLocation"
-            {...register("companyLocation", {
-              required: "Company location is required",
-            })}
-            placeholder="Enter company location"
-            className="w-full border rounded-lg p-2"
-          />
-          {errors.companyLocation && (
-            <span className="text-red-500 text-sm">
-              {errors.companyLocation.message}
-            </span>
-          )}
-        </div>
-      </div>
-
     </div>
   );
 };

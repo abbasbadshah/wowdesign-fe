@@ -13,8 +13,10 @@ import { UserProfile } from "./Pages/User Profile";
 import DashboardCreateCompany from "./Pages/Dashboard/Create Company";
 import { UserSocialMediaSettings } from "./Pages/Dashboard/Social Media";
 import { DashboardProfile } from "./Pages/Dashboard/Profile";
-import { IndividualDetailFillup } from "./Pages/Dashboard/Individual Profile Settings";
 import CompanyBrowsing from "./Pages/Company Browsing";
+import { IndividualProfileStepForm } from "./Pages/Dashboard/Individual Profile Settings";
+import { IndividualProfileSetupStepForm } from "./Pages/Individual Profile Settings";
+import { exact } from "prop-types";
 
 export const routes = [
   {
@@ -58,7 +60,7 @@ export const routes = [
     exact: true,
   },
   {
-    path: '/user-profile',
+    path: "/user-profile",
     component: UserProfile,
     exact: true,
   },
@@ -71,35 +73,40 @@ export const routes = [
     path: "/about-wow-designs-and-products",
     component: AboutCompany,
     exact: true,
-  },  
+  },
   {
     path: "/admin/add-projects",
     component: DashboardProjects,
     exact: true,
-  },  
+  },
   {
     path: "/company-profile",
     component: CompanyProfile,
     exact: true,
-  },  
+  },
   {
     path: "/dashboard/create-company",
     component: DashboardCreateCompany,
     exact: true,
-  },  
+  },
   {
     path: "/dashboard/social-profile-settings",
     component: UserSocialMediaSettings,
     exact: true,
-  },  
+  },
+  {
+    path: "/profile-setup",
+    component: IndividualProfileSetupStepForm,
+    exact: true,
+  },
   {
     path: "/dashboard/profile-settings",
-    component: IndividualDetailFillup,
+    component: IndividualProfileStepForm,
     exact: true,
-  },  
+  },
   {
     path: "/dashboard",
     component: DashboardProfile,
     exact: true,
-  }
+  },
 ];

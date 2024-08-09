@@ -18,13 +18,10 @@ export const Home = () => {
         <TrustedCompanies />
       </Section>
       <Section>
-        <HomeAboutSection />
+        <HomeMainSectionOne />
       </Section>
       <Section>
         <FeatureProjects />
-      </Section>
-      <Section>
-        <HomeMainSectionOne />
       </Section>
       <Section>
         <FeaturePorfolios />

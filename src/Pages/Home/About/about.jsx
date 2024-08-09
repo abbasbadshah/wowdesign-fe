@@ -8,7 +8,7 @@ const HomeAboutSection = () => {
         <div className="relative">
           <PhotoDisplay
             photoId={"Vew4xyLkpdY"}
-            className="rounded-2xl mb-[30px] lg:mb-0 lg:flex-1 max-h-[700px]"
+            className="rounded mb-[30px] lg:mb-0 lg:flex-1 max-h-[700px]"
           />
         </div>
         <div className="flex-1 order-1">

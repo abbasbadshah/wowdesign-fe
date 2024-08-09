@@ -30,7 +30,7 @@ export const Signin = () => {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-      navigate("/company-profile");
+      navigate("/profile-setup");
     }, 2500);
   };
   return (

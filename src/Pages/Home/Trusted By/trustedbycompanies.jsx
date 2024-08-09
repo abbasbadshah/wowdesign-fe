@@ -23,7 +23,7 @@ export const TrustedCompanies = () => {
           </a>
         ))}
       </div>
-      <div className="w-full bg-gray-300 h-px mb-12 md:mb-20" />
+      <div className="w-full bg-gray-300 h-px" />
     </div>
   );
 };

@@ -1,22 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { StepTwo } from "./StepTwo/stepTwo";
-import { StepFour } from "./StepFour/stepfour";
-import { StepThree } from "./StepThree/stepthree";
+import {
+  IndividualProfileSetupStepOne,
+  IndividualProfileSetupStepTwo,
+  IndividualProfileSetupStepThree,
+  IndividualProfileSetupStepFour,
+} from "./Steps";
 import {
   FadingBackground,
   Popup,
   Loader,
   SiteLogo,
-} from "../../components/shared/index";
+} from "../../components/shared";
+import { Helmet } from "react-helmet";
+
 import bgImage1 from "../../assets/images/Loginsignup/Background/img1.jpg";
 import bgImage2 from "../../assets/images/Loginsignup/Background/img2.jpg";
 import bgImage3 from "../../assets/images/Loginsignup/Background/img3.jpg";
 import bgImage4 from "../../assets/images/Loginsignup/Background/img4.jpg";
 import bgImage5 from "../../assets/images/Loginsignup/Background/img5.jpg";
-import { Helmet } from "react-helmet";
 
 const backgroundImages = [bgImage1, bgImage2, bgImage3, bgImage4, bgImage5];
 
@@ -36,9 +40,14 @@ const pageVariants = {
   },
 };
 
-const stepTitles = ["Company Details", "Media", "Business Details"];
+const stepTitles = [
+  "Personal Details",
+  "Social Media",
+  "Company Details",
+  "Media",
+];
 
-export const CreateCompany = () => {
+export const IndividualProfileSetupStepForm = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [step, setStep] = useState(0);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -49,11 +58,28 @@ export const CreateCompany = () => {
     formState: { errors },
     trigger,
     setValue,
+    control,
   } = useForm();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const storedData = localStorage.getItem("userProfileData");
+    if (storedData) {
+      const parsedData = JSON.parse(storedData);
+      Object.keys(parsedData).forEach((key) => {
+        setValue(key, parsedData[key]);
+      });
+    }
+  }, [setValue]);
+
   const onSubmit = (data) => {
     console.log(data);
+    const formDataWithFiles = {
+      ...data,
+      bannerImage: data.bannerImage ? data.bannerImage.name : null,
+      profileImage: data.profileImage ? data.profileImage.name : null,
+    };
+    localStorage.setItem("userProfileData", JSON.stringify(formDataWithFiles));
     setIsSubmitted(true);
     setIsPopupOpen(true);
   };
@@ -63,7 +89,7 @@ export const CreateCompany = () => {
     if (isPopupOpen) {
       timer = setTimeout(() => {
         setIsPopupOpen(false);
-        navigate("/sign-in");
+        navigate("/user-profile");
       }, 5000);
     }
     return () => clearTimeout(timer);
@@ -74,25 +100,26 @@ export const CreateCompany = () => {
     switch (stepNumber) {
       case 0:
         return await trigger([
-          "companyName",
-          "primaryCompanyType",
-          "secondaryCompanyType",
-          "companyPhoneNumber",
-          "companyEmail",
+          "fullName",
+          "email",
+          "phoneNumber",
+          "address",
           "country",
-          "city",
           "description",
-          "companyLocation",
         ]);
       case 1:
-        return await trigger(["bannerPhoto", "profilePhoto"]);
+        return await trigger(["linkedin", "twitter", "facebook", "instagram"]);
       case 2:
         return await trigger([
-          "businessType",
-          "employeeCount",
-          "annualRevenue",
-          "companyLocation",
+          "companyCount",
+          "company1",
+          "company2",
+          "company3",
+          "company4",
+          "company5",
         ]);
+      case 3:
+        return await trigger(["bannerImage", "profileImage"]);
       default:
         return false;
     }
@@ -101,9 +128,9 @@ export const CreateCompany = () => {
   const nextStep = async (event) => {
     event.preventDefault();
     const isValid = await validateStep(step);
-    if (isValid && step < 2) {
+    if (isValid && step < 3) {
       setStep(step + 1);
-    } else if (isValid && step === 2) {
+    } else if (isValid && step === 3) {
       handleSubmit(onSubmit)();
     } else {
       console.log("Either not valid or last step reached.");
@@ -117,7 +144,7 @@ export const CreateCompany = () => {
   return (
     <section className="min-h-screen flex items-center justify-center bg-no-repeat inset-0 bg-cover relative">
       <Helmet>
-        <title>Create Company</title>
+        <title>Individual Profile Setup</title>
       </Helmet>
       <FadingBackground images={backgroundImages} />
       <div className="absolute inset-0 flex items-center justify-center z-10">
@@ -178,72 +205,74 @@ export const CreateCompany = () => {
           </header>
 
           <div className="flex-grow overflow-y-auto p-6">
-            {!isSubmitted ? (
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                <AnimatePresence mode="wait">
-                  {step === 0 && (
-                    <motion.div
-                      key="step0"
-                      variants={pageVariants}
-                      initial="initial"
-                      animate="animate"
-                      exit="exit"
-                    >
-                      <StepTwo
-                        register={register}
-                        errors={errors}
-                        watch={watch}
-                        setValue={setValue}
-                      />
-                    </motion.div>
-                  )}
-                  {step === 1 && (
-                    <motion.div
-                      key="step1"
-                      variants={pageVariants}
-                      initial="initial"
-                      animate="animate"
-                      exit="exit"
-                    >
-                      <StepThree
-                        register={register}
-                        errors={errors}
-                        setValue={setValue}
-                        watch={watch}
-                      />
-                    </motion.div>
-                  )}
-                  {step === 2 && (
-                    <motion.div
-                      key="step2"
-                      variants={pageVariants}
-                      initial="initial"
-                      animate="animate"
-                      exit="exit"
-                    >
-                      <StepFour register={register} errors={errors} />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </form>
-            ) : (
-              <Popup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)}>
-                <div className="flex flex-col items-center justify-center min-h-[300px] space-y-6">
-                  <SiteLogo className="w-32 md:w-40 lg:w-48" />
-                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center">
-                    Success!
-                  </h2>
-                  <p className="text-gray-600 text-lg md:text-xl lg:text-2xl text-center">
-                    Thank you for registering your Company in Wow Community.
-                  </p>
-                  <Loader />
-                  <p className="text-sm md:text-base lg:text-lg text-gray-500 text-center">
-                    Redirecting to sign-in page...
-                  </p>
-                </div>
-              </Popup>
-            )}
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
+              <AnimatePresence mode="wait">
+                {step === 0 && (
+                  <motion.div
+                    key="step0"
+                    variants={pageVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                  >
+                    <IndividualProfileSetupStepOne
+                      register={register}
+                      errors={errors}
+                      watch={watch}
+                      setValue={setValue}
+                    />
+                  </motion.div>
+                )}
+                {step === 1 && (
+                  <motion.div
+                    key="step1"
+                    variants={pageVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                  >
+                    <IndividualProfileSetupStepTwo
+                      register={register}
+                      errors={errors}
+                      watch={watch}
+                      setValue={setValue}
+                    />
+                  </motion.div>
+                )}
+                {step === 2 && (
+                  <motion.div
+                    key="step2"
+                    variants={pageVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                  >
+                    <IndividualProfileSetupStepThree
+                      register={register}
+                      errors={errors}
+                      watch={watch}
+                      setValue={setValue}
+                    />
+                  </motion.div>
+                )}
+                {step === 3 && (
+                  <motion.div
+                    key="step3"
+                    variants={pageVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                  >
+                    <IndividualProfileSetupStepFour
+                      control={control}
+                      errors={errors}
+                    />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </form>
           </div>
+
           <footer className="bg-[#FBF5EE] p-4">
             <div className="w-full max-w-md mx-auto border-2 border-theme-color rounded-md">
               <div className="flex items-center justify-between gap-3 p-3 bg-white rounded">
@@ -275,7 +304,7 @@ export const CreateCompany = () => {
                   Back
                 </button>
                 <ul className="flex gap-1 items-center">
-                  {[0, 1, 2].map((index) => (
+                  {[0, 1, 2, 3].map((index) => (
                     <li
                       key={index}
                       className={`w-2 h-2 rounded-full ${
@@ -288,7 +317,7 @@ export const CreateCompany = () => {
                   onClick={nextStep}
                   className="flex items-center gap-1.5 border-none text-base font-medium py-2.5 text-gray-700 transition-all duration-300 hover:text-theme-color"
                 >
-                  {step === 2 ? "Submit" : "Next"}
+                  {step === 3 ? "Submit" : "Next"}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="22"
@@ -310,6 +339,23 @@ export const CreateCompany = () => {
           </footer>
         </div>
       </div>
+      {isSubmitted && (
+        <Popup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)}>
+          <div className="flex flex-col items-center justify-center min-h-[300px] space-y-6">
+            <SiteLogo className="w-32 md:w-40 lg:w-48" />
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center">
+              Success!
+            </h2>
+            <p className="text-gray-600 text-lg md:text-xl lg:text-2xl text-center">
+              Your individual profile has been successfully updated.
+            </p>
+            <Loader />
+            <p className="text-sm md:text-base lg:text-lg text-gray-500 text-center">
+              Redirecting to user profile page...
+            </p>
+          </div>
+        </Popup>
+      )}
     </section>
   );
 };
